@@ -35,7 +35,7 @@ const HomePage = () => {
                 <div className={styles.sectionHeader}>
                     <h2 className={styles.sectionTitle}>Getting Started</h2>
                     <p className={styles.sectionSubtitle}>
-                        Here's how to navigate and make the most of your whiteboard experience.
+                        Here&apos;s how to navigate and make the most of your whiteboard experience.
                     </p>
                 </div>
                 <div className={styles.infoGrid}>
@@ -58,7 +58,7 @@ const HomePage = () => {
                         </div>
                         <h3 className={styles.infoTitle}>View & Edit Drawings</h3>
                         <p className={styles.infoDescription}>
-                            From your profile menu, select "View Drawings" to see a list of all whiteboards you can access. Click on any drawing to open and edit it.
+                            From your profile menu, select &quot;View Drawings&quot; to see a list of all whiteboards you can access. Click on any drawing to open and edit it.
                         </p>
                         <div className={styles.exampleText}>
                             Navigation: Profile &gt; View Drawings
@@ -71,7 +71,7 @@ const HomePage = () => {
                         </div>
                         <h3 className={styles.infoTitle}>Create New Drawings</h3>
                         <p className={styles.infoDescription}>
-                            To start fresh, simply click the "Create New Drawing" button above or navigate to the new drawing page. Your blank canvas awaits!
+                            To start fresh, simply click the &quot;Create New Drawing&quot; button above or navigate to the new drawing page. Your blank canvas awaits!
                         </p>
                         <div className={styles.exampleText}>
                             Action: <FontAwesomeIcon icon={faPlusCircle} /> Create New Drawing
@@ -94,3 +94,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
