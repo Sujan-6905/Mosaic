@@ -6,6 +6,7 @@ export const COLORS = {
     ORANGE: "#f97316",
     YELLOW: "#eab308",
     PURPLE: "#a855f7",
+    TEAL: "#008080",
     PINK: "#ec4899",
     BROWN: "#a3a3a3",
     WHITE: "#ffffff",
@@ -15,7 +16,6 @@ export const COLORS = {
     LIME: "#32CD32",
     NAVY: "#000080",
     MAROON: "#800000",
-    TEAL: "#008080",
     OLIVE: "#808000",
     SILVER: "#C0C0C0",
     GOLD: "#FFD700",
@@ -36,12 +36,40 @@ export const MENU_ITEMS = {
     PENCIL: "Pencil",
     ERASER: "Eraser",
     RECTANGLE: "Rectangle",
+    CIRCLE: "Circle",
+    STAR: "Star",
+    OVAL: "Oval",
+    ELLIPSE: "Ellipse",
+    TRIANGLE: "Triangle",
+    ARROW: "Arrow",
+    LINE: "Line",
     UNDO: "Undo",
     REDO: "Redo",
+    PENCIL_PEN: "Pencil_Pen",
+    PENCIL_HIGHLIGHTER: "Pencil_Highlighter",
+    PENCIL_PENCIL: "Pencil_Pencil",
+    FILL_COLOR: "Fill_Color"
+};
+
+export const LINE_STYLES = {
+    PENCIL: "round",
+    PEN: "square",
+    HIGHLIGHTER: "butt",
+};
+
+export const SHAPE_TYPES = {
+    RECTANGLE: "rectangle",
+    CIRCLE: "circle",
+    STAR: "star",
+    OVAL: "oval",
+    ELLIPSE: "ellipse",
+    TRIANGLE: "triangle",
+    ARROW: "arrow",
+    LINE: "line",
 };
 
 // Expanded color array with more important colors
-const COLOR_ARRAY = [
+export const COLOR_ARRAY = [
     COLORS.BLACK,
     COLORS.RED,
     COLORS.BLUE,
@@ -124,6 +152,7 @@ const TOOL_CONFIGS = {
         allowSizeChange: true,
         allowColorChange: true,
         allowOpacity: true,
+        style: LINE_STYLES.PENCIL,
     },
     [MENU_ITEMS.ERASER]: {
         cursor: "grab",
@@ -136,6 +165,56 @@ const TOOL_CONFIGS = {
         allowSizeChange: true,
         allowColorChange: true,
         allowOpacity: true,
+        fill: false,
+        fillColor: COLORS.WHITE,
+    },
+    [MENU_ITEMS.CIRCLE]: {
+        cursor: "crosshair",
+        allowSizeChange: true,
+        allowColorChange: true,
+        allowOpacity: true,
+        fill: false,
+        fillColor: COLORS.WHITE,
+    },
+    [MENU_ITEMS.ELLIPSE]: {
+        cursor: "crosshair",
+        allowSizeChange: true,
+        allowColorChange: true,
+        allowOpacity: true,
+        fill: false,
+        fillColor: COLORS.WHITE,
+    },
+    [MENU_ITEMS.TRIANGLE]: {
+        cursor: "crosshair",
+        allowSizeChange: true,
+        allowColorChange: true,
+        allowOpacity: true,
+        fill: false,
+        fillColor: COLORS.WHITE,
+    },
+    [MENU_ITEMS.ARROW]: {
+        cursor: "crosshair",
+        allowSizeChange: true,
+        allowColorChange: true,
+        allowOpacity: true,
+        fill: false,
+        fillColor: COLORS.WHITE,
+    },
+    [MENU_ITEMS.LINE]: {
+        cursor: "crosshair",
+        allowSizeChange: true,
+        allowColorChange: true,
+        allowOpacity: true,
+        fill: false,
+        fillColor: COLORS.WHITE,
+    },
+    [MENU_ITEMS.STAR]: {
+        cursor: "crosshair",
+        allowSizeChange: true,
+        allowColorChange: true,
+        allowOpacity: true,
+        fill: false,
+        fillColor: COLORS.WHITE,
     },
     [MENU_ITEMS.UNDO]: {
         cursor: "default",
@@ -149,6 +228,27 @@ const TOOL_CONFIGS = {
         allowColorChange: false,
         allowOpacity: false,
     },
+    [MENU_ITEMS.PENCIL_PENCIL]: {
+        cursor: "crosshair",
+        allowSizeChange: true,
+        allowColorChange: true,
+        allowOpacity: true,
+        style: LINE_STYLES.PENCIL,
+    },
+    [MENU_ITEMS.PENCIL_PEN]: {
+        cursor: "crosshair",
+        allowSizeChange: true,
+        allowColorChange: true,
+        allowOpacity: true,
+        style: LINE_STYLES.PEN,
+    },
+    [MENU_ITEMS.PENCIL_HIGHLIGHTER]: {
+        cursor: "crosshair",
+        allowSizeChange: true,
+        allowColorChange: true,
+        allowOpacity: true,
+        style: LINE_STYLES.HIGHLIGHTER,
+    },
 };
 
 const CANVAS_SETTINGS = {
@@ -161,7 +261,6 @@ const CANVAS_SETTINGS = {
 };
 
 export {
-    COLOR_ARRAY,
     FONT_SIZES,
     ROUTES,
     MOCK_USERS,

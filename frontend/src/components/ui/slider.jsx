@@ -3,26 +3,26 @@
 import * as React from "react"
 import cx from "classnames"
 
-const Slider = React.forwardRef(({ className, value, onValueChange, max = 100, min = 0, step = 1, ...props }, ref) => {
-	const handleChange = (e) => {
-		const newValue = Number.parseInt(e.target.value)
-		onValueChange && onValueChange([newValue])
-	}
+const Slider = React.forwardRef(({ className, value, onValueChange, max = 100, min = 1, step = 1, ...props }, ref) => {
+    const handleChange = (e) => {
+        const newValue = Number.parseInt(e.target.value)
+        onValueChange && onValueChange([newValue])
+    }
 
-	return (
-		<div className={cx("relative flex w-full touch-none select-none items-center", className)}>
-			<input
-				ref={ref}
-				type="range"
-				min={min}
-				max={max}
-				step={step}
-				value={value?.[0] || 0}
-				onChange={handleChange}
-				className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-				{...props}
-			/>
-			<style jsx>{`
+    return (
+        <div className={cx("relative flex w-full touch-none select-none items-center", className)}>
+            <input
+                ref={ref}
+                type="range"
+                min={min}
+                max={max}
+                step={step}
+                value={value?.[0] || 1}
+                onChange={handleChange}
+                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                {...props}
+            />
+            <style jsx>{`
         .slider::-webkit-slider-thumb {
           appearance: none;
           height: 20px;
@@ -53,8 +53,8 @@ const Slider = React.forwardRef(({ className, value, onValueChange, max = 100, m
           box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
         }
       `}</style>
-		</div>
-	)
+        </div>
+    )
 })
 Slider.displayName = "Slider"
 

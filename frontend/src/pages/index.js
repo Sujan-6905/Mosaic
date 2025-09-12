@@ -20,9 +20,9 @@ import Whiteboard from "@/components/Whiteboard";
 import Toast, { useToast } from "@/components/Toast";
 import HomePage from "@/components/HomePage"; // Import the new HomePage component
 
-import { changeColor, changeBrushSize } from "@/slice/toolboxSlice";
+import { changeColor, changeFillColor, changeBrushSize, changeOpacity, changeLineStyle } from "@/slice/toolboxSlice";
 import { menuItemClick, actionItemClick } from "@/slice/menuSlice";
-import { COLORS } from "@/constants";
+import { COLORS, MENU_ITEMS } from "@/constants";
 import styles from "./index.module.css";
 
 export default function Home({ onAuthClick }) {
@@ -36,13 +36,14 @@ export default function Home({ onAuthClick }) {
 
     // Redux state
     const { activeMenuItem } = useSelector((state) => state.menu);
-    // Safely access color and size with fallbacks
+
+    // Safely access toolbox state properties with fallbacks
     const toolboxState = useSelector((state) => state.toolbox[activeMenuItem]);
     const color = toolboxState?.color || COLORS.BLACK;
+    const fillColor = toolboxState?.fillColor || null;
     const size = toolboxState?.size || 3;
-
-    // Local state for UI
-    const [opacity, setOpacity] = useState(100);
+    const opacity = toolboxState?.opacity || 100;
+    const style = toolboxState?.style || null;
 
     // Handle drawing ID from URL query
     useEffect(() => {
@@ -67,13 +68,22 @@ export default function Home({ onAuthClick }) {
         dispatch(changeColor({ item: activeMenuItem, color: newColor }));
     };
 
+    const handleFillColorChange = (newFillColor) => {
+        dispatch(changeFillColor({ item: activeMenuItem, fillColor: newFillColor }));
+    };
+
     const handleBrushSizeChange = (newSize) => {
         dispatch(changeBrushSize({ item: activeMenuItem, size: newSize }));
     };
 
     const handleOpacityChange = (newOpacity) => {
-        setOpacity(newOpacity);
+        dispatch(changeOpacity({ item: activeMenuItem, opacity: newOpacity }));
     };
+
+    const handleLineStyleChange = (newStyle) => {
+        dispatch(changeLineStyle({ item: activeMenuItem, style: newStyle }));
+    };
+
 
     // Use useCallback to ensure this function reference is stable
     const handleCanvasReady = useCallback((canvas) => {
@@ -281,9 +291,11 @@ export default function Home({ onAuthClick }) {
                 <Toolbox
                     activeMenuItem={activeMenuItem}
                     selectedColor={color}
+                    selectedFillColor={fillColor}
                     selectedBrushSize={size}
-                    opacity={opacity}
+                    selectedOpacity={opacity}
                     onColorChange={handleColorChange}
+                    onFillColorChange={handleFillColorChange}
                     onBrushSizeChange={handleBrushSizeChange}
                     onOpacityChange={handleOpacityChange}
                 />

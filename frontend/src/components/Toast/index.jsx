@@ -56,10 +56,10 @@ export const useToast = () => {
         // Remove entering class after animation
         setTimeout(() => {
             setToasts((prev) => prev.map((t) => (t.id === id ? { ...t, entering: false } : t)))
-        }, 300)
+        }, 2000)
 
         // Auto remove after duration
-        const duration = toast.duration || 4000
+        const duration = toast.duration || 2000
         setTimeout(() => {
             removeToast(id)
         }, duration)
@@ -69,7 +69,7 @@ export const useToast = () => {
         setToasts((prev) => prev.map((t) => (t.id === id ? { ...t, exiting: true } : t)))
         setTimeout(() => {
             setToasts((prev) => prev.filter((t) => t.id !== id))
-        }, 300)
+        }, 2000)
     }
 
     const showToast = {
