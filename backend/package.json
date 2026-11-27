@@ -32,7 +32,7 @@
     "cloudinary": "^2.10.0",
     "cors": "^2.8.5",
     "couchbase": "^4.7.1",
-    "dotenv": "^16.6.0",
+    "dotenv": "^18.0.10",
     "express": "^5.1.0",
     "express-rate-limit": "^8.6.0",
     "helmet": "^8.3.0",
