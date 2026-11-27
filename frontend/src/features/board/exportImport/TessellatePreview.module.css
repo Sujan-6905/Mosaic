@@ -1,0 +1,7 @@
+.preview {
+    display: block;
+    width: 100%;
+    aspect-ratio: 720 / 300;
+    cursor: ew-resize;
+    touch-action: pan-y;
+}

@@ -1,0 +1,35 @@
+{
+  "modelKey": "nvidia:mistralai/mistral-large-4-1t-a52b",
+  "task": "tree-and-lake",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "lake",
+    "lake ripple left",
+    "lake ripple right",
+    "tree trunk",
+    "tree canopy"
+  ],
+  "usage": {
+    "calls": 3,
+    "inputTokens": 8240,
+    "outputTokens": 5182,
+    "modelMs": 322742,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 6,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/nvidia-mistralai-mistral-large-4-1t-a52b/tree-and-lake.mosaic.svg",
+  "ranAt": "2026-11-24T06:37:18.551Z"
+}

@@ -1,0 +1,39 @@
+{
+  "modelKey": "openrouter:baidu/ernie-5.5-flash-preview:free",
+  "task": "bicycle",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "rear wheel",
+    "front wheel",
+    "rear spokes",
+    "front spokes",
+    "frame",
+    "seat",
+    "handlebar",
+    "crank",
+    "pedal"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 6501,
+    "outputTokens": 2483,
+    "modelMs": 11827,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 19,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/openrouter-baidu-ernie-5.5-flash-preview-free/bicycle.mosaic.svg",
+  "ranAt": "2026-11-25T06:50:32.497Z"
+}

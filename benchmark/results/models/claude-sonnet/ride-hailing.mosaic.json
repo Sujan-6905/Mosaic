@@ -1,0 +1,32 @@
+{
+  "modelKey": "claude:sonnet",
+  "task": "ride-hailing",
+  "kind": "diagram",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": {
+    "structure": "layered-tiers",
+    "look": "ink",
+    "levers": {}
+  },
+  "parts": null,
+  "usage": {
+    "calls": 3,
+    "inputTokens": 31163,
+    "outputTokens": 2025,
+    "modelMs": 15411,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 35,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 16
+  },
+  "image": "models/claude-sonnet/ride-hailing.mosaic.svg",
+  "ranAt": "2026-11-24T04:39:34.835Z"
+}

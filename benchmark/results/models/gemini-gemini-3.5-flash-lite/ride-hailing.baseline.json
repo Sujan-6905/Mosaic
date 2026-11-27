@@ -1,0 +1,28 @@
+{
+  "modelKey": "gemini:gemini-3.5-flash-lite",
+  "task": "ride-hailing",
+  "kind": "diagram",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 131,
+    "outputTokens": 1334,
+    "modelMs": 2952,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 19,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 9
+  },
+  "image": "models/gemini-gemini-3.5-flash-lite/ride-hailing.baseline.svg",
+  "ranAt": "2026-11-24T05:34:56.124Z"
+}

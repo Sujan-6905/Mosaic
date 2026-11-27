@@ -1,0 +1,43 @@
+.glass {
+    flex: none;
+    overflow: visible;
+}
+
+.frame {
+    fill: none;
+    stroke: var(--color-border-strong);
+    stroke-width: 1;
+    stroke-linejoin: round;
+}
+
+.sand,
+.settled,
+.falling {
+    fill: var(--color-brand-fill);
+}
+
+.falling {
+    animation: drop 420ms cubic-bezier(0.5, 0, 0.9, 0.6) both;
+}
+
+.glass[data-urgent] .sand {
+    fill: #de5816;
+    animation: urgent 380ms ease-in-out infinite alternate;
+}
+
+@keyframes drop {
+    from {
+        transform: translateY(calc(var(--drop) * -1));
+    }
+}
+
+@keyframes urgent {
+    to {
+        opacity: 0.45;
+    }
+}
+
+:global(html[data-calm]) .falling,
+:global(html[data-calm]) .glass[data-urgent] .sand {
+    animation: none;
+}

@@ -1,0 +1,32 @@
+{
+  "modelKey": "claude:opus",
+  "task": "org-chart",
+  "kind": "diagram",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": {
+    "structure": "org-chart",
+    "look": "ink",
+    "levers": {}
+  },
+  "parts": null,
+  "usage": {
+    "calls": 3,
+    "inputTokens": 30996,
+    "outputTokens": 1260,
+    "modelMs": 14960,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 12,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 5
+  },
+  "image": "models/claude-opus/org-chart.mosaic.svg",
+  "ranAt": "2026-11-24T04:45:34.862Z"
+}

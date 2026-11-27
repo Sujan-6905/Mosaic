@@ -1,0 +1,223 @@
+.side {
+    position: absolute;
+    top: 62px;
+    right: 12px;
+    bottom: 12px;
+    width: 316px;
+    z-index: 3;
+    border: 1px solid var(--site-line-soft);
+    border-radius: 16px;
+    background: #181a1e;
+    box-shadow: 0 24px 48px -18px rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    container: sidePanels / size;
+}
+
+.assistant,
+.comments {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+}
+
+.assistant {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+    border-bottom: 1px solid var(--site-line-soft);
+}
+
+.comments {
+    flex: none;
+}
+
+.panelHead {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.sparkle {
+    color: var(--site-gold);
+}
+
+.panelMeta {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--site-bone-faint);
+}
+
+.userMessage {
+    align-self: flex-end;
+    max-width: 88%;
+    padding: 10px 12px;
+    border-radius: 14px 14px 4px 14px;
+    background: #2a2e35;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--site-bone-dim);
+}
+
+.steps li {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.steps svg {
+    color: #6fd394;
+}
+
+.proposalCard {
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 180, 60, 0.4);
+    background: rgba(255, 180, 60, 0.07);
+    font-size: 13px;
+    line-height: 1.5;
+    color: #c9cbd0;
+}
+
+.proposalActions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.ghostChip {
+    border: 1px solid rgba(236, 235, 230, 0.18);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+}
+
+.composer,
+.reply {
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: var(--site-ink);
+    border: 1px solid rgba(236, 235, 230, 0.1);
+    font-size: 13px;
+    color: var(--site-bone-faint);
+}
+
+.composer {
+    margin-top: auto;
+}
+
+.comment {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 1.45;
+    color: #c9cbd0;
+}
+
+.comment strong {
+    color: var(--site-bone);
+}
+
+.commentAvatar {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    color: #14161a;
+    font-size: 10px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.commentAvatar[data-tone="sky"] {
+    background: #8fb8ff;
+}
+.commentAvatar[data-tone="gold"] {
+    background: var(--site-gold);
+}
+
+.apply {
+    background: var(--site-gold);
+    color: var(--color-brand-fill-text);
+    border-radius: 9px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.mention {
+    color: #ffc76a;
+}
+
+.replyRow {
+    display: flex;
+    gap: 8px;
+}
+
+.reply {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+/* Lines step aside in order of importance as the shared column shortens, so both panels stay readable.
+   These must follow the rules they override. */
+@container sidePanels (max-height: 500px) {
+    .steps {
+        display: none;
+    }
+}
+
+@container sidePanels (max-height: 450px) {
+    .comment + .comment,
+    .replyRow {
+        display: none;
+    }
+}
+
+@container sidePanels (max-height: 400px) {
+    .userMessage {
+        display: none;
+    }
+}
+
+@container sidePanels (max-height: 320px) {
+    .composer {
+        display: none;
+    }
+}
+
+@container sidePanels (max-height: 270px) {
+    .proposalActions {
+        display: none;
+    }
+}
+
+@container sidePanels (max-height: 230px) {
+    .comments {
+        display: none;
+    }
+
+    .assistant {
+        border-bottom: 0;
+    }
+}
+
+@media (max-width: 1040px) {
+    .side {
+        display: none;
+    }
+}

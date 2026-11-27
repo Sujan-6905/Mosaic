@@ -1,0 +1,28 @@
+{
+  "modelKey": "antigravity:gemini-3.8-flash-medium",
+  "task": "bicycle",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 10177,
+    "outputTokens": 3514,
+    "modelMs": 35081,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 19,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/antigravity-gemini-3.8-flash-medium/bicycle.baseline.svg",
+  "ranAt": "2026-11-24T06:50:31.011Z"
+}

@@ -1,0 +1,23 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]
+  - package-ecosystem: npm
+    directories: [/frontend, /backend, /mcp-server]
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 5
+    ignore:
+      # 0.26 and later cannot load the prebuilt grammars in tree-sitter-wasms.
+      - dependency-name: web-tree-sitter
+        versions: [">=0.26.0"]
+      # Must match the copy ottoman pins: a second SDK in the process breaks every query.
+      - dependency-name: couchbase
+    groups:
+      minor-and-patch:
+        update-types: [minor, patch]

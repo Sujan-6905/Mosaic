@@ -1,0 +1,28 @@
+{
+  "modelKey": "gemini:gemini-3.5-flash-lite",
+  "task": "house",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 100,
+    "outputTokens": 380,
+    "modelMs": 1275,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 6,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 4,
+    "connectors": 0
+  },
+  "image": "models/gemini-gemini-3.5-flash-lite/house.baseline.svg",
+  "ranAt": "2026-11-24T05:35:48.502Z"
+}

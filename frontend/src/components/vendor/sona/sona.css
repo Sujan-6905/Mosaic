@@ -1,0 +1,17 @@
+/* Sona UI (MIT, components/vendor/sona/LICENSE) uses shadcn's colour names; these map them to Mosaic's
+   theme tokens so they follow the light/dark switch. */
+@source ".";
+@source "../../ui";
+
+@theme inline {
+  --color-popover: var(--color-bg-elevated);
+  --color-popover-foreground: var(--color-text-primary);
+  --color-secondary: var(--color-bg-sunken);
+  --color-secondary-foreground: var(--color-text-primary);
+  --color-muted: var(--color-bg-hover);
+  --color-muted-foreground: var(--color-text-muted);
+  --color-border: var(--color-border);
+  --color-ring: var(--color-focus-ring);
+  --color-destructive: var(--color-danger);
+  --color-destructive-foreground: var(--color-on-danger);
+}

@@ -1,0 +1,28 @@
+{
+  "modelKey": "claude:opus",
+  "task": "url-shortener",
+  "kind": "diagram",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 4197,
+    "outputTokens": 1827,
+    "modelMs": 18130,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 22,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 7
+  },
+  "image": "models/claude-opus/url-shortener.baseline.svg",
+  "ranAt": "2026-11-23T05:47:16.235Z"
+}

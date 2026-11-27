@@ -1,0 +1,28 @@
+{
+  "modelKey": "groq:openai/gpt-oss-120b",
+  "task": "launch-timeline",
+  "kind": "diagram",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 213,
+    "outputTokens": 794,
+    "modelMs": 1851,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 9,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 4
+  },
+  "image": "models/groq-openai-gpt-oss-120b/launch-timeline.baseline.svg",
+  "ranAt": "2026-11-23T05:58:07.712Z"
+}

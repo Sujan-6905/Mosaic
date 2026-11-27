@@ -1,0 +1,32 @@
+{
+  "modelKey": "openrouter:baidu/ernie-5.5-flash-preview:free",
+  "task": "launch-timeline",
+  "kind": "diagram",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": {
+    "structure": "timeline",
+    "look": "gold-leaf",
+    "levers": {}
+  },
+  "parts": null,
+  "usage": {
+    "calls": 3,
+    "inputTokens": 10421,
+    "outputTokens": 2602,
+    "modelMs": 15433,
+    "rateLimitWaits": 8
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 23,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 6
+  },
+  "image": "models/openrouter-baidu-ernie-5.5-flash-preview-free/launch-timeline.mosaic.svg",
+  "ranAt": "2026-11-24T09:18:06.852Z"
+}

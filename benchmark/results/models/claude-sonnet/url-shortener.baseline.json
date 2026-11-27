@@ -1,0 +1,28 @@
+{
+  "modelKey": "claude:sonnet",
+  "task": "url-shortener",
+  "kind": "diagram",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 4201,
+    "outputTokens": 684,
+    "modelMs": 5557,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 15,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 7
+  },
+  "image": "models/claude-sonnet/url-shortener.baseline.svg",
+  "ranAt": "2026-11-23T05:50:48.580Z"
+}

@@ -1,0 +1,36 @@
+{
+  "modelKey": "groq:openai/gpt-oss-120b",
+  "task": "house",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "chimney",
+    "walls",
+    "roof",
+    "door",
+    "door knob",
+    "window"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 6064,
+    "outputTokens": 1347,
+    "modelMs": 4093,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 9,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/groq-openai-gpt-oss-120b/house.mosaic.svg",
+  "ranAt": "2026-11-23T06:02:10.052Z"
+}

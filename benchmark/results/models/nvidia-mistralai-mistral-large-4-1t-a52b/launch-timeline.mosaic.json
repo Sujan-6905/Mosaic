@@ -1,0 +1,32 @@
+{
+  "modelKey": "nvidia:mistralai/mistral-large-4-1t-a52b",
+  "task": "launch-timeline",
+  "kind": "diagram",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": {
+    "structure": "timeline",
+    "look": "ink",
+    "levers": {}
+  },
+  "parts": null,
+  "usage": {
+    "calls": 2,
+    "inputTokens": 9192,
+    "outputTokens": 1497,
+    "modelMs": 58056,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 22,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 6
+  },
+  "image": "models/nvidia-mistralai-mistral-large-4-1t-a52b/launch-timeline.mosaic.svg",
+  "ranAt": "2026-11-24T05:05:17.881Z"
+}

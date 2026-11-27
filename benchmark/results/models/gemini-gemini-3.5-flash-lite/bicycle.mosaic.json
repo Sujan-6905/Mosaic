@@ -1,0 +1,40 @@
+{
+  "modelKey": "gemini:gemini-3.5-flash-lite",
+  "task": "bicycle",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "frame chainstay",
+    "frame seatstay",
+    "frame downtube",
+    "frame toptube",
+    "frame seattube",
+    "fork",
+    "handlebars",
+    "stem",
+    "seat",
+    "seatpost",
+    "pedals"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 4475,
+    "outputTokens": 570,
+    "modelMs": 3753,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 12,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/gemini-gemini-3.5-flash-lite/bicycle.mosaic.svg",
+  "ranAt": "2026-11-24T05:36:39.662Z"
+}

@@ -1,0 +1,32 @@
+{
+  "modelKey": "claude:haiku",
+  "task": "url-shortener",
+  "kind": "diagram",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": {
+    "structure": "layered-tiers",
+    "look": "blueprint",
+    "levers": {}
+  },
+  "parts": null,
+  "usage": {
+    "calls": 3,
+    "inputTokens": 30998,
+    "outputTokens": 2957,
+    "modelMs": 17505,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 24,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 8
+  },
+  "image": "models/claude-haiku/url-shortener.mosaic.svg",
+  "ranAt": "2026-11-24T04:32:26.454Z"
+}

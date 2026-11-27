@@ -1,0 +1,28 @@
+{
+  "modelKey": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+  "task": "bicycle",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "invalid",
+  "error": "the drawing could not be read",
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 5,
+    "inputTokens": 13172,
+    "outputTokens": 17232,
+    "modelMs": 353106,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": false,
+    "elementCount": 0,
+    "validShare": 0,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/nvidia-nvidia-nemotron-3-ultra-550b-a55b/bicycle.mosaic.svg",
+  "ranAt": "2026-11-24T09:13:04.622Z"
+}

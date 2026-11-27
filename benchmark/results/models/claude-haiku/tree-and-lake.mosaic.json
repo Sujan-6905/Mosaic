@@ -1,0 +1,34 @@
+{
+  "modelKey": "claude:haiku",
+  "task": "tree-and-lake",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "lake water",
+    "lake ripples",
+    "tree trunk",
+    "tree canopy"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 18239,
+    "outputTokens": 1755,
+    "modelMs": 12680,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 6,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-haiku/tree-and-lake.mosaic.svg",
+  "ranAt": "2026-11-23T05:32:12.246Z"
+}

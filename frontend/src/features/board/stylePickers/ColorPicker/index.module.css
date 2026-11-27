@@ -1,0 +1,69 @@
+.picker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-1);
+    width: 200px;
+}
+
+.wheel {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    cursor: crosshair;
+    touch-action: none;
+    box-shadow: var(--shadow-sm);
+}
+
+.valueRow {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    width: 100%;
+}
+
+.rowLabel {
+    font-size: var(--text-2xs);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-secondary);
+}
+
+.valueSlider {
+    width: 100%;
+}
+
+.hexRow {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-2);
+    width: 100%;
+}
+
+.hexInput {
+    flex: 1;
+    text-transform: lowercase;
+}
+
+/* Fixed 6 columns rather than flex-wrap, so 12 recents split evenly into
+   two full rows instead of leaving a short, ragged second row. */
+.recentsRow {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--space-2);
+    width: 100%;
+}
+
+.recentSwatch {
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--color-border-strong);
+    cursor: pointer;
+    padding: 0;
+}
+
+.recentSwatch.active {
+    border-color: var(--color-focus-ring);
+    box-shadow: 0 0 0 1px var(--color-focus-ring);
+}

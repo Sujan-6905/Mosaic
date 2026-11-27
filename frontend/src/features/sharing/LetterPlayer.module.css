@@ -1,0 +1,49 @@
+.player {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.canvas {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1440 / 900;
+    border-radius: 18px;
+    background: #15171b;
+    border: 1px solid var(--site-line-soft);
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.play {
+    flex: none;
+    min-width: 96px;
+    min-height: 40px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--site-line);
+    background: var(--site-raised);
+    color: var(--site-bone);
+    font: 600 14px var(--site-body);
+    cursor: pointer;
+}
+
+.play:hover {
+    border-color: var(--site-gold);
+}
+
+.play:focus-visible,
+.scrub:focus-visible {
+    outline: 2px solid var(--site-gold);
+    outline-offset: 3px;
+}
+
+.scrub {
+    flex: 1;
+    accent-color: var(--site-gold);
+}

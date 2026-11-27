@@ -1,0 +1,141 @@
+.layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.seal {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.seal::before,
+.seal::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    translate: -50% -50%;
+}
+
+.seal::before {
+    width: 64px;
+    height: 64px;
+    border: 3px solid var(--color-brand-fill);
+    animation: press 260ms cubic-bezier(0.3, 1.4, 0.5, 1) both;
+}
+
+.seal::after {
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(214, 208, 192, 0.6);
+    animation: ripple 620ms 140ms ease-out both;
+}
+
+.dust {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.dust i {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    margin: -3px;
+    border-radius: 50%;
+    background: rgba(214, 208, 192, 0.55);
+    animation: puff 760ms ease-out both;
+    rotate: var(--angle);
+}
+
+.milestone {
+    position: absolute;
+    left: 16px;
+    bottom: 84px;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: min(360px, calc(100% - 32px));
+    padding: 10px 16px 10px 10px;
+    border-radius: 14px;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.6);
+    animation: plaque 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.count {
+    padding: 8px 10px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #ffd27a, #e09a2c 60%, #c07d1c);
+    color: #1a1206;
+    font: 700 18px var(--font-display, var(--font-sans));
+    font-variant-numeric: tabular-nums;
+}
+
+.milestone > span:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+.milestone strong {
+    font-size: 14px;
+    color: var(--color-text-primary);
+}
+
+@keyframes press {
+    from {
+        scale: 2.4;
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    to {
+        scale: 1;
+        opacity: 0;
+    }
+}
+
+@keyframes ripple {
+    from {
+        scale: 0.6;
+        opacity: 1;
+    }
+
+    to {
+        scale: 1.8;
+        opacity: 0;
+    }
+}
+
+@keyframes puff {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+}
+
+@keyframes plaque {
+    from {
+        opacity: 0;
+        translate: 0 10px;
+    }
+}
+
+:global(html[data-calm]) .milestone {
+    animation: none;
+}

@@ -1,0 +1,28 @@
+{
+  "modelKey": "claude:sonnet",
+  "task": "tree-and-lake",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 4147,
+    "outputTokens": 348,
+    "modelMs": 4394,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 9,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 1
+  },
+  "image": "models/claude-sonnet/tree-and-lake.baseline.svg",
+  "ranAt": "2026-11-23T05:53:47.497Z"
+}

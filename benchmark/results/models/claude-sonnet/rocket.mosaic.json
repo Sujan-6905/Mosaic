@@ -1,0 +1,43 @@
+{
+  "modelKey": "claude:sonnet",
+  "task": "rocket",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "smoke cloud left",
+    "smoke cloud right",
+    "smoke cloud middle",
+    "outer flame",
+    "inner flame",
+    "left fin",
+    "right fin",
+    "center fin",
+    "rocket body",
+    "nozzle",
+    "window",
+    "window glint",
+    "body stripe"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 18231,
+    "outputTokens": 1067,
+    "modelMs": 11253,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 14,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-sonnet/rocket.mosaic.svg",
+  "ranAt": "2026-11-23T05:41:26.399Z"
+}

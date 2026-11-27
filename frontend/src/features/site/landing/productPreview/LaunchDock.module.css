@@ -1,0 +1,117 @@
+.launchDock {
+    position: absolute;
+    left: 50%;
+    bottom: 22px;
+    z-index: 2;
+    display: none;
+    translate: -50% 0;
+}
+
+.launchDockBody {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    gap: 11px;
+    padding: 6px 10px 7px;
+}
+
+/* The glass is its own layer so it can widen under magnified icons without moving them. */
+.launchDockBody::before {
+    content: "";
+    position: absolute;
+    inset: 0 calc(var(--dock-growth, 0px) / -2);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(82, 86, 94, 0.38);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.16),
+        0 26px 54px -20px rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(26px) saturate(170%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .launchDock {
+        display: flex;
+    }
+}
+
+.launchApp {
+    position: relative;
+    flex: none;
+    width: 58px;
+    height: 58px;
+    transform-origin: 50% 100%;
+}
+
+.launchApp svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    border-radius: 22%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.launchApp[data-name="Trash"] svg {
+    box-shadow: none;
+}
+
+.runningDot {
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 4px;
+    height: 4px;
+    margin-left: -2px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.82);
+}
+
+.dockDivider {
+    position: relative;
+    flex: none;
+    align-self: stretch;
+    width: 1px;
+    margin: 4px 5px;
+    background: rgba(255, 255, 255, 0.24);
+}
+
+@media (hover: hover) {
+    .launchApp::before {
+        content: attr(data-name);
+        position: absolute;
+        left: 50%;
+        bottom: calc(100% + 12px);
+        padding: 3px 9px;
+        border-radius: 7px;
+        background: rgba(30, 32, 36, 0.92);
+        color: var(--site-bone);
+        font-size: 10px;
+        font-weight: 500;
+        white-space: nowrap;
+        transform: translateX(-50%) scale(calc(1 / var(--app-scale, 1)));
+        transform-origin: 50% 100%;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 120ms ease-out;
+    }
+
+    .launchApp:hover {
+        z-index: 1;
+    }
+
+    .launchApp:hover::before {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 560px) {
+    .launchApp {
+        width: 44px;
+        height: 44px;
+    }
+
+    .launchApp[data-wide-only] {
+        display: none;
+    }
+}

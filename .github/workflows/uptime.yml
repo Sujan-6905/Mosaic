@@ -1,0 +1,25 @@
+name: Uptime check
+
+# Pings /healthz often enough that the free-tier host and database never idle out.
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    name: Ping /healthz
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check health endpoint
+        run: |
+          if [ -z "${{ vars.BACKEND_URL }}" ]; then
+            echo "BACKEND_URL repository variable is not set - skipping (nothing deployed yet)."
+            exit 0
+          fi
+          status=$(curl -s -o /tmp/healthz.json -w "%{http_code}" "${{ vars.BACKEND_URL }}/healthz")
+          cat /tmp/healthz.json
+          if [ "$status" != "200" ]; then
+            echo "::error::/healthz returned $status"
+            exit 1
+          fi

@@ -1,0 +1,92 @@
+.layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transform-origin: top left;
+    background: var(--color-bg-surface);
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px var(--color-border);
+}
+
+.frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+}
+
+.embed[data-active] .frame {
+    pointer-events: auto;
+}
+
+.interact,
+.done {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 0.4rem 0.75rem;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--color-text-primary);
+    font-size: 0.8rem;
+    cursor: pointer;
+    pointer-events: auto;
+    box-shadow: var(--shadow-lg);
+}
+
+.interact:hover,
+.done:hover {
+    background: var(--color-bg-hover);
+}
+
+.loadPage {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    width: 100%;
+    background: var(--color-bg-surface);
+    border: none;
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 1rem;
+    overflow-wrap: anywhere;
+}
+
+.loadButton {
+    margin-top: 0.4rem;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    font: 500 0.8rem var(--font-sans);
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.loadButton:hover {
+    background: var(--color-bg-hover);
+}
+
+.loadPage strong {
+    color: var(--color-text-primary);
+    font-size: 1rem;
+}
+
+.loadPage:hover {
+    background: var(--color-bg-hover);
+}

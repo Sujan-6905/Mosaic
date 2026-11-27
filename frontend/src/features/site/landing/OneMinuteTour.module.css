@@ -1,0 +1,97 @@
+.tour {
+    position: fixed;
+    left: 50%;
+    bottom: max(16px, env(safe-area-inset-bottom));
+    z-index: 60;
+    width: min(720px, calc(100vw - 32px));
+    translate: -50% 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px 16px;
+    padding: 14px 16px 14px 18px;
+    border-radius: 18px;
+    background: rgba(28, 31, 36, 0.92);
+    border: 1px solid var(--site-line);
+    box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(14px);
+    animation: tourIn 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.steps {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.steps li {
+    flex-basis: 0;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--site-line);
+    overflow: hidden;
+}
+
+.steps span {
+    display: block;
+    height: 100%;
+    background: var(--site-gold);
+    transform-origin: left;
+}
+
+.caption {
+    margin: 0;
+    align-self: center;
+    font-size: clamp(14px, 1.6vw, 16px);
+    line-height: 1.45;
+    color: var(--site-bone);
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.controls button {
+    min-height: 36px;
+    padding: 6px 10px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--site-bone-dim);
+    font: 600 13px var(--site-body);
+    cursor: pointer;
+}
+
+.controls button:hover {
+    color: var(--site-gold);
+}
+
+.controls button:focus-visible {
+    outline: 2px solid var(--site-gold);
+    outline-offset: 2px;
+}
+
+@media (max-width: 560px) {
+    .tour {
+        grid-template-columns: 1fr;
+    }
+
+    .controls {
+        justify-content: flex-end;
+    }
+}
+
+@keyframes tourIn {
+    from {
+        opacity: 0;
+        translate: -50% 16px;
+    }
+}
+
+:global(html[data-calm]) .tour {
+    animation: none;
+}

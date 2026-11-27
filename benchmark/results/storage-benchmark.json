@@ -1,0 +1,277 @@
+{
+  "startedAt": "2026-11-24T04:18:57.002Z",
+  "settings": {
+    "iterations": 200,
+    "concurrency": 4,
+    "warmup": 10,
+    "runs": 5,
+    "keep": false,
+    "dataset": {
+      "boards": 20,
+      "elementsPerBoard": 300,
+      "owners": 5,
+      "opsPerBoard": 400,
+      "snapshotEvery": 50
+    }
+  },
+  "stores": [
+    {
+      "id": "couchbase",
+      "name": "Couchbase Capella"
+    },
+    {
+      "id": "mongodb",
+      "name": "MongoDB Atlas"
+    }
+  ],
+  "results": {
+    "ping": {
+      "couchbase": {
+        "count": 200,
+        "p50": 36.457653999998,
+        "p95": 42.47709900001064,
+        "p99": 48.2208849999588,
+        "mean": 37.60590638000169,
+        "opsPerSecond": 106.34717055629439,
+        "passes": 5
+      },
+      "mongodb": {
+        "count": 200,
+        "p50": 26.262311000027694,
+        "p95": 35.625973999965936,
+        "p99": 348.5442299999995,
+        "mean": 35.55549231000008,
+        "opsPerSecond": 111.96531283258183,
+        "passes": 5
+      }
+    },
+    "workloads": [
+      {
+        "id": "boardByKey",
+        "label": "Open a board by its key",
+        "byStore": {
+          "couchbase": {
+            "count": 200,
+            "p50": 63.49543300003279,
+            "p95": 144.24014300003182,
+            "p99": 150.0323690000223,
+            "mean": 71.28605482499349,
+            "opsPerSecond": 55.70786692970973,
+            "roundTripP50": 36.808917999995174,
+            "aboveRoundTrip": 27.11533300008159,
+            "passes": 5
+          },
+          "mongodb": {
+            "count": 200,
+            "p50": 41.11321099999623,
+            "p95": 99.96287300006952,
+            "p99": 192.89611999999033,
+            "mean": 50.69432957000012,
+            "opsPerSecond": 78.47849328302611,
+            "roundTripP50": 26.608837999985553,
+            "aboveRoundTrip": 14.156341999994766,
+            "passes": 5
+          }
+        }
+      },
+      {
+        "id": "boardByShareId",
+        "label": "Open a board by its share id (secondary index)",
+        "byStore": {
+          "couchbase": {
+            "count": 200,
+            "p50": 60.94242999999551,
+            "p95": 98.28829699999187,
+            "p99": 310.85404100001324,
+            "mean": 70.74626990000135,
+            "opsPerSecond": 55.90629400258602,
+            "roundTripP50": 36.35836399998516,
+            "aboveRoundTrip": 24.584066000010353,
+            "passes": 5
+          },
+          "mongodb": {
+            "count": 200,
+            "p50": 41.912236999953166,
+            "p95": 74.56546600000001,
+            "p99": 95.07336899999063,
+            "mean": 47.05885996000004,
+            "opsPerSecond": 84.44221759245345,
+            "roundTripP50": 26.62699300001259,
+            "aboveRoundTrip": 15.287650999962352,
+            "passes": 5
+          }
+        }
+      },
+      {
+        "id": "autosaveElement",
+        "label": "Autosave one changed element (field-level write)",
+        "byStore": {
+          "couchbase": {
+            "count": 200,
+            "p50": 37.09512700000778,
+            "p95": 40.812221000000136,
+            "p99": 49.37096999993082,
+            "mean": 37.7618036199981,
+            "opsPerSecond": 104.42158302814946,
+            "roundTripP50": 36.483891000039876,
+            "aboveRoundTrip": 0.6373190000304021,
+            "passes": 5
+          },
+          "mongodb": {
+            "count": 200,
+            "p50": 27.630159000022104,
+            "p95": 39.54730800003745,
+            "p99": 395.0482379999594,
+            "mean": 35.66603629999707,
+            "opsPerSecond": 112.02668786691076,
+            "roundTripP50": 26.783528999992996,
+            "aboveRoundTrip": 1.0218170000007376,
+            "passes": 5
+          }
+        }
+      },
+      {
+        "id": "concurrentWriters",
+        "label": "20 people editing different elements of one board at once",
+        "byStore": {
+          "couchbase": {
+            "count": 200,
+            "p50": 40.040775000001304,
+            "p95": 72.55186100001447,
+            "p99": 91.85330700001214,
+            "mean": 42.80331194000057,
+            "opsPerSecond": 23.36183231186773,
+            "roundTripP50": 37.25875000003725,
+            "aboveRoundTrip": 2.980472999974154,
+            "kept": true,
+            "passes": 5
+          },
+          "mongodb": {
+            "count": 200,
+            "p50": 38.540093999996316,
+            "p95": 860.6857210000162,
+            "p99": 915.9041640000069,
+            "mean": 190.70681697999825,
+            "opsPerSecond": 5.24357714749729,
+            "roundTripP50": 26.476378999999724,
+            "aboveRoundTrip": 12.139559000002919,
+            "kept": true,
+            "passes": 5
+          }
+        }
+      },
+      {
+        "id": "opBurst",
+        "label": "Append a burst of 25 operations to the log",
+        "byStore": {
+          "couchbase": {
+            "count": 200,
+            "p50": 42.16070000000764,
+            "p95": 69.48796399997082,
+            "p99": 75.09992800001055,
+            "mean": 46.574210739996055,
+            "opsPerSecond": 85.07199716707285,
+            "roundTripP50": 36.61369900003774,
+            "aboveRoundTrip": 4.570073000038974,
+            "passes": 5
+          },
+          "mongodb": {
+            "count": 200,
+            "p50": 32.977290000068024,
+            "p95": 44.01440600003116,
+            "p99": 250.94295100006275,
+            "mean": 38.4265599699979,
+            "opsPerSecond": 103.77336814168982,
+            "roundTripP50": 26.528707999998005,
+            "aboveRoundTrip": 6.491167000000132,
+            "passes": 5
+          }
+        }
+      },
+      {
+        "id": "opsSince",
+        "label": "Read the operations after a version (replay, catch-up)",
+        "byStore": {
+          "couchbase": {
+            "count": 200,
+            "p50": 59.829813999996986,
+            "p95": 72.52182600001106,
+            "p99": 230.4446089999983,
+            "mean": 61.86031183499726,
+            "opsPerSecond": 64.22296806745558,
+            "roundTripP50": 36.73772099998314,
+            "aboveRoundTrip": 21.995599000016227,
+            "passes": 5
+          },
+          "mongodb": {
+            "count": 200,
+            "p50": 32.381319000036456,
+            "p95": 59.356182000017725,
+            "p99": 197.58310899999924,
+            "mean": 38.376155770001354,
+            "opsPerSecond": 103.90299879115429,
+            "roundTripP50": 26.787063000025228,
+            "aboveRoundTrip": 5.388911000045482,
+            "passes": 5
+          }
+        }
+      },
+      {
+        "id": "snapshotAtOrBefore",
+        "label": "Find the latest version at or before a point (history scrubber)",
+        "byStore": {
+          "couchbase": {
+            "count": 200,
+            "p50": 41.19809099996928,
+            "p95": 54.2318329999689,
+            "p99": 181.32883499999298,
+            "mean": 48.616426814998846,
+            "opsPerSecond": 81.82557783503515,
+            "roundTripP50": 36.912796999909915,
+            "aboveRoundTrip": 4.9248760000336915,
+            "passes": 5
+          },
+          "mongodb": {
+            "count": 200,
+            "p50": 27.726610000012442,
+            "p95": 39.05674300005194,
+            "p99": 366.10728200001176,
+            "mean": 35.769628339998306,
+            "opsPerSecond": 111.04531108863719,
+            "roundTripP50": 26.626550999993924,
+            "aboveRoundTrip": 1.227511000004597,
+            "passes": 5
+          }
+        }
+      },
+      {
+        "id": "boardsByOwner",
+        "label": "List a person's boards, newest first (dashboard)",
+        "byStore": {
+          "couchbase": {
+            "count": 200,
+            "p50": 44.8187339999713,
+            "p95": 60.04878099996131,
+            "p99": 175.26282699999865,
+            "mean": 52.034282669998646,
+            "opsPerSecond": 76.3356673859308,
+            "roundTripP50": 36.73846500000218,
+            "aboveRoundTrip": 7.923537999973632,
+            "passes": 5
+          },
+          "mongodb": {
+            "count": 200,
+            "p50": 27.477038999903016,
+            "p95": 37.41040900000371,
+            "p99": 391.3461360000074,
+            "mean": 36.64106655500102,
+            "opsPerSecond": 108.37591242757773,
+            "roundTripP50": 26.47069599997485,
+            "aboveRoundTrip": 0.9167830000224058,
+            "passes": 5
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,214 @@
+.explorer {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.tabs {
+    position: relative;
+    flex: 0 0 clamp(280px, 26vw, 360px);
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.tabIndicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 180, 60, 0.45);
+    background: var(--site-surface);
+    box-shadow: 0 10px 30px -18px rgba(255, 180, 60, 0.5);
+    pointer-events: none;
+    transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tab {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: clamp(8px, 1.4svh, 14px) 18px;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--site-bone);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: translate 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tab:not([aria-selected="true"]):hover {
+    translate: 5px 0;
+}
+
+.tabKicker {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--site-bone-faint);
+    transition: color 240ms ease;
+}
+
+.tabTitle {
+    font-size: clamp(13px, 1.9svh, 15px);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--site-bone-dim);
+    transition: color 240ms ease;
+}
+
+.tab[aria-selected="true"] .tabKicker,
+.tab:hover .tabKicker {
+    color: var(--site-gold);
+}
+
+.tab[aria-selected="true"] .tabTitle,
+.tab:hover .tabTitle {
+    color: var(--site-bone);
+}
+
+.panel {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 0;
+    border-radius: 24px;
+    background: var(--site-surface);
+    border: 1px solid var(--site-line-soft);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.diagram {
+    position: relative;
+    flex: 1 1 0;
+    min-height: 120px;
+    container-type: size;
+    background-color: #1a1d21;
+    background-image: radial-gradient(rgba(236, 235, 230, 0.09) 1px, transparent 1px);
+    background-size: 20px 20px;
+    border-bottom: 1px solid var(--site-line-soft);
+    overflow: hidden;
+}
+
+.panelText {
+    flex: none;
+    max-height: 52%;
+    padding: clamp(14px, 2.4svh, 26px) clamp(18px, 2.4vw, 32px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 1.2svh, 12px);
+    overflow-y: auto;
+}
+
+.panelText > * {
+    animation: textRise 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.panelText[data-direction="-1"] > * {
+    animation-name: textFall;
+}
+
+.panelText > :nth-child(2) {
+    animation-delay: 50ms;
+}
+
+.panelText > :nth-child(3) {
+    animation-delay: 100ms;
+}
+
+.badge {
+    align-self: flex-start;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: rgba(255, 180, 60, 0.12);
+    color: #ffc76a;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.panelTitle {
+    font-family: var(--site-display);
+    font-weight: 700;
+    font-size: clamp(1.25rem, min(2.2vw, 3.6svh), 1.85rem);
+    line-height: 1.12;
+    text-wrap: balance;
+}
+
+.panelBody {
+    max-width: 720px;
+    font-size: clamp(13.5px, 2svh, 16px);
+    line-height: 1.6;
+    color: var(--site-bone-dim);
+}
+
+.tab:focus-visible {
+    outline: 2px solid var(--site-gold);
+    outline-offset: 2px;
+}
+
+@media (max-width: 1000px) {
+    .explorer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tabs {
+        flex: none;
+        flex-direction: row;
+        justify-content: flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 2px;
+    }
+
+    .tab {
+        flex: 0 0 210px;
+    }
+
+    .tab:not([aria-selected="true"]):hover {
+        translate: none;
+    }
+
+    .panelText {
+        max-height: 58%;
+    }
+}
+
+@keyframes textRise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+}
+
+@keyframes textFall {
+    from {
+        opacity: 0;
+        transform: translateY(-14px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .panelText > * {
+        animation: none;
+    }
+
+    .tabIndicator,
+    .tab {
+        transition: none;
+    }
+
+    .tab:not([aria-selected="true"]):hover {
+        translate: none;
+        transform: none;
+    }
+}

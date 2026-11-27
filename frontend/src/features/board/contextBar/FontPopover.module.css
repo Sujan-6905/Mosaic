@@ -1,0 +1,95 @@
+.pop {
+    width: min(300px, calc(100vw - 32px));
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.triggerLabel {
+    max-width: 9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.addForm {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 12px;
+    border-top: 1px solid var(--color-border);
+}
+
+.addLabel {
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.input {
+    height: 34px;
+    padding: 0 0.6rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-bg-canvas);
+    color: var(--color-text-primary);
+    font-size: 0.82rem;
+    user-select: text;
+}
+
+.input:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+}
+
+.problem {
+    margin: 0;
+    color: var(--color-danger);
+    font-size: 0.75rem;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.upload,
+.add {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 30px;
+    padding: 0.3rem 0.7rem;
+    border: 0;
+    border-radius: 7px;
+    font-size: 0.78rem;
+    cursor: pointer;
+}
+
+.upload {
+    background: transparent;
+    color: var(--color-text-secondary);
+}
+
+.upload:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.add {
+    background: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+    font-weight: 600;
+}
+
+.add:hover:not(:disabled) {
+    background: var(--color-brand-fill-hover);
+}
+
+.upload:disabled,
+.add:disabled {
+    opacity: 0.55;
+    cursor: default;
+}

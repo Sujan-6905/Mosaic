@@ -1,0 +1,46 @@
+{
+  "modelKey": "claude:sonnet",
+  "task": "cat",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "tail",
+    "left haunch",
+    "right haunch",
+    "body",
+    "left front leg",
+    "right front leg",
+    "left paw",
+    "right paw",
+    "left ear",
+    "right ear",
+    "head",
+    "eyes",
+    "nose",
+    "mouth",
+    "whiskers",
+    "chest line"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 18215,
+    "outputTokens": 1129,
+    "modelMs": 11530,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 21,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-sonnet/cat.mosaic.svg",
+  "ranAt": "2026-11-23T05:39:16.998Z"
+}

@@ -1,0 +1,32 @@
+{
+  "modelKey": "claude:haiku",
+  "task": "ride-hailing",
+  "kind": "diagram",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": {
+    "structure": "layered-tiers",
+    "look": "cloud-console",
+    "levers": {}
+  },
+  "parts": null,
+  "usage": {
+    "calls": 3,
+    "inputTokens": 31006,
+    "outputTokens": 4103,
+    "modelMs": 21243,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 55,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 14
+  },
+  "image": "models/claude-haiku/ride-hailing.mosaic.svg",
+  "ranAt": "2026-11-24T04:34:48.807Z"
+}

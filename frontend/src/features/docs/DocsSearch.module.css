@@ -1,0 +1,106 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: max(16px, 12vh) 16px 16px;
+    background: var(--color-overlay);
+    animation: fade 160ms ease-out both;
+}
+
+.dialog {
+    width: min(620px, 100%);
+    max-height: min(70vh, 620px);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-panel);
+    background: var(--color-bg-elevated);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    animation: rise 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.input {
+    min-height: 56px;
+    padding: 0 20px;
+    border: 0;
+    border-bottom: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-primary);
+    font: 400 var(--text-md) var(--font-sans);
+}
+
+.input:focus-visible {
+    border-color: var(--color-border);
+    box-shadow: none;
+}
+
+.results {
+    list-style: none;
+    margin: 0;
+    padding: 8px;
+    overflow-y: auto;
+}
+
+.result {
+    display: grid;
+    gap: 2px;
+    width: 100%;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+}
+
+.result[data-active="true"] {
+    background: var(--color-bg-hover);
+}
+
+.resultSection {
+    color: var(--color-accent);
+    font-size: var(--text-2xs);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.resultTitle {
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+.resultSummary {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+}
+
+.empty {
+    padding: 16px 12px;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.98);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .overlay,
+    .dialog {
+        animation: none;
+    }
+}

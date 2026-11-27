@@ -1,0 +1,32 @@
+{
+  "modelKey": "groq:qwen/qwen3.8-27b",
+  "task": "ride-hailing",
+  "kind": "diagram",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": {
+    "structure": "layered-tiers",
+    "look": "ink",
+    "levers": {}
+  },
+  "parts": null,
+  "usage": {
+    "calls": 3,
+    "inputTokens": 7266,
+    "outputTokens": 1394,
+    "modelMs": 3769,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 31,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 12
+  },
+  "image": "models/groq-qwen-qwen3.8-27b/ride-hailing.mosaic.svg",
+  "ranAt": "2026-11-24T04:37:09.847Z"
+}

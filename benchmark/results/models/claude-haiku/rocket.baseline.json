@@ -1,0 +1,28 @@
+{
+  "modelKey": "claude:haiku",
+  "task": "rocket",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 4167,
+    "outputTokens": 2041,
+    "modelMs": 10322,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 17,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 1
+  },
+  "image": "models/claude-haiku/rocket.baseline.svg",
+  "ranAt": "2026-11-23T05:50:33.870Z"
+}

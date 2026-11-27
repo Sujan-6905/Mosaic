@@ -1,0 +1,393 @@
+.whiteboardContainer {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--color-bg-canvas);
+    cursor: crosshair;
+    user-select: none;
+}
+
+.canvasWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.canvasWrapper.selecting {
+    cursor: default;
+}
+
+.canvasWrapper.typing {
+    cursor: text;
+}
+
+/* The crosshair's centre is the exact point that fills; the bucket only says which tool this is. */
+.canvasWrapper.filling {
+    cursor:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 1v5M8 10v5M1 8h5M10 8h5' stroke='white' stroke-width='3.4'/%3E%3Cpath d='M8 1v5M8 10v5M1 8h5M10 8h5' stroke='%2318181b' stroke-width='1.5'/%3E%3Ccircle cx='8' cy='8' r='1.3' fill='%2318181b' stroke='white' stroke-width='.7'/%3E%3Cg transform='translate(12 13) scale(.72)' stroke='%2318181b' stroke-width='2'%3E%3Cpath d='M19 12 11 4 3.5 11.5a2 2 0 0 0 0 2.8l5.2 5.2a2 2 0 0 0 2.8 0Z' fill='white'/%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='M21 16c.8 1.2 1.5 2.1 1.5 3a1.5 1.5 0 0 1-3 0c0-.9.7-1.8 1.5-3Z' fill='%23ffb43c'/%3E%3C/g%3E%3C/svg%3E")
+            8 8,
+        crosshair;
+}
+
+.canvasWrapper.drawing {
+    cursor: crosshair;
+}
+
+.canvasWrapper.erasing {
+    cursor: grab;
+}
+
+.canvasWrapper.panning {
+    cursor: grab;
+}
+
+.canvasWrapper.panning:active {
+    cursor: grabbing;
+}
+
+/* The comment pin's own silhouette with a plus, so the tool previews what it drops;
+   the hotspot is the tail tip, the exact point the new pin anchors to. */
+.canvasWrapper.commenting {
+    cursor:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 3a11 11 0 1 1-5.4 20.6L3 29l3.9-9.6A11 11 0 0 1 18 3Z' stroke='white' stroke-width='3.2'/%3E%3Cpath d='M18 3a11 11 0 1 1-5.4 20.6L3 29l3.9-9.6A11 11 0 0 1 18 3Z' fill='%23ffb43c' stroke='%2318181b' stroke-width='1.6'/%3E%3Cpath d='M18 9.5v8M14 13.5h8' stroke='%2318181b' stroke-width='2'/%3E%3C/svg%3E")
+            3 29,
+        copy;
+}
+
+/* Both canvases are sized in device pixels and stacked; the camera lives in each canvas's own transform. */
+.whiteboardCanvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* The canvas bitmap paints no background, so this shows through and follows the theme. */
+    background: var(--color-bg-canvas);
+}
+
+/* Transparent over the board layer for whatever is being drawn or dragged. */
+.whiteboardOverlayCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.cursorLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 500;
+}
+
+.laserLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 510;
+}
+
+.offscreenIndicatorLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Above the dock so an indicator near it stays clickable, below an open pop-out. */
+    z-index: 1950;
+}
+
+.offscreenIndicator {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+    border: none;
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.pendingPin {
+    position: absolute;
+    z-index: 1961;
+    width: var(--comment-mark-size);
+    height: var(--comment-mark-size);
+    transform: translate(0, -100%);
+    color: var(--color-brand-fill-text);
+    --comment-mark-fill: var(--color-brand-fill);
+    --comment-mark-edge: var(--color-bg-surface);
+    animation: pendingPinLand 180ms var(--ease-standard) backwards;
+    transform-origin: bottom left;
+}
+
+.pendingDots {
+    display: inline-flex;
+    gap: 2.5px;
+}
+
+.pendingDots i {
+    width: 3.5px;
+    height: 3.5px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: pendingDot 1.2s ease-in-out infinite;
+}
+
+.pendingDots i:nth-child(2) {
+    animation-delay: 150ms;
+}
+
+.pendingDots i:nth-child(3) {
+    animation-delay: 300ms;
+}
+
+@keyframes pendingDot {
+    0%,
+    60%,
+    100% {
+        opacity: 0.35;
+    }
+    30% {
+        opacity: 1;
+    }
+}
+
+@keyframes pendingPinLand {
+    from {
+        opacity: 0;
+        scale: 0.6;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pendingPin,
+    .pendingDots i {
+        animation: none;
+    }
+}
+
+.pendingCommentComposer {
+    position: absolute;
+    z-index: 1960;
+    width: min(20rem, calc(100vw - 32px));
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    transform: translate(-1rem, 0.75rem);
+}
+
+/* Discards a comment box dropped by mistake without typing anything. */
+.pendingCommentCancel {
+    position: absolute;
+    top: -0.6rem;
+    right: -0.6rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-surface);
+    color: var(--color-text-secondary);
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    font-size: var(--text-2xs);
+    z-index: 1;
+}
+
+.pendingCommentCancel:hover {
+    background: var(--color-danger);
+    color: white;
+}
+
+.remoteCursor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.cursorPointer {
+    display: block;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.cursorLabel {
+    position: absolute;
+    left: 18px;
+    top: 14px;
+    transform-origin: 0 0;
+    white-space: nowrap;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.eraserHighlight {
+    position: fixed;
+    z-index: 1000;
+    pointer-events: none;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--color-eraser-trail);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-eraser-trail) 20%, transparent);
+    transition:
+        transform 0.05s linear,
+        box-shadow 0.1s ease-out;
+}
+
+/* ?debug=1 only. */
+.debugHud {
+    position: fixed;
+    top: 5rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 1800;
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.1),
+        0 4px 10px rgba(0, 0, 0, 0.05);
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    min-width: 220px;
+}
+
+.debugRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.8125rem;
+    color: #374151;
+}
+
+.debugRow span:first-child {
+    color: #9ca3af;
+}
+
+.debugButton {
+    margin-top: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 0.8125rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.debugButton:hover {
+    transform: translateY(-1px);
+}
+
+.cornerLeft,
+.zoomControls {
+    position: fixed;
+    bottom: 18px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 6px;
+    border-radius: 14px;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+}
+
+.cornerLeft {
+    left: 16px;
+}
+
+.zoomControls {
+    right: 16px;
+}
+
+.cornerButton,
+.zoomDisplay {
+    height: 36px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--color-text-secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.cornerButton {
+    width: 36px;
+}
+
+.zoomDisplay {
+    width: 58px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-text-primary);
+}
+
+.cornerButton:hover:not(:disabled),
+.zoomDisplay:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.cornerButton:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.cornerButton[aria-pressed="true"] {
+    background: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+}
+
+.cornerButton:focus-visible,
+.zoomDisplay:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus-ring);
+    outline-offset: 1px;
+}
+
+@media (max-width: 1180px) {
+    .cornerLeft,
+    .zoomControls {
+        bottom: 84px;
+    }
+}
+
+@media (max-width: 720px) {
+    .cornerLeft,
+    .zoomControls {
+        display: none;
+    }
+}
+
+.hiddenFileInput {
+    display: none;
+}

@@ -1,276 +1,144 @@
-# Collaborative Whiteboard
+# Mosaic: a real-time collaborative whiteboard with an AI diagram assistant
 
-![Whiteboard Hero](https://img.shields.io/badge/Status-Active-brightgreen) ![Next.js](https://img.shields.io/badge/Next.js-15.0.4-black) ![Node.js](https://img.shields.io/badge/Node.js-Express-green) ![Socket.io](https://img.shields.io/badge/Socket.io-4.8.1-blue) ![MongoDB](https://img.shields.io/badge/Database-MongoDB-green)
+[![CI](https://github.com/Sujan-6905/Mosaic/actions/workflows/ci.yml/badge.svg)](https://github.com/Sujan-6905/Mosaic/actions/workflows/ci.yml)
+![Next.js 15](https://img.shields.io/badge/Next.js-15-black) ![Node.js 24](https://img.shields.io/badge/Node.js-24-green) ![Socket.io 4](https://img.shields.io/badge/Socket.io-4-blue) ![Couchbase Capella](https://img.shields.io/badge/Couchbase-Capella-EA2328) ![MCP](https://img.shields.io/badge/MCP-server-6E56CF)
 
-A real-time collaborative digital whiteboard application that enables teams to create, share, and collaborate on drawings seamlessly. Built with modern web technologies to provide a smooth, responsive drawing experience with live collaboration features.
+Mosaic is a free online whiteboard on an infinite canvas where a whole team draws, diagrams and brainstorms at
+once. An AI assistant turns a sentence into an editable diagram or edits what is already on the board, every
+change is kept so a board can be replayed, branched and merged, and AI agents such as Claude can join a board
+through MCP.
 
-**Live Demo**: [https://collaborative-whiteboard-alpha.vercel.app/](https://collaborative-whiteboard-alpha.vercel.app/)
+**Live:** [mosaic-collab.vercel.app](https://mosaic-collab.vercel.app/) ·
+**How it works:** [/about](https://mosaic-collab.vercel.app/about) ·
+**User guide:** [/docs](https://mosaic-collab.vercel.app/docs) ·
+**Developer docs:** [docs/](docs/README.md)
 
-*Note: The backend is deployed on Render's free tier and may take 1-2 minutes to load initially after 15 minutes of inactivity.*
+[![Watch the Mosaic film, under three minutes](docs/media/mosaic-trailer.jpg)](docs/media/mosaic-trailer.mp4)
+
+_The film is recorded from the running app. Music: "Simplicity" by Scott Buckley
+([scottbuckley.com.au](https://www.scottbuckley.com.au)), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)._
+
+![A Mosaic board with two people editing at once](docs/media/live-collaboration.png)
 
 ## Features
 
-### Core Functionality
-- **Real-time Collaboration**: Multiple users can draw simultaneously with live updates
-- **Rich Drawing Tools**: Pencil, pen, highlighter, eraser, and various shapes
-- **Shape Library**: Rectangle, circle, ellipse, triangle, star, arrow, and line tools
-- **Color Palette**: Extensive color selection with custom color picker
-- **Canvas Controls**: Zoom in/out, pan, reset view, and fullscreen mode
-- **Export Functionality**: Download whiteboards as PNG images
-
-### Collaboration Features
-- **User Authentication**: Email/password login and OAuth (Google, GitHub)
-- **Ownership Management**: Drawing owners can manage collaborators
-- **Access Control**: View and edit permissions for shared whiteboards
-- **Real-time Synchronization**: Instant updates across all connected clients
-- **Sharing**: Generate shareable links for collaborative sessions
-
-### User Experience
-- **Responsive Design**: Works seamlessly on desktop and mobile devices
-- **Intuitive Interface**: Clean, modern UI with floating toolbars
-- **Undo/Redo**: Full action history with undo and redo capabilities
-- **Canvas Grid**: Optional grid overlay for precise drawing
-- **Live Element Count**: Real-time display of canvas elements
+- **Live collaboration.** Cursors, presence, follow and present, threaded comments with mentions, and roles
+  (owner, editor, commenter, viewer) enforced on the server for every change.
+- **Infinite canvas.** Pencil, pen and highlighter with pressure, 18 shapes that hold text, sticky notes,
+  frames, tables, images, live embeds and connectors that stay attached. Pans smoothly at 50,000 elements.
+- **AI assistant.** Ask a question, describe a diagram or ask for a change in one box. Diagrams come back
+  editable in 72 structures and 43 looks; edits are previewed on the board before anything changes; hand-drawn
+  sketches become clean diagrams.
+- **History.** Every change is logged: name versions, scrub a replay, branch a board, diff it and three-way
+  merge it back.
+- **Diagrams from anywhere.** Mermaid code, a public GitHub repository's architecture, or 18,000 icons and
+  fourteen kits (BPMN, UML, cloud, UI and more) become ordinary board shapes.
+- **For AI agents.** A hosted MCP server with OAuth lets Claude, Cursor or VS Code read, draw and edit boards as
+  a visible collaborator, with every tool call undoable.
+- **Share anywhere.** Export PNG, SVG, PDF or a lossless `.mosaic` file, embed a live read-only board on another
+  site, and find any board by what is drawn on it.
+- **Accessible and themed.** Six themes including high contrast, full keyboard control and a command palette.
 
 ## Architecture
 
-### Data Storage Layers
+```mermaid
+flowchart LR
+    Browser["Browser<br/>Next.js, tile renderer"] -- "Socket.io edits" --> Rooms["Live rooms<br/>memory or Redis"]
+    Browser -- "REST" --> API["Express API<br/>auth, assistant, history"]
+    Agent["AI agents"] -- "MCP + OAuth" --> MCP["Hosted MCP server"]
+    MCP --> API
+    API -- "server-side key" --> LLM["Groq"]
+    Rooms -- "write-behind every 15 s" --> DB[("Couchbase Capella")]
+    API --> DB
+```
 
-The canvas data is stored and synchronized across **three distinct levels**:
+- **Conflicts:** last-write-wins per element with server-stamped versions, and a Yjs CRDT for text, so two
+  people typing in one note both keep their words.
+- **Rendering:** cached bitmap tiles and a spatial index, so a repaint costs what is on screen, not what is on
+  the board.
+- **Assistant:** the model never places anything. It returns nodes and edges or operations on named objects,
+  and deterministic code lays out, validates, lints and repairs before a person reviews the change.
+- **Scale:** with Redis, any backend instance can serve any room, so a load balancer needs no sticky sessions.
 
-1. **Frontend State (React/Redux)**
-   - Local canvas elements state managed by Redux Toolkit
-   - Real-time UI updates and optimistic rendering
-   - Temporary shape rendering during drawing operations
-   - Undo/redo stack management
+More in [Architecture](docs/architecture.md), [AI assistant](docs/ai-assistant.md) and
+[Design decisions](docs/design-decisions.md).
 
-2. **Socket Server Memory (Node.js)**
-   - In-memory canvas state for active sessions
-   - Real-time synchronization between connected clients
-   - Session management and room-based collaboration
-   - Immediate broadcast of drawing operations to all participants
+## Measured
 
-3. **MongoDB Database**
-   - Persistent storage of canvas elements and metadata
-   - User authentication and authorization data
-   - Drawing ownership and collaboration permissions
-   - Automatic saving when sessions end
+|                                                            |                                                  |
+| ---------------------------------------------------------- | ------------------------------------------------ |
+| Panning, 10,000 to 50,000 elements                         | 3.3 to 3.5 ms a frame (p95, integrated graphics) |
+| Panning zoomed out to the whole board, 9,000 elements      | 1,071 ms before tiles, 6.2 ms after              |
+| Edit benchmark: right object first / in the top three      | 78.3% / 97.8% of 54 instructions                 |
+| Edit benchmark: instructions about missing objects refused | 100%                                             |
+| Storage: 20 people editing one board, slowest 5% of edits  | Couchbase 73 ms, MongoDB 861 ms                  |
+| Storage: queries by share link, owner or version           | MongoDB 1.6 to 8.6 times faster                  |
+| Assistant, 11 models: connections per diagram, first / now | 6.2 / 7.7, with no overlapping labels            |
+| Tests                                                      | 1,318 backend, 529 frontend, 133 end to end      |
 
-### Technology Stack
+Method and full tables: [`frontend/perf`](frontend/perf/README.md) and [`benchmark`](benchmark/README.md). Every model's drawings, side
+by side: [`benchmark/results/model-gallery.md`](benchmark/results/model-gallery.md).
 
-#### Frontend
-- **Framework**: Next.js 15.0.4 with React 18
-- **State Management**: Redux Toolkit with RTK Query
-- **Authentication**: NextAuth.js with multiple providers
-- **Styling**: CSS Modules with responsive design
-- **Icons**: FontAwesome React components
-- **Real-time**: Socket.io client for live collaboration
+## Quick start
 
-#### Backend
-- **Runtime**: Node.js with Express.js 5.1.0
-- **Real-time**: Socket.io 4.8.1 server
-- **Database**: MongoDB with Mongoose ODM
-- **Authentication**: JWT with bcrypt password hashing
-- **ID Generation**: Nanoid for unique identifiers
-- **Environment**: ES modules with dotenv configuration
+You need Node.js 24 (or Docker) and a free [Couchbase Capella](https://cloud.couchbase.com) cluster with a
+bucket named `whiteboard`.
 
-## Installation & Setup
-
-### Prerequisites
-- Node.js (v16 or higher)
-- MongoDB (local or cloud instance)
-- Git
-
-### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/collaborative-whiteboard.git
-cd collaborative-whiteboard
+git clone https://github.com/Sujan-6905/Mosaic.git && cd Mosaic
+cp backend/.env.example backend/.env      # Capella credentials, JWT_SECRET, FRONTEND_SERVER_KEY
+cp frontend/.env.example frontend/.env    # NEXTAUTH_SECRET and the same FRONTEND_SERVER_KEY
+docker compose up --build                 # frontend on :3000, backend on :5000
 ```
 
-### 2. Backend Setup
+Without Docker, run `npm install && npm run dev` in `backend/` and in `frontend/`. Add `GROQ_API_KEY` to turn the
+assistant on. Production settings, scaling and the database setup: [Self-hosting](docs/self-hosting.md).
+
+## Connect an AI agent
+
 ```bash
-cd backend
-npm install
+claude mcp add --transport http mosaic https://mosaic-collab.vercel.app/mcp
 ```
 
-Create `.env` file in the backend directory:
-```env
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/whiteboard
-JWT_SECRET=your_jwt_secret_key
-```
+Sign in when asked, then try _"Draw our sign-up flow on a new board"_. Other apps and the local stdio
+server: [mcp-server/README.md](mcp-server/README.md).
 
-### 3. Frontend Setup
+## Repository
+
+| Folder                      | Holds                                                                                      |
+| --------------------------- | ------------------------------------------------------------------------------------------ |
+| [`frontend/`](frontend)     | Next.js app: pages, one folder per product area under `src/features/`, shared UI           |
+| [`backend/`](backend)       | Express and Socket.io server under `src/`: HTTP, live rooms, the assistant, grounding      |
+| [`shared/`](shared)         | The board model every package imports: geometry, elements, history, layout, diagram styles |
+| [`mcp-server/`](mcp-server) | The MCP server, hosted by the backend or run locally                                       |
+| [`benchmark/`](benchmark)   | The canvas edit, storage and assistant model benchmarks, and the grounding ablation        |
+| [`docs/`](docs)             | Architecture, assistant, decisions, API, self-hosting and development guides               |
+| [`nginx/`](nginx)           | The round-robin proxy for `docker-compose.scale.yml`                                       |
+
+## Development
+
 ```bash
-cd ../frontend
-npm install
+cd backend && npm test          # hermetic: no database or keys needed
+cd frontend && npm test
+cd frontend && npm run test:e2e # production build against a real database
 ```
 
-Create `.env.local` file in the frontend directory:
-```env
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=your_nextauth_secret
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
-GITHUB_CLIENT_ID=your_github_client_id
-GITHUB_CLIENT_SECRET=your_github_client_secret
-```
+Conventions every change follows are in [CLAUDE.md](CLAUDE.md); commands and suites in
+[Development](docs/development.md).
 
-### 4. Start the Application
+## Deploy
 
-#### Start Backend Server
-```bash
-cd backend
-npm run dev
-```
-Server will run on `http://localhost:5000`
-
-#### Start Frontend Application
-```bash
-cd frontend
-npm run dev
-```
-Application will run on `http://localhost:3000`
-
-## Usage
-
-### Getting Started
-1. **Sign Up/Login**: Create an account or login with existing credentials
-2. **Create New Whiteboard**: Click "Create New Drawing" from the dashboard
-3. **Choose Tools**: Select from drawing tools, shapes, or text options
-4. **Customize**: Adjust colors, brush sizes, and opacity
-5. **Collaborate**: Share the whiteboard link with team members
-6. **Export**: Download your creation as a PNG image
-
-### Test Credentials
-For demo purposes, use these test credentials:
-- **Email**: `demo@gmail.com`
-- **Password**: `password`
-
-### Drawing Tools
-- **Pencil Tools**: Pencil, pen, and highlighter with adjustable sizes
-- **Shapes**: Rectangle, circle, ellipse, triangle, star, arrow, line
-- **Eraser**: Remove elements with visual feedback
-- **Hand Tool**: Pan around the canvas
-- **Undo/Redo**: Navigate through your drawing history
-
-### Collaboration Features
-- **Share Whiteboard**: Generate shareable links for team collaboration
-- **Manage Collaborators**: Add/remove users with edit permissions (owners only)
-- **Real-time Updates**: See changes from other users instantly
-- **Access Control**: Separate view and edit permissions
-
-## Project Structure
-
-```
-collaborative-whiteboard/
-├── frontend/                    # Next.js React application
-│   ├── src/
-│   │   ├── components/         # Reusable UI components
-│   │   │   ├── AuthModal/      # Authentication modal
-│   │   │   ├── Dashboard/      # User dashboard
-│   │   │   ├── Header/         # Navigation header
-│   │   │   ├── HomePage/       # Landing page components
-│   │   │   ├── Menu/           # Drawing tool menu
-│   │   │   ├── Toolbox/        # Tool customization panel
-│   │   │   └── Whiteboard/     # Main canvas component
-│   │   ├── pages/              # Next.js pages and API routes
-│   │   │   ├── api/auth/       # NextAuth configuration
-│   │   │   ├── dashboard.js    # User dashboard page
-│   │   │   ├── about.js        # About page
-│   │   │   └── index.js        # Main application page
-│   │   ├── slice/              # Redux state slices
-│   │   ├── styles/             # Global styles
-│   │   ├── axiosInstance.js    # API client configuration
-│   │   ├── constants.js        # Application constants
-│   │   ├── socket.js           # Socket.io client setup
-│   │   └── store.js            # Redux store configuration
-│   ├── package.json
-│   └── next.config.mjs
-└── backend/                     # Node.js Express server
-    ├── controllers/            # Business logic handlers
-    │   ├── authController.js   # Authentication operations
-    │   └── drawingController.js # Canvas operations
-    ├── middlewares/            # Express middlewares
-    │   ├── authMiddleware.js   # JWT authentication
-    │   └── checkAccess.js      # Permission validation
-    ├── models/                 # MongoDB schemas
-    │   ├── drawingSchema.js    # Canvas data model
-    │   └── userSchema.js       # User data model
-    ├── routes/                 # API endpoints
-    │   ├── authRoutes.js       # Authentication routes
-    │   └── drawingRoutes.js    # Canvas routes
-    ├── db.js                   # Database connection
-    ├── index.js                # Express server setup
-    ├── socket.js               # Socket.io server logic
-    └── package.json
-```
-
-## API Endpoints
-
-### Authentication
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/login` - User login
-- `POST /api/auth/oauth-login` - OAuth authentication
-
-### Drawings
-- `GET /api/drawing/` - Get user's drawings
-- `POST /api/drawing/` - Create new drawing
-- `GET /api/drawing/:shareId` - Get specific drawing
-- `PUT /api/drawing/:shareId` - Update drawing title
-- `DELETE /api/drawing/:shareId` - Delete drawing
-- `PUT /api/drawing/collaborators/:shareId` - Add collaborator
-- `DELETE /api/drawing/collaborators/:shareId` - Remove collaborator
-
-### Socket.io Events
-- `client:createCanvas` - Create new canvas session
-- `client:joinRoom` - Join existing canvas session
-- `client:updateCanvas` - Broadcast drawing operations
-- `server:addNewElement` - Receive new elements
-- `server:deleteElement` - Receive element deletions
-
-## Deployment
-
-### Environment Configuration
-Ensure all environment variables are properly configured for production:
-- Database connection strings
-- JWT secrets
-- OAuth provider credentials
-- CORS origins for production domains
-
-### Production Deployment
-This application is currently deployed with the following setup:
-- **Frontend**: Deployed on Vercel at [https://collaborative-whiteboard-alpha.vercel.app/](https://collaborative-whiteboard-alpha.vercel.app/)
-- **Backend**: Deployed on Render (free tier)
-- **Database**: MongoDB Atlas
-
-**Important Note**: The backend on Render's free tier goes to sleep after 15 minutes of inactivity and may take 1-2 minutes to wake up on the first request. Please be patient during the initial load.
-
-The application architecture supports deployment on:
-- **Frontend**: Vercel, Netlify, or any static hosting platform
-- **Backend**: Render, Railway, Heroku, or VPS
-- **Database**: MongoDB Atlas or self-hosted MongoDB
+The reference deployment is the frontend on Vercel (Root Directory `frontend`) and the backend on Render from
+[`render.yaml`](render.yaml), with the database on Couchbase Capella. A free Render service sleeps when idle; every
+page wakes it on arrival and says so while it starts. Steps and settings are in
+[Self-hosting](docs/self-hosting.md#production).
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+Mosaic is a solo project. A pull request that fixes a real bug or makes a well-scoped improvement is welcome;
+for anything larger, open an issue first.
 
-## Acknowledgments
+## License
 
-- **Socket.io** for real-time communication
-- **Next.js** for the amazing React framework
-- **MongoDB** for flexible data storage
-- **FontAwesome** for beautiful icons
-- **NextAuth.js** for authentication solutions
-
-## Support
-
-For support, questions, or feature requests, please open an issue on GitHub or contact the development team.
-
----
-
-**Built for creative teams everywhere**
+[MIT](LICENSE). Bundled third-party code and assets keep their own licenses, listed in
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

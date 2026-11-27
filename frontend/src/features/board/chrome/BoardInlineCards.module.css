@@ -1,0 +1,48 @@
+.linkCard {
+    position: absolute;
+    z-index: 1945;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    max-width: 18rem;
+    padding: 0.32rem 0.6rem;
+    transform: translate(6px, -50%);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    box-shadow: var(--shadow-lg);
+    color: var(--color-text-primary);
+    font-size: 0.78rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.linkHost {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.linkArrow {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+.linkCard:hover {
+    background: var(--color-bg-hover);
+}
+
+.frameName {
+    position: absolute;
+    z-index: 1945;
+    width: 12rem;
+    padding: 0.15rem 0.3rem;
+    transform: translateY(calc(-100% - 2px));
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-canvas-selection-handle);
+    border-radius: 6px;
+    color: var(--color-text-primary);
+    font-size: 13px;
+    font-weight: 600;
+    outline: none;
+    user-select: text;
+}

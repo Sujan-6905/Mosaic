@@ -1,0 +1,28 @@
+{
+  "modelKey": "gemini:gemini-3.5-flash-lite",
+  "task": "launch-timeline",
+  "kind": "diagram",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 119,
+    "outputTokens": 795,
+    "modelMs": 2069,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 11,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 4
+  },
+  "image": "models/gemini-gemini-3.5-flash-lite/launch-timeline.baseline.svg",
+  "ranAt": "2026-11-24T05:35:40.052Z"
+}

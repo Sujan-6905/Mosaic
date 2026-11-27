@@ -1,0 +1,39 @@
+{
+  "modelKey": "claude:haiku",
+  "task": "house",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "chimney",
+    "walls",
+    "roof",
+    "door",
+    "door knob",
+    "left window frame",
+    "left window cross bars",
+    "right window frame",
+    "right window cross bars"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 18252,
+    "outputTokens": 1594,
+    "modelMs": 10164,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 12,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-haiku/house.mosaic.svg",
+  "ranAt": "2026-11-23T05:27:08.618Z"
+}

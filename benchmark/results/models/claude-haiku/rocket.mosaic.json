@@ -1,0 +1,37 @@
+{
+  "modelKey": "claude:haiku",
+  "task": "rocket",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "exhaust plume",
+    "exhaust flame core",
+    "left fin",
+    "right fin",
+    "engine nozzle",
+    "rocket body",
+    "nose cone",
+    "porthole window"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 18263,
+    "outputTokens": 2311,
+    "modelMs": 14062,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 8,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-haiku/rocket.mosaic.svg",
+  "ranAt": "2026-11-23T05:31:09.708Z"
+}

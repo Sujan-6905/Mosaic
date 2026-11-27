@@ -1,0 +1,163 @@
+.layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.mine,
+.total {
+    position: absolute;
+    translate: -50% -50%;
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-md);
+    animation: badgeIn 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.mine {
+    min-height: 26px;
+    padding: 0 7px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-surface);
+    cursor: pointer;
+}
+
+.mine:hover {
+    border-color: var(--color-accent);
+}
+
+.mine:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus-ring);
+    outline-offset: 2px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-brand-fill);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+}
+
+.more {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
+/* A total is a tile with a blank stone face; it rests turned over to show its count. */
+.total {
+    min-width: 28px;
+    height: 28px;
+    justify-content: center;
+    box-shadow: none;
+    transform-style: preserve-3d;
+    transform: perspective(240px) rotateY(180deg);
+    animation: turnOver 560ms cubic-bezier(0.34, 1.4, 0.64, 1) var(--turn-delay, 0ms) both;
+}
+
+.face,
+.count {
+    position: absolute;
+    inset: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    backface-visibility: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.face {
+    background: #2e333a;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 55%);
+}
+
+.count {
+    position: relative;
+    min-width: 28px;
+    padding: 0 8px;
+    transform: rotateY(180deg);
+    background: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+    font-size: 13px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.total[data-winner="true"] .count {
+    background: linear-gradient(110deg, #c07d1c 0%, #ffb43c 35%, #fff0c8 50%, #ffb43c 65%, #c07d1c 100%);
+    background-size: 260% 100%;
+    animation: gild 1.4s ease-out calc(var(--turn-delay, 0ms) + 520ms) both;
+}
+
+.total[data-winner="true"]::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: var(--radius-full);
+    border: 2px solid #ffb43c;
+    transform: rotateY(180deg);
+    opacity: 0;
+    animation: ring 900ms ease-out calc(var(--turn-delay, 0ms) + 480ms) both;
+}
+
+@keyframes turnOver {
+    0% {
+        opacity: 0;
+        transform: perspective(240px) translateY(-6px) rotateY(0deg);
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        transform: perspective(240px) rotateY(180deg);
+    }
+}
+
+@keyframes gild {
+    from {
+        background-position: 100% 0;
+    }
+    to {
+        background-position: 0 0;
+    }
+}
+
+@keyframes ring {
+    0% {
+        opacity: 0.9;
+        scale: 0.9;
+    }
+    100% {
+        opacity: 0;
+        scale: 1.8;
+    }
+}
+
+@keyframes badgeIn {
+    from {
+        opacity: 0;
+        scale: 0.6;
+    }
+}
+
+@media (pointer: coarse) {
+    .mine {
+        min-height: 36px;
+        padding: 0 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mine,
+    .total,
+    .total[data-winner="true"] .count,
+    .total[data-winner="true"]::after {
+        animation: none;
+    }
+}

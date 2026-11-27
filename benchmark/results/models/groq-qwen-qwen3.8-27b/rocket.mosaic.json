@@ -1,0 +1,34 @@
+{
+  "modelKey": "groq:qwen/qwen3.8-27b",
+  "task": "rocket",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "rocket legs",
+    "rocket fins",
+    "rocket body",
+    "rocket window",
+    "rocket smoke"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 3969,
+    "outputTokens": 397,
+    "modelMs": 1446,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 8,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/groq-qwen-qwen3.8-27b/rocket.mosaic.svg",
+  "ranAt": "2026-11-23T05:42:11.021Z"
+}
