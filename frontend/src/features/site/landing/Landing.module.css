@@ -1,0 +1,366 @@
+/* The nav above is 72px tall, so this is exactly what fills the first screen. */
+.hero {
+    position: relative;
+    z-index: 1;
+    background: var(--site-ink);
+    min-height: calc(100svh - 72px);
+    padding: 24px var(--site-shell) 88px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 22px;
+}
+
+/* The board window sits behind the hero from the top of the screen, and the nav is
+   see-through, so the curtain has to reach behind the nav as well. */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: auto 0 100%;
+    height: 72px;
+    background: inherit;
+}
+
+.scrollCue {
+    position: absolute;
+    left: 50%;
+    bottom: 24px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--site-bone-dim);
+    text-decoration: none;
+    translate: -50% 0;
+    transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.scrollCue:hover {
+    color: var(--site-gold);
+}
+
+.scrollCue span {
+    position: relative;
+    width: 1.5px;
+    height: 28px;
+    overflow: hidden;
+    background: var(--site-line);
+}
+
+.scrollCue span::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--site-gold);
+    transform: translateY(-100%);
+    animation: cueTravel 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes cueTravel {
+    60%,
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+.eyebrow {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--site-gold);
+}
+
+.heroTitle {
+    font-family: var(--site-display);
+    font-weight: 800;
+    font-size: clamp(2.75rem, 6.4vw, 5rem);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    max-width: 980px;
+}
+
+.accent,
+.closingAccent {
+    font-weight: 400;
+    font-style: italic;
+    color: var(--site-gold);
+}
+
+.lede {
+    max-width: 620px;
+    font-size: clamp(16px, 1.4vw, 18px);
+    line-height: 1.6;
+    color: var(--site-bone-dim);
+}
+
+.primaryCta,
+.outlineCta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 999px;
+    font-family: var(--site-body);
+    cursor: pointer;
+    transition:
+        background-color var(--duration-fast) var(--ease-standard),
+        border-color var(--duration-fast) var(--ease-standard),
+        transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.primaryCta svg {
+    transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.primaryCta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -14px var(--site-gold);
+}
+
+.primaryCta:hover svg {
+    transform: translateX(4px);
+}
+
+.primaryCta:active,
+.outlineCta:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.primaryCta {
+    border: 0;
+    background: var(--site-gold);
+    color: var(--color-brand-fill-text);
+    padding: 15px 24px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.primaryCta:hover {
+    background: var(--color-brand-fill-hover);
+}
+
+.outlineCta {
+    border: 1px solid rgba(236, 235, 230, 0.18);
+    background: transparent;
+    color: var(--site-bone);
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.outlineCta:hover {
+    border-color: rgba(236, 235, 230, 0.36);
+}
+
+.primaryCta:focus-visible,
+.outlineCta:focus-visible {
+    outline: 2px solid var(--site-gold);
+    outline-offset: 3px;
+}
+
+.closing {
+    position: relative;
+    min-height: min(780px, 100svh);
+    border-top: 1px solid var(--site-line-soft);
+    overflow: hidden;
+    display: flex;
+}
+
+.scratch {
+    position: absolute;
+    inset: 0;
+}
+
+.closingInner {
+    position: relative;
+    flex: 1;
+    padding: clamp(48px, 6vw, 72px) clamp(20px, 5.5vw, 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+    pointer-events: none;
+}
+
+.closingCopy {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    max-width: 560px;
+}
+
+.closingTitle {
+    font-family: var(--site-display);
+    font-weight: 800;
+    font-size: clamp(2.5rem, 5.4vw, 4.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+}
+
+.closingAccent {
+    display: block;
+}
+
+.closingText {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--site-bone-dim);
+}
+
+.closingActions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    pointer-events: auto;
+}
+
+.scratchPrompt {
+    margin-top: 6px;
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    font-size: 14px;
+    color: var(--site-bone-dim);
+    transition: color 240ms ease;
+}
+
+.scratchPrompt[data-lit="true"] {
+    color: var(--site-bone);
+}
+
+.scratchCount {
+    font-family: var(--site-mono);
+    font-size: 13px;
+    color: var(--site-gold);
+}
+
+.portalWrap {
+    position: relative;
+    flex: 0 0 auto;
+    width: min(320px, 100%);
+    display: grid;
+    justify-items: center;
+    gap: 18px;
+}
+
+.portalStage {
+    position: relative;
+    width: 100%;
+    height: clamp(16rem, 46svh, 26rem);
+    pointer-events: none;
+}
+
+.portalHint {
+    font-size: 14px;
+    color: var(--site-bone-dim);
+    transition: color 240ms ease;
+}
+
+.portalHint[data-knocking="true"] {
+    color: var(--site-gold);
+}
+
+.portalFallback {
+    position: absolute;
+    inset: 12% 22%;
+    border: 1px solid var(--site-gold);
+    border-bottom: none;
+    border-radius: 50% 50% 0 0 / 28% 28% 0 0;
+    background: radial-gradient(60% 70% at 50% 80%, rgba(255, 180, 60, 0.14), transparent 70%);
+}
+
+.assetHit {
+    position: absolute;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.assetHit:focus-visible {
+    outline: 2px solid var(--site-gold);
+    outline-offset: 4px;
+}
+
+.secret {
+    position: fixed;
+    left: 50%;
+    bottom: clamp(1.5rem, 5vh, 3rem);
+    z-index: 90;
+    transform: translate(-50%, 1.5rem);
+    padding: 0.7rem 1.4rem;
+    border: 1px solid var(--site-gold);
+    border-radius: 999px;
+    background: rgba(21, 23, 27, 0.92);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--site-gold);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+        opacity 420ms ease,
+        transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.secret[data-found="true"] {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scrollCue span::after {
+        animation: none;
+        transform: none;
+    }
+
+    .primaryCta,
+    .primaryCta svg {
+        transition: none;
+    }
+
+    .primaryCta:hover,
+    .primaryCta:hover svg {
+        translate: none;
+        transform: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .closingInner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .portalWrap {
+        align-self: center;
+    }
+}
+
+.tourCue {
+    margin-top: -6px;
+    min-height: 40px;
+    padding: 8px 4px;
+    border: 0;
+    background: transparent;
+    color: var(--site-bone-dim);
+    font: 500 14px var(--site-body);
+    text-decoration: underline;
+    text-decoration-color: var(--site-line);
+    text-underline-offset: 4px;
+    cursor: pointer;
+}
+
+.tourCue:hover {
+    color: var(--site-gold);
+    text-decoration-color: var(--site-gold);
+}
+
+.tourCue:focus-visible {
+    outline: 2px solid var(--site-gold);
+    outline-offset: 2px;
+    border-radius: 6px;
+}

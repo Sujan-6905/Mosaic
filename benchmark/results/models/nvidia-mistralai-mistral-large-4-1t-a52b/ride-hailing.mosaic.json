@@ -1,0 +1,32 @@
+{
+  "modelKey": "nvidia:mistralai/mistral-large-4-1t-a52b",
+  "task": "ride-hailing",
+  "kind": "diagram",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": {
+    "structure": "layered-tiers",
+    "look": "ink",
+    "levers": {}
+  },
+  "parts": null,
+  "usage": {
+    "calls": 3,
+    "inputTokens": 14332,
+    "outputTokens": 3476,
+    "modelMs": 272720,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 33,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 12
+  },
+  "image": "models/nvidia-mistralai-mistral-large-4-1t-a52b/ride-hailing.mosaic.svg",
+  "ranAt": "2026-11-24T05:02:08.384Z"
+}

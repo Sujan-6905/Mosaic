@@ -1,0 +1,260 @@
+// Tutorials for the board's larger features, each opening the real panel it
+// describes through a `surface`.
+export const FEATURE_TOURS = {
+    arrows: {
+        label: "Arrows and styling",
+        steps: [
+            {
+                id: "arrow-tool",
+                target: "[aria-label='Shapes']",
+                title: "Arrows that stay attached",
+                body: "Press A and drag from one shape to another. As you hover, the target outlines to show the arrow will attach, and from then on it follows whatever it's joined to. It can attach to another arrow too.",
+                tryIt: "Draw two shapes, then press A and drag from one to the other.",
+            },
+            {
+                id: "arrow-path",
+                target: "[data-tour='tool-rail']",
+                title: "Bend it, curve it, square it",
+                body: "Select an arrow and the bar above it switches between straight, curved and elbow paths. Drag a small dot on the line to add a bend, double-click a bend to remove it, and drag either end to attach it somewhere else.",
+            },
+            {
+                id: "arrow-heads",
+                target: "[data-tour='tool-rail']",
+                title: "Any end you like",
+                body: "Each end has its own head: open, filled or hollow triangles, diamonds, dots, bars and crow's feet for data models. Double-click an arrow to give it a label.",
+            },
+            {
+                id: "quick-connect",
+                target: "[data-tour='tool-rail']",
+                title: "Build a flow in clicks",
+                body: "Select a shape and four dots appear around it. Click one to add a connected copy on that side, or drag it to connect to something else, or to place a new copy exactly where you drop it.",
+                tryIt: "Select a rectangle and click the dot on its right.",
+            },
+            {
+                id: "style",
+                target: "[data-tour='tool-rail']",
+                title: "Line, fill and hand",
+                body: "The width menu in the bar also holds dashed and dotted lines, hatch, cross-hatch and dot fills, curved edges, and four drawing hands from Ruled to Wild. Whatever you pick carries over to the next thing you draw.",
+            },
+            {
+                id: "keyboard-flow",
+                target: "[data-tour='tool-rail']",
+                title: "Flowcharts from the keyboard",
+                body: "With a shape selected, Ctrl and an arrow key grows a connected copy on that side, Alt and an arrow key moves to the neighbour that way, and Tab changes the shape's kind.",
+                tryIt: "Select a shape and press Ctrl Right Arrow three times.",
+            },
+            {
+                id: "fill",
+                target: "[aria-label='Fill bucket']",
+                title: "The fill bucket",
+                body: "Press B and click a shape to fill it. Click any space closed in by lines, even several separate ones, and that space fills as its own shape.",
+                tryIt: "Press B, pick a colour, and click inside something you drew.",
+            },
+            {
+                id: "lasso",
+                target: "[aria-label='Lasso select']",
+                title: "Lasso",
+                body: "Press Q and loop around what you want. Anything mostly inside the loop is selected. Hold Alt and drag an element with Select to pull off a copy.",
+            },
+            {
+                id: "paste",
+                target: "[data-tour='tool-rail']",
+                title: "Paste anything",
+                body: "Ctrl V drops a copied picture or text right on the board, where your pointer is. A pasted link becomes a link, and a video or design link becomes a live embed. You can also drag image files in, and right-click for the full menu.",
+            },
+        ],
+    },
+    pieces: {
+        label: "Pieces, Mermaid and board settings",
+        steps: [
+            {
+                id: "library",
+                surface: "pieces",
+                target: "[aria-label='Pieces']",
+                title: "Reusable pieces",
+                body: "Pieces are ready-made bits of board, from flowchart parts to wireframe controls. Click one to place it where you click next, or drag it straight onto the board. Arrows inside a piece stay joined to its shapes.",
+                tryIt: "Press Shift P and place a piece.",
+            },
+            {
+                id: "save",
+                surface: "pieces",
+                target: "[aria-label='Pieces']",
+                title: "Make your own set",
+                body: "Select something you drew and save it into a set of your own. A set can be shared by link or as a .mosaicpieces file, and anyone with the link can install it.",
+            },
+            {
+                id: "mermaid",
+                surface: "mermaid",
+                target: "[aria-label='Mermaid code']",
+                title: "Mermaid to board",
+                body: "Paste Mermaid code for a flowchart, sequence, class, entity relationship, state, mind map or architecture diagram, and it becomes real shapes you can edit. Subgraphs become frames.",
+                tryIt: "Paste Mermaid code straight onto the board with Ctrl V.",
+            },
+            {
+                id: "properties",
+                surface: "properties",
+                target: "[role='dialog'][aria-label='Board properties']",
+                title: "Board properties",
+                body: "Right-click empty board or press Alt / to see the board's details: what's on it, who made it, its size and its history at a glance.",
+            },
+        ],
+    },
+    tables: {
+        label: "Tables, text and find",
+        steps: [
+            {
+                id: "table",
+                target: "[aria-label='Insert']",
+                title: "Tables",
+                body: "Insert a table from the Insert menu, or paste cells copied from a spreadsheet and they arrive as one. Double-click a cell to type, and Tab moves to the next cell; Tab past the last one adds a row.",
+                tryIt: "Copy a few cells from a spreadsheet and press Ctrl V on the board.",
+            },
+            {
+                id: "tableStyle",
+                target: "[data-tour='tool-rail']",
+                title: "Style a table",
+                body: "Select a table and its toolbar adds rows and columns, turns the first row into a header, and switches between four looks: grid, striped rows, lines only and a bold header. Colour, font and alignment work as they do on any text.",
+            },
+            {
+                id: "richText",
+                target: "[data-tour='tool-rail']",
+                title: "Rich text",
+                body: "While typing, select words to make them bold, italic, underlined, struck through, code or a link, or start a line with a dash or a number for a list. Two people can type in the same box at once without losing a letter.",
+            },
+            {
+                id: "find",
+                target: "[data-tour='tool-rail']",
+                title: "Find on the board",
+                body: "Ctrl F searches every word on the board, including sticky notes, shapes, tables and arrow labels. Enter steps through the matches and the camera follows.",
+                tryIt: "Press Ctrl F and type a word you wrote.",
+            },
+        ],
+    },
+    diagramStyles: {
+        label: "Diagram styles",
+        steps: [
+            {
+                id: "structures",
+                target: "[aria-label='AI assistant']",
+                title: "72 structures, 43 looks",
+                body: "Ask the assistant for a timeline, an org chart, a decision path, a swimlane or any of 72 structures, and name a look such as blueprint, sticky wall or ink. The result is ordinary shapes you can edit.",
+                tryIt: "Ask: a roadmap for a product launch as a timeline, in the blueprint look.",
+            },
+            {
+                id: "restyle",
+                target: "[data-tour='tool-rail']",
+                title: "Restyle what you have",
+                body: "Select a diagram and choose Restyle in its toolbar to see the same content as another structure or in another look, side by side, before anything changes. Spacing, density and direction are levers you can tune.",
+            },
+            {
+                id: "kits",
+                surface: "pieces",
+                target: "[aria-label='Pieces']",
+                title: "Kits and the gallery",
+                body: "The Pieces panel holds built-in kits for flowcharts, cloud architecture and wireframes. The Pieces gallery at /pieces lists sets other people have shared; add one to your library in a click.",
+            },
+        ],
+    },
+    workshop: {
+        label: "Running a workshop",
+        steps: [
+            {
+                id: "timer",
+                target: "[aria-label='Board menu']",
+                title: "A timer everyone sees",
+                body: "Choose Timer in the board menu, pick 1 to 15 minutes or type up to 120, and the countdown appears for everyone on the board at the same moment.",
+            },
+            {
+                id: "vote",
+                target: "[aria-label='Board menu']",
+                title: "Dot voting",
+                body: "Choose Dot vote, set how many votes each person gets, and start. Everyone clicks the ideas they back; when the vote ends, the results list what drew the most and takes you to each one.",
+            },
+            {
+                id: "stamps",
+                target: "[aria-label='Insert']",
+                title: "Stamps",
+                body: "Insert holds stamps: plus one, agree, love it, star, question and idea. Pick one and click anything on the board to mark it.",
+            },
+        ],
+    },
+    catchUp: {
+        label: "Catch me up",
+        steps: [
+            {
+                id: "open",
+                target: "[aria-label='Catch me up']",
+                title: "See what happened while you were away",
+                body: "When you come back to a board others have worked on, this panel opens by itself. You can also open it any time from here.",
+            },
+            {
+                id: "range",
+                surface: "catchUp",
+                target: "[data-tour='catch-up-range']",
+                title: "Choose how far back",
+                body: "See everything since your last visit, or the last 24 hours or 7 days. It's read straight from the board's history, so it's exact and needs no AI.",
+            },
+            {
+                id: "mentions",
+                surface: "catchUp",
+                target: "[data-tour='catch-up-body']",
+                title: "What needs you comes first",
+                body: "Comments that mention you sit at the top, then new comments, then who changed what. Click a comment to open its thread.",
+            },
+            {
+                id: "markers",
+                surface: "catchUp",
+                target: "[data-tour='catch-up-body']",
+                title: "See it on the board",
+                body: "Every change is marked on the board in its own colour. Click a change to fly to it, step through them with the arrows, or use Show all to frame the lot.",
+            },
+            {
+                id: "summary",
+                surface: "catchUp",
+                target: "[data-tour='catch-up-body']",
+                title: "A written summary, if you want one",
+                body: "Summarise turns the same history into a few sentences. It's optional, and the rest of the panel works without it.",
+            },
+        ],
+    },
+    architecture: {
+        label: "Architecture from GitHub",
+        steps: [
+            {
+                id: "open",
+                target: "[aria-label='Insert']",
+                title: "Map a codebase onto the board",
+                body: "Insert, then Architecture from GitHub, reads a public repository and draws how it's actually built: which parts exist, how they depend on each other, and what they talk to outside the code.",
+            },
+            {
+                id: "paste",
+                surface: "architecture",
+                target: "[data-tour='architecture-url']",
+                title: "Paste a repository",
+                body: "Any public GitHub link works, in any language. Nothing needs installing, and your code is only read to find its structure.",
+                tryIt: "Paste a link to a repository you know well.",
+            },
+            {
+                id: "diagram",
+                surface: "architecture",
+                target: "[data-tour='architecture-url']",
+                title: "A diagram you can read",
+                body: "Parts are grouped into areas like frontend and backend, stacked from entry points down to data stores, with their real file names and what they do. Everything is ordinary board elements, so you can move, restyle and annotate it.",
+            },
+            {
+                id: "sync",
+                surface: "architecture",
+                target: "[data-tour='architecture-panel']",
+                title: "Keep it true",
+                body: "Sync updates the diagram from the latest code and keeps your layout. Anything that no longer exists is marked in red for you to remove.",
+            },
+            {
+                id: "compare",
+                surface: "architecture",
+                target: "[data-tour='architecture-panel']",
+                title: "See what a pull request changes",
+                body: "After importing, enter a pull request number or a branch name to colour exactly which parts it touches, before it merges.",
+            },
+        ],
+    },
+};

@@ -1,0 +1,37 @@
+{
+  "modelKey": "antigravity:gemini-3.8-flash-medium",
+  "task": "house",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "chimney",
+    "walls",
+    "roof",
+    "door",
+    "door knob",
+    "left window",
+    "right window"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 24885,
+    "outputTokens": 3988,
+    "modelMs": 51958,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 12,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/antigravity-gemini-3.8-flash-medium/house.mosaic.svg",
+  "ranAt": "2026-11-24T06:42:32.651Z"
+}

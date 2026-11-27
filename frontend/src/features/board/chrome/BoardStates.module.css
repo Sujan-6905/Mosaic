@@ -1,0 +1,499 @@
+.tiles {
+    display: grid;
+    grid-template-columns: repeat(4, 22px);
+    gap: 4px;
+}
+
+.tiles span {
+    height: 22px;
+    border-radius: 4px;
+    background: var(--color-bg-elevated);
+}
+
+:global([data-theme="light"]) .tiles span:not([style*="background"]) {
+    background: var(--color-bg-sunken);
+}
+
+.joining {
+    position: fixed;
+    inset: 0;
+    z-index: 950;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    background-color: var(--color-bg-canvas);
+    background-image: radial-gradient(var(--color-canvas-grid) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+}
+
+.reconnect {
+    position: fixed;
+    left: 50%;
+    top: 84px;
+    transform: translateX(-50%);
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: max-content;
+    max-width: calc(100vw - 24px);
+    padding: 12px 16px;
+    border-radius: 14px;
+    background: var(--color-bg-surface);
+    border: 1px solid rgba(245, 163, 92, 0.45);
+    box-shadow: var(--shadow-lg);
+}
+
+.spinner {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--color-bg-hover);
+    border-top-color: #f5a35c;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.reconnectText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+.reconnectText strong {
+    font-size: 14px;
+    color: var(--color-text-primary);
+}
+
+.tryNow {
+    flex: none;
+    margin-left: 8px;
+    border: 1px solid var(--color-border-strong);
+    border-radius: 999px;
+    padding: 7px 12px;
+    background: transparent;
+    color: var(--color-text-primary);
+    font: 500 12px var(--font-sans);
+    cursor: pointer;
+}
+
+.tryNow:hover {
+    background: var(--color-bg-hover);
+}
+
+.empty {
+    position: fixed;
+    left: 50%;
+    top: 46%;
+    transform: translate(-50%, -50%);
+    z-index: 900;
+    width: min(380px, calc(100vw - 32px));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+    color: var(--color-text-primary);
+}
+
+.emptyHeading {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.emptyHeading h1 {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.emptyHeading p {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+}
+
+.quickStarts {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.quick {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--color-text-primary);
+    font: 500 14px var(--font-sans);
+    text-align: left;
+    cursor: pointer;
+}
+
+.quick:hover {
+    background: var(--color-bg-hover);
+}
+
+.quickIcon {
+    flex: none;
+    color: var(--color-brand-fill);
+}
+
+.quickLabel {
+    flex: 1;
+}
+
+.quickNote,
+.emptyFoot {
+    font-size: 12px;
+    color: var(--color-text-muted);
+}
+
+.hint {
+    position: fixed;
+    z-index: 900;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 19px;
+    color: var(--color-text-secondary);
+    pointer-events: none;
+}
+
+.hint svg {
+    position: absolute;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.hintDock {
+    left: calc(50% - 360px);
+    bottom: 120px;
+}
+
+.hintDock svg {
+    left: 110px;
+    top: 32px;
+    width: 76px;
+    height: 44px;
+}
+
+.hintShare {
+    right: 150px;
+    top: 112px;
+}
+
+.hintShare svg {
+    right: -70px;
+    top: -48px;
+}
+
+.presenterFrame {
+    position: fixed;
+    inset: 10px;
+    z-index: 800;
+    border: 2px dashed rgba(255, 180, 60, 0.55);
+    border-radius: 18px;
+    pointer-events: none;
+}
+
+.presenterBar,
+.followBar {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    background: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+    white-space: nowrap;
+}
+
+.presenterBar {
+    top: 76px;
+    gap: 12px;
+    padding: 6px 6px 6px 14px;
+    border-radius: 999px;
+    box-shadow: var(--shadow-lg);
+    font-size: 13px;
+}
+
+.presenterBar strong {
+    font-size: 14px;
+}
+
+.presenterBar button,
+.followBar button {
+    border: 0;
+    border-radius: 999px;
+    background: var(--color-brand-fill-text);
+    color: var(--color-brand-fill);
+    font: 600 13px var(--font-sans);
+    cursor: pointer;
+}
+
+.presenterBar button {
+    padding: 7px 14px;
+}
+
+.live {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--color-brand-fill-text);
+    animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    50% {
+        box-shadow: 0 0 0 6px rgba(26, 18, 6, 0);
+    }
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(26, 18, 6, 0.45);
+    }
+}
+
+.audience {
+    display: flex;
+}
+
+.audience span {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--color-brand-fill);
+    color: #14161a;
+    font-size: 9px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.audience span + span {
+    margin-left: -6px;
+}
+
+.presenterNote,
+.followNote {
+    position: fixed;
+    z-index: 1100;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+.presenterNote {
+    left: 24px;
+    bottom: 76px;
+}
+
+.followNote {
+    left: 50%;
+    bottom: 96px;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.invite {
+    position: fixed;
+    right: 16px;
+    top: 76px;
+    z-index: 1100;
+    width: min(300px, calc(100vw - 32px));
+    padding: 16px;
+    border-radius: 16px;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: var(--color-text-primary);
+    animation: inviteIn 200ms var(--ease-out);
+}
+
+@keyframes inviteIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+}
+
+.inviteHead {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.inviteAvatar {
+    position: relative;
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    color: #14161a;
+    font-size: 11px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inviteLive {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-brand-fill);
+    border: 2px solid var(--color-bg-surface);
+}
+
+.inviteText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.inviteText strong {
+    font-size: 14px;
+}
+
+.inviteText span {
+    font-size: 12px;
+    color: var(--color-text-muted);
+}
+
+.inviteActions {
+    display: flex;
+    gap: 8px;
+}
+
+.follow {
+    flex: 1;
+    border: 0;
+    border-radius: 10px;
+    padding: 9px;
+    background: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+    font: 600 13px var(--font-sans);
+    cursor: pointer;
+}
+
+.notNow {
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 8px 12px;
+    background: transparent;
+    color: var(--color-text-primary);
+    font: 500 13px var(--font-sans);
+    cursor: pointer;
+}
+
+.followFrame {
+    position: fixed;
+    inset: 0;
+    z-index: 800;
+    border: 4px solid var(--color-brand-fill);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.followBar {
+    top: 0;
+    gap: 10px;
+    padding: 6px 6px 6px 14px;
+    border-radius: 0 0 14px 14px;
+    font-size: 13px;
+}
+
+.followAvatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--color-brand-fill-text);
+    color: var(--color-brand-fill);
+    font-size: 9px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.followBar button {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+.tryNow:focus-visible,
+.quick:focus-visible,
+.presenterBar button:focus-visible,
+.followBar button:focus-visible,
+.follow:focus-visible,
+.notNow:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus-ring);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .live,
+    .invite {
+        animation: none;
+    }
+}
+
+@media (max-width: 1100px) {
+    .hint {
+        display: none;
+    }
+}
+
+@media (max-width: 720px) {
+    .presenterNote,
+    .followNote,
+    .audience {
+        display: none;
+    }
+
+    .presenterBar {
+        top: 60px;
+        font-size: 12px;
+    }
+
+    .reconnect {
+        top: 60px;
+    }
+
+    .reconnect span:not(.spinner) span {
+        display: none;
+    }
+
+    .empty {
+        top: 42%;
+    }
+}

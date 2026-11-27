@@ -1,0 +1,156 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--color-overlay);
+    display: flex;
+    /* Anchored from the top, so a dialog whose content changes grows downward instead of re-centring. */
+    align-items: flex-start;
+    justify-content: center;
+    /* Above every floating whiteboard overlay, so selection handles, comment
+       pins and panels can't paint through a modal. */
+    z-index: 3000;
+    padding: max(var(--space-4), 9vh) var(--space-4) var(--space-4);
+    animation: overlayIn 200ms ease-out both;
+}
+
+.overlay[data-closing] {
+    animation: overlayOut 160ms ease-in both;
+    pointer-events: none;
+}
+
+.modal {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-height: min(82vh, 760px);
+    border-radius: var(--radius-panel);
+    box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.8);
+    animation: modalIn 280ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.overlay[data-closing] .modal {
+    animation: modalOut 160ms ease-in both;
+}
+
+.sm {
+    max-width: 24rem;
+}
+
+.md {
+    max-width: 35rem;
+}
+
+.lg {
+    max-width: 44rem;
+}
+
+.xl {
+    max-width: 65rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: 22px 24px 6px;
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: var(--weight-bold);
+    margin: 0;
+    color: var(--color-text-primary);
+}
+
+.close {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-border-strong);
+}
+
+.close:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus-ring);
+    outline-offset: 2px;
+}
+
+.body {
+    padding: 14px 24px 22px;
+    overflow-y: auto;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-2);
+    padding: 0 24px 22px;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes rise-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes overlayIn {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes overlayOut {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.97);
+    }
+}
+
+@keyframes modalOut {
+    to {
+        opacity: 0;
+        transform: translateY(6px) scale(0.98);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .overlay,
+    .overlay[data-closing],
+    .modal,
+    .overlay[data-closing] .modal {
+        animation-duration: 1ms;
+    }
+}

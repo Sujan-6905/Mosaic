@@ -1,0 +1,28 @@
+{
+  "modelKey": "claude:opus",
+  "task": "cat",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 4141,
+    "outputTokens": 1574,
+    "modelMs": 15302,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 26,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-opus/cat.baseline.svg",
+  "ranAt": "2026-11-23T05:51:43.719Z"
+}

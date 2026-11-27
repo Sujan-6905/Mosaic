@@ -1,0 +1,28 @@
+{
+  "modelKey": "groq:openai/gpt-oss-120b",
+  "task": "bicycle",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 185,
+    "outputTokens": 1091,
+    "modelMs": 2509,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 15,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/groq-openai-gpt-oss-120b/bicycle.baseline.svg",
+  "ranAt": "2026-11-23T06:04:15.584Z"
+}

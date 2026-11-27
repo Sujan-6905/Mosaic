@@ -1,0 +1,32 @@
+{
+  "modelKey": "claude:sonnet",
+  "task": "url-shortener",
+  "kind": "diagram",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": {
+    "structure": "layered-tiers",
+    "look": "ink",
+    "levers": {}
+  },
+  "parts": null,
+  "usage": {
+    "calls": 3,
+    "inputTokens": 31163,
+    "outputTokens": 1478,
+    "modelMs": 13313,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 22,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 8
+  },
+  "image": "models/claude-sonnet/url-shortener.mosaic.svg",
+  "ranAt": "2026-11-24T04:37:18.091Z"
+}

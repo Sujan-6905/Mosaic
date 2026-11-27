@@ -1,0 +1,28 @@
+{
+  "modelKey": "groq:openai/gpt-oss-120b",
+  "task": "ride-hailing",
+  "kind": "diagram",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 225,
+    "outputTokens": 1533,
+    "modelMs": 3661,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 19,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 9
+  },
+  "image": "models/groq-openai-gpt-oss-120b/ride-hailing.baseline.svg",
+  "ranAt": "2026-11-23T05:50:05.015Z"
+}

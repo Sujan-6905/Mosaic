@@ -1,0 +1,9 @@
+**/node_modules/
+**/.next*/
+**/public/
+**/components/vendor/
+**/package-lock.json
+**/test-results/
+backend/src/ai/eval/output/
+frontend/perf/results/
+benchmark/results/

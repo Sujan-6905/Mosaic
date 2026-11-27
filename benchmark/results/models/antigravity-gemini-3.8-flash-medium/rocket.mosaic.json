@@ -1,0 +1,40 @@
+{
+  "modelKey": "antigravity:gemini-3.8-flash-medium",
+  "task": "rocket",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "left smoke",
+    "right smoke",
+    "exhaust flame",
+    "nozzle",
+    "left fin",
+    "right fin",
+    "body",
+    "stripe",
+    "nose cone",
+    "window"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 24883,
+    "outputTokens": 8348,
+    "modelMs": 88165,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 13,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/antigravity-gemini-3.8-flash-medium/rocket.mosaic.svg",
+  "ranAt": "2026-11-24T06:53:46.617Z"
+}

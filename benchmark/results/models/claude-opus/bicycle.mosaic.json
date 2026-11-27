@@ -1,0 +1,41 @@
+{
+  "modelKey": "claude:opus",
+  "task": "bicycle",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "rear wheel",
+    "front wheel",
+    "rear frame",
+    "main frame",
+    "fork",
+    "seat post",
+    "seat",
+    "handlebar",
+    "chainring",
+    "crank",
+    "pedal"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 18184,
+    "outputTokens": 1504,
+    "modelMs": 17781,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 25,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-opus/bicycle.mosaic.svg",
+  "ranAt": "2026-11-23T05:53:05.929Z"
+}

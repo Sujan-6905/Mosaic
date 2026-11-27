@@ -1,0 +1,32 @@
+{
+  "modelKey": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+  "task": "ride-hailing",
+  "kind": "diagram",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": {
+    "structure": "layered-tiers",
+    "look": "blueprint",
+    "levers": {}
+  },
+  "parts": null,
+  "usage": {
+    "calls": 4,
+    "inputTokens": 15421,
+    "outputTokens": 3144,
+    "modelMs": 63119,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 37,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 14
+  },
+  "image": "models/nvidia-nvidia-nemotron-3-ultra-550b-a55b/ride-hailing.mosaic.svg",
+  "ranAt": "2026-11-24T09:07:11.510Z"
+}

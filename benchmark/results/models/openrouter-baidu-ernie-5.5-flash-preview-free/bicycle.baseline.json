@@ -1,0 +1,28 @@
+{
+  "modelKey": "openrouter:baidu/ernie-5.5-flash-preview:free",
+  "task": "bicycle",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 112,
+    "outputTokens": 5573,
+    "modelMs": 25554,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 17,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/openrouter-baidu-ernie-5.5-flash-preview-free/bicycle.baseline.svg",
+  "ranAt": "2026-11-24T04:37:16.455Z"
+}

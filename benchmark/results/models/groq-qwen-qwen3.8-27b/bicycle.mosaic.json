@@ -1,0 +1,34 @@
+{
+  "modelKey": "groq:qwen/qwen3.8-27b",
+  "task": "bicycle",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "wheels",
+    "frame",
+    "pedal",
+    "seat",
+    "handlebars"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 3962,
+    "outputTokens": 571,
+    "modelMs": 1922,
+    "rateLimitWaits": 1
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 24,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/groq-qwen-qwen3.8-27b/bicycle.mosaic.svg",
+  "ranAt": "2026-11-23T05:40:51.306Z"
+}

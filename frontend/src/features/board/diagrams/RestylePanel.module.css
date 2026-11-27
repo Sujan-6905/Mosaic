@@ -1,0 +1,228 @@
+.panel {
+    position: fixed;
+    left: 16px;
+    top: 76px;
+    /* Opened from a selection, so it sits over that selection's context bar. */
+    z-index: 1002;
+    width: min(360px, calc(100vw - 32px));
+    max-height: calc(100dvh - 168px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 12px;
+    border-radius: 18px;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    color: var(--color-text-primary);
+    animation: panelIn 180ms var(--ease-out);
+}
+
+@keyframes panelIn {
+    from {
+        opacity: 0;
+        transform: translateX(-8px);
+    }
+}
+
+@media (max-width: 1024px) {
+    .panel {
+        max-height: calc(100dvh - 76px - 148px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .panel {
+        animation: none;
+    }
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px 6px 0 16px;
+}
+
+.title {
+    flex: 1;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: var(--weight-bold);
+}
+
+.iconButton {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--color-text-secondary);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.iconButton:hover {
+    background: var(--color-bg-sunken);
+    color: var(--color-text-primary);
+}
+
+.current {
+    margin: 0;
+    padding: 0 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+.current span:first-child,
+.current span:last-child {
+    color: var(--color-text-primary);
+    font-weight: var(--weight-semibold);
+}
+
+.empty {
+    margin: 0;
+    padding: 4px 16px 8px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+}
+
+.tabs {
+    flex-shrink: 0;
+}
+
+.search {
+    flex-shrink: 0;
+    margin: 0 16px;
+    height: 36px;
+    padding: 0 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-sunken);
+    color: var(--color-text-primary);
+    font: inherit;
+    font-size: 14px;
+}
+
+.search:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+}
+
+.body {
+    overflow-y: auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overscroll-behavior: contain;
+}
+
+.sectionTitle {
+    margin: 4px 0 8px;
+    font-size: 12px;
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-secondary);
+    letter-spacing: 0.02em;
+}
+
+.groupPicker {
+    margin: 12px 0 0;
+}
+
+.grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.tile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 6px;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    text-align: left;
+    cursor: pointer;
+    transition:
+        border-color 140ms var(--ease-out),
+        background-color 140ms var(--ease-out);
+}
+
+.tile:hover {
+    background: var(--color-bg-sunken);
+}
+
+.tile[aria-pressed="true"] {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 1px var(--color-accent);
+}
+
+.tile:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.preview {
+    display: block;
+    aspect-ratio: 150 / 96;
+    border-radius: 8px;
+    background: var(--color-bg-sunken);
+    overflow: hidden;
+}
+
+.canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.tileName {
+    font-size: 12.5px;
+    line-height: 1.3;
+    padding: 0 2px 2px;
+}
+
+.levers {
+    list-style: none;
+    margin: 0;
+    padding: 4px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lever {
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+}
+
+.leverName {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+@media (max-width: 720px) {
+    .panel {
+        left: 8px;
+        right: 8px;
+        width: auto;
+        top: auto;
+        bottom: 84px;
+        max-height: 70dvh;
+    }
+}

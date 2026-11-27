@@ -1,0 +1,28 @@
+{
+  "modelKey": "groq:openai/gpt-oss-20b",
+  "task": "rocket",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 187,
+    "outputTokens": 1577,
+    "modelMs": 2246,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 9,
+    "validShare": 0.2222222222222222,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 1
+  },
+  "image": "models/groq-openai-gpt-oss-20b/rocket.baseline.svg",
+  "ranAt": "2026-11-23T06:10:14.371Z"
+}

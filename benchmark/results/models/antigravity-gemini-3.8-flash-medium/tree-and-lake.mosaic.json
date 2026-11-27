@@ -1,0 +1,36 @@
+{
+  "modelKey": "antigravity:gemini-3.8-flash-medium",
+  "task": "tree-and-lake",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "lake water",
+    "lake ripples",
+    "lake reeds",
+    "tree trunk",
+    "tree foliage",
+    "tree foliage details"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 27901,
+    "outputTokens": 7544,
+    "modelMs": 86455,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 16,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/antigravity-gemini-3.8-flash-medium/tree-and-lake.mosaic.svg",
+  "ranAt": "2026-11-24T06:55:35.380Z"
+}

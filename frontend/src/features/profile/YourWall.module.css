@@ -1,0 +1,124 @@
+.wall {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.placeholder {
+    height: 260px;
+    border-radius: 12px;
+    background: var(--color-bg-sunken);
+}
+
+.note {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 32px;
+    margin: 0;
+}
+
+.stats div {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2px;
+}
+
+.stats dt {
+    font: 500 11px var(--font-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+}
+
+.stats dd {
+    margin: 0;
+    font: 700 26px var(--font-display, var(--font-sans));
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-primary);
+}
+
+.stats dd[data-gold] {
+    color: var(--color-accent);
+}
+
+.scroller {
+    overflow-x: auto;
+    border-radius: 12px;
+    background: #15171b;
+    scrollbar-width: thin;
+}
+
+.field {
+    display: block;
+    width: 100%;
+    min-width: 640px;
+    aspect-ratio: 580 / 374;
+}
+
+.inlays {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.inlays li {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+}
+
+.inlay {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    width: 52px;
+    height: 52px;
+    padding: 7px;
+    border-radius: 10px;
+    border: 1.5px dashed var(--color-border-strong);
+    background: var(--color-bg-sunken);
+}
+
+.inlay i {
+    border-radius: 1.5px;
+}
+
+.inlay i[data-on] {
+    background: color-mix(in srgb, var(--color-text-secondary) 30%, transparent);
+}
+
+li[data-earned] .inlay {
+    border: 1.5px solid #e09a2c;
+    background: #3a2a12;
+}
+
+li[data-earned] .inlay i[data-on] {
+    background: #ffb43c;
+}
+
+.inlayName {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+li:not([data-earned]) .inlayName {
+    color: var(--color-text-secondary);
+}
+
+.inlayWhen {
+    color: var(--color-text-secondary);
+}
+
+.scroller:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus-ring);
+    outline-offset: 2px;
+}

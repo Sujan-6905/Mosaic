@@ -1,0 +1,40 @@
+{
+  "modelKey": "nvidia:mistralai/mistral-large-4-1t-a52b",
+  "task": "rocket",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "smoke",
+    "outer flame",
+    "inner flame",
+    "exhaust nozzle",
+    "left fin",
+    "right fin",
+    "rocket body",
+    "nose cone",
+    "window",
+    "body stripe"
+  ],
+  "usage": {
+    "calls": 3,
+    "inputTokens": 8261,
+    "outputTokens": 5200,
+    "modelMs": 528419,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 13,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/nvidia-mistralai-mistral-large-4-1t-a52b/rocket.mosaic.svg",
+  "ranAt": "2026-11-24T06:10:04.883Z"
+}

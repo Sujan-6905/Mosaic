@@ -1,0 +1,313 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Mosaic board</title>
+        <style>
+            :root {
+                --ink: #1f2328;
+                --muted: #6b7280;
+                --ground: #ffffff;
+                --line: #d0d4da;
+                --accent: #c8952e;
+            }
+            :root[data-theme="dark"] {
+                --ink: #e8e8ea;
+                --muted: #9ca0a8;
+                --ground: #15171b;
+                --line: #33363d;
+                --accent: #e8b04b;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                margin: 0;
+                background: var(--ground);
+                color: var(--ink);
+                font:
+                    13px/1.4 system-ui,
+                    -apple-system,
+                    "Segoe UI",
+                    sans-serif;
+            }
+            header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                padding: 10px 12px;
+                border-bottom: 1px solid var(--line);
+            }
+            header strong {
+                font-weight: 600;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            header span {
+                color: var(--muted);
+                font-size: 12px;
+            }
+            button {
+                font: inherit;
+                color: var(--ground);
+                background: var(--ink);
+                border: 0;
+                border-radius: 6px;
+                padding: 6px 10px;
+                cursor: pointer;
+                white-space: nowrap;
+            }
+            button:focus-visible {
+                outline: 2px solid var(--accent);
+                outline-offset: 2px;
+            }
+            svg {
+                display: block;
+                width: 100%;
+                height: 420px;
+            }
+            .empty {
+                padding: 48px 16px;
+                text-align: center;
+                color: var(--muted);
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div><strong id="title">Mosaic board</strong> <span id="status"></span></div>
+            <button id="open" type="button" hidden>Open in Mosaic</button>
+        </header>
+        <main id="stage"><p class="empty">Loading the board</p></main>
+        <script>
+            (() => {
+                const SVG = "http://www.w3.org/2000/svg";
+                const REFRESH_MS = 5000;
+                const PAD = 40;
+                let nextId = 1;
+                const waiting = new Map();
+                let shareId = null;
+                let view = null;
+
+                const send = (message) => window.parent.postMessage({ jsonrpc: "2.0", ...message }, "*");
+                const request = (method, params) =>
+                    new Promise((resolve, reject) => {
+                        const id = nextId++;
+                        waiting.set(id, { resolve, reject });
+                        send({ id, method, params });
+                    });
+                const notify = (method, params) => send({ method, params });
+
+                window.addEventListener("message", (event) => {
+                    if (event.source !== window.parent) return;
+                    const message = event.data;
+                    if (!message || message.jsonrpc !== "2.0") return;
+                    if (message.id !== undefined && waiting.has(message.id)) {
+                        const { resolve, reject } = waiting.get(message.id);
+                        waiting.delete(message.id);
+                        return message.error ? reject(new Error(message.error.message)) : resolve(message.result);
+                    }
+                    if (message.method === "ui/notifications/tool-input") shareId = message.params?.arguments?.shareId ?? shareId;
+                    if (message.method === "ui/notifications/tool-result") show(message.params?.structuredContent);
+                    if (message.method === "ui/notifications/host-context-changed") applyTheme(message.params?.theme);
+                });
+
+                const applyTheme = (theme) => {
+                    const dark = theme ? theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+                    document.documentElement.dataset.theme = dark ? "dark" : "light";
+                };
+
+                const el = (name, attributes = {}, parent) => {
+                    const node = document.createElementNS(SVG, name);
+                    Object.entries(attributes).forEach(([key, value]) => value !== null && value !== undefined && node.setAttribute(key, String(value)));
+                    if (parent) parent.appendChild(node);
+                    return node;
+                };
+                // Pure black or white ink follows the theme, as it does on the board itself.
+                const ink = (color) => (!color || /^#(000000|ffffff)$/i.test(color) ? "var(--ink)" : color);
+
+                const wrap = (text, width, size) => {
+                    const perLine = Math.max(4, Math.floor(width / (size * 0.55)));
+                    return String(text)
+                        .split("\n")
+                        .flatMap((paragraph) => {
+                            const lines = [];
+                            let line = "";
+                            paragraph.split(" ").forEach((word) => {
+                                if ((line + " " + word).trim().length > perLine && line) {
+                                    lines.push(line);
+                                    line = word;
+                                } else {
+                                    line = (line + " " + word).trim();
+                                }
+                            });
+                            lines.push(line);
+                            return lines;
+                        });
+                };
+
+                const words = (parent, text, box, { size = 13, align = "middle", color } = {}) => {
+                    const lines = wrap(text, box.maxX - box.minX - 12, size).slice(0, 6);
+                    const top = align === "middle" ? (box.minY + box.maxY) / 2 - ((lines.length - 1) * size * 1.25) / 2 : box.minY + size;
+                    const x = align === "middle" ? (box.minX + box.maxX) / 2 : box.minX + 4;
+                    lines.forEach((line, index) => {
+                        const node = el(
+                            "text",
+                            {
+                                x,
+                                y: top + index * size * 1.25,
+                                "text-anchor": align === "middle" ? "middle" : "start",
+                                "dominant-baseline": "middle",
+                                "font-size": size,
+                                fill: ink(color),
+                            },
+                            parent,
+                        );
+                        node.textContent = line;
+                    });
+                };
+
+                const draw = (svg, item) => {
+                    const b = item.bounds;
+                    const stroke = ink(item.color);
+                    const fill = item.fillColor && item.fillColor !== "transparent" ? item.fillColor : "none";
+                    const dash = item.dashed ? "6 5" : null;
+                    if (item.type === "connector") {
+                        const points = [item.start, ...(item.waypoints || []), item.end].map((p) => `${p.x},${p.y}`).join(" ");
+                        el("polyline", { points, fill: "none", stroke, "stroke-width": 1.5, "stroke-dasharray": dash, "marker-end": "url(#arrow)" }, svg);
+                        if (item.text)
+                            words(
+                                svg,
+                                item.text,
+                                {
+                                    minX: (item.start.x + item.end.x) / 2 - 60,
+                                    maxX: (item.start.x + item.end.x) / 2 + 60,
+                                    minY: (item.start.y + item.end.y) / 2 - 10,
+                                    maxY: (item.start.y + item.end.y) / 2 + 10,
+                                },
+                                { size: 11, color: "#6b7280" },
+                            );
+                        return;
+                    }
+                    if (item.type === "path") {
+                        el(
+                            "polyline",
+                            {
+                                points: item.points.map((p) => p.join(",")).join(" "),
+                                fill: "none",
+                                stroke,
+                                "stroke-width": 2,
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round",
+                            },
+                            svg,
+                        );
+                        return;
+                    }
+                    const w = b.maxX - b.minX;
+                    const h = b.maxY - b.minY;
+                    if (item.type === "text") return words(svg, item.text || "", b, { align: "start", color: item.color, size: 14 });
+                    if (item.type === "sticky") {
+                        el("rect", { x: b.minX, y: b.minY, width: w, height: h, rx: 4, fill: item.fillColor || "#fde68a" }, svg);
+                        return item.text && words(svg, item.text, b, { color: "#1f2328" });
+                    }
+                    if (item.type === "frame") {
+                        el("rect", { x: b.minX, y: b.minY, width: w, height: h, rx: 6, fill: "none", stroke: "var(--line)", "stroke-dasharray": "4 4" }, svg);
+                        return (
+                            item.text &&
+                            words(
+                                svg,
+                                item.text,
+                                { minX: b.minX, maxX: b.maxX, minY: b.minY - 22, maxY: b.minY - 4 },
+                                { align: "start", size: 12, color: "#6b7280" },
+                            )
+                        );
+                    }
+                    const outline = { fill, stroke, "stroke-width": 1.5, "stroke-dasharray": dash };
+                    if (item.shapeType === "Ellipse") el("ellipse", { cx: b.minX + w / 2, cy: b.minY + h / 2, rx: w / 2, ry: h / 2, ...outline }, svg);
+                    else if (item.shapeType === "Diamond")
+                        el(
+                            "polygon",
+                            {
+                                points: `${b.minX + w / 2},${b.minY} ${b.maxX},${b.minY + h / 2} ${b.minX + w / 2},${b.maxY} ${b.minX},${b.minY + h / 2}`,
+                                ...outline,
+                            },
+                            svg,
+                        );
+                    else el("rect", { x: b.minX, y: b.minY, width: w, height: h, rx: 8, ...outline }, svg);
+                    if (item.text) words(svg, item.text, b);
+                };
+
+                const show = (data) => {
+                    if (!data || !Array.isArray(data.elements)) return;
+                    view = data;
+                    shareId = data.shareId;
+                    document.getElementById("title").textContent = data.title || "Mosaic board";
+                    document.getElementById("status").textContent = `${data.elements.length} elements`;
+                    document.getElementById("open").hidden = !data.url;
+                    const stage = document.getElementById("stage");
+                    stage.replaceChildren();
+                    if (data.elements.length === 0) {
+                        const empty = document.createElement("p");
+                        empty.className = "empty";
+                        empty.textContent = "This board is empty.";
+                        stage.appendChild(empty);
+                        return;
+                    }
+                    const box = data.elements.reduce(
+                        (acc, { bounds }) => ({
+                            minX: Math.min(acc.minX, bounds.minX),
+                            minY: Math.min(acc.minY, bounds.minY),
+                            maxX: Math.max(acc.maxX, bounds.maxX),
+                            maxY: Math.max(acc.maxY, bounds.maxY),
+                        }),
+                        { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity },
+                    );
+                    const svg = el(
+                        "svg",
+                        {
+                            viewBox: `${box.minX - PAD} ${box.minY - PAD} ${box.maxX - box.minX + PAD * 2} ${box.maxY - box.minY + PAD * 2}`,
+                            role: "img",
+                            "aria-label": `Board ${data.shareId}`,
+                        },
+                        stage,
+                    );
+                    const marker = el(
+                        "marker",
+                        { id: "arrow", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse" },
+                        el("defs", {}, svg),
+                    );
+                    el("path", { d: "M0 0L10 5L0 10z", fill: "var(--muted)" }, marker);
+                    data.elements.forEach((item) => draw(svg, item));
+                    notify("ui/notifications/size-changed", { height: document.body.scrollHeight });
+                };
+
+                document.getElementById("open").addEventListener("click", () => {
+                    if (view?.url) request("ui/open-link", { url: view.url }).catch(() => window.open(view.url, "_blank", "noopener"));
+                });
+
+                const refresh = async () => {
+                    if (!shareId || document.visibilityState !== "visible") return;
+                    try {
+                        const result = await request("tools/call", { name: "show_board", arguments: { shareId, title: view?.title ?? undefined } });
+                        show(result?.structuredContent);
+                    } catch {
+                        document.getElementById("status").textContent = "Couldn't refresh";
+                    }
+                };
+
+                applyTheme();
+                request("ui/initialize", { protocolVersion: "2026-01-26", appInfo: { name: "Mosaic board view", version: "1.0.0" }, appCapabilities: {} })
+                    .then((result) => {
+                        applyTheme(result?.hostContext?.theme);
+                        notify("ui/notifications/initialized", {});
+                    })
+                    .catch(() => {});
+                setInterval(refresh, REFRESH_MS);
+            })();
+        </script>
+    </body>
+</html>

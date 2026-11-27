@@ -1,0 +1,171 @@
+.stylePop {
+    min-width: 17rem;
+}
+
+.styleRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.styleLabel {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+}
+
+.segments {
+    display: inline-flex;
+    gap: 2px;
+    padding: 2px;
+    border-radius: 9px;
+    background: var(--color-bg-sunken);
+}
+
+.segments button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    height: 28px;
+    padding: 0 0.4rem;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font: 500 0.72rem var(--font-sans);
+    cursor: pointer;
+}
+
+.segments button:hover {
+    color: var(--color-text-primary);
+}
+
+.segments button[aria-checked="true"] {
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.routeGroup {
+    display: inline-flex;
+    gap: 2px;
+}
+
+.headGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+}
+
+.headGrid button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 34px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+}
+
+.headGrid button:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.headGrid button[aria-checked="true"] {
+    background: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+}
+
+.shapeTrigger {
+    gap: 6px;
+    font-weight: 500;
+}
+
+.shapeMenu {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(3.5rem, 1fr));
+    gap: 3px;
+}
+
+.shapeMenu button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 8px 2px 6px;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font: 500 10px var(--font-sans);
+    cursor: pointer;
+}
+
+.shapeMenu button:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.shapeMenu button[aria-checked="true"] {
+    background: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+}
+
+.linkPop {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 18rem;
+}
+
+.linkInput {
+    height: 34px;
+    padding: 0 0.6rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-bg-canvas);
+    color: var(--color-text-primary);
+    font-size: 0.82rem;
+    user-select: text;
+}
+
+.linkProblem {
+    margin: 0;
+    color: var(--color-danger);
+    font-size: 0.75rem;
+}
+
+.linkActions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.4rem;
+}
+
+.linkOpen,
+.linkRemove,
+.linkSave {
+    padding: 0.3rem 0.65rem;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: 0.78rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.linkOpen:hover,
+.linkRemove:hover {
+    background: var(--color-bg-hover);
+}
+
+.linkSave {
+    background: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+    font-weight: 600;
+}

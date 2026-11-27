@@ -1,0 +1,80 @@
+.thread {
+    display: flex;
+    flex-direction: column;
+    width: min(20rem, 100%);
+    max-height: 24rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-2) var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.title {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-secondary);
+}
+
+.headerActions {
+    display: flex;
+    gap: var(--space-1);
+}
+
+/* The armed delete button, which deletes on the next click, has to look armed. */
+.confirmDelete {
+    color: var(--color-danger);
+    background: var(--color-danger-muted, rgba(239, 68, 68, 0.12));
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    overflow-y: auto;
+}
+
+.message {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.messageBody {
+    flex: 1;
+    min-width: 0;
+}
+
+.messageHeader {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+}
+
+.author {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-primary);
+}
+
+.timestamp {
+    font-size: var(--text-2xs);
+    color: var(--color-text-muted);
+}
+
+.text {
+    margin: var(--space-1) 0 0;
+    font-size: var(--text-sm);
+    color: var(--color-text-primary);
+    line-height: var(--leading-normal);
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+.mention {
+    color: var(--color-accent);
+    font-weight: var(--weight-semibold);
+}

@@ -1,0 +1,43 @@
+{
+  "modelKey": "claude:haiku",
+  "task": "bicycle",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "rear wheel",
+    "front wheel",
+    "rear sprocket",
+    "chainring",
+    "chain",
+    "frame",
+    "seat post",
+    "saddle",
+    "handlebar",
+    "crank arm",
+    "pedal",
+    "rear hub",
+    "front hub"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 26957,
+    "outputTokens": 3680,
+    "modelMs": 19486,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 18,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-haiku/bicycle.mosaic.svg",
+  "ranAt": "2026-11-23T05:30:11.428Z"
+}

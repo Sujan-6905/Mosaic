@@ -1,0 +1,120 @@
+.track {
+    position: relative;
+    padding: 0 var(--site-shell) clamp(64px, 9vw, 104px);
+}
+
+.anchor {
+    position: absolute;
+    top: 0;
+}
+
+.stage {
+    position: relative;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    /* Pulled up behind the hero, which scrolls off it like a curtain, so the dock
+       is already there as the hero's edge lifts and no empty screen comes between. */
+    .track {
+        height: 310svh;
+        margin-top: -100svh;
+        padding: 0;
+    }
+
+    /* Links land on the fully open window, at the far end of the track. */
+    .anchor {
+        top: auto;
+        bottom: 100svh;
+    }
+
+    .stage {
+        position: sticky;
+        top: 0;
+        height: 100svh;
+        padding: 0 var(--site-shell);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        overflow: hidden;
+        perspective: 1400px;
+    }
+
+    .window {
+        flex: none;
+        width: 100%;
+    }
+}
+
+.caption {
+    font-size: 14px;
+    color: var(--site-bone-dim);
+    text-align: center;
+}
+
+.window {
+    max-width: 1240px;
+    margin: 0 auto;
+    border-radius: 22px;
+    border: 1px solid var(--site-line);
+    background: #0f1114;
+    box-shadow: 0 60px 120px -50px rgba(0, 0, 0, 0.8);
+    will-change: transform, clip-path;
+    overflow: hidden;
+}
+
+.browserBar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    height: 40px;
+    padding: 0 14px;
+    border-bottom: 1px solid var(--site-line-soft);
+    background: var(--site-surface);
+}
+
+.browserLights {
+    display: flex;
+    flex: none;
+    gap: 6px;
+}
+
+.browserLights i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--site-line);
+}
+
+.browserTab {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--site-bone);
+}
+
+.address {
+    flex: 1;
+    min-width: 0;
+    max-width: 460px;
+    margin: 0 auto;
+    padding: 4px 12px;
+    border-radius: 8px;
+    background: var(--site-ink);
+    color: var(--site-bone-dim);
+    font-size: 12px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 560px) {
+    .browserTab {
+        display: none;
+    }
+}

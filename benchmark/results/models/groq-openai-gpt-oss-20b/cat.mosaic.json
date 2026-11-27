@@ -1,0 +1,43 @@
+{
+  "modelKey": "groq:openai/gpt-oss-20b",
+  "task": "cat",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "tail",
+    "body",
+    "left ear",
+    "right ear",
+    "left front leg",
+    "right front leg",
+    "left hind leg",
+    "right hind leg",
+    "left whisker 1",
+    "left whisker 2",
+    "right whisker 1",
+    "right whisker 2",
+    "mouth"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 6054,
+    "outputTokens": 2172,
+    "modelMs": 3653,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 14,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/groq-openai-gpt-oss-20b/cat.mosaic.svg",
+  "ranAt": "2026-11-23T06:08:09.111Z"
+}

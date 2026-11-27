@@ -1,0 +1,33 @@
+{
+  "modelKey": "groq:openai/gpt-oss-120b",
+  "task": "tree-and-lake",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "lake water",
+    "tree trunk",
+    "tree foliage"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 6061,
+    "outputTokens": 991,
+    "modelMs": 3042,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 4,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/groq-openai-gpt-oss-120b/tree-and-lake.mosaic.svg",
+  "ranAt": "2026-11-23T06:10:19.247Z"
+}

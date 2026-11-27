@@ -1,0 +1,40 @@
+{
+  "modelKey": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+  "task": "rocket",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "sky",
+    "stars",
+    "smoke",
+    "flames",
+    "fin left",
+    "fin right",
+    "fin rear",
+    "body",
+    "nose cone",
+    "nozzle left",
+    "nozzle right"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 6408,
+    "outputTokens": 1794,
+    "modelMs": 21285,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 15,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/nvidia-nvidia-nemotron-3-ultra-550b-a55b/rocket.mosaic.svg",
+  "ranAt": "2026-11-23T05:51:40.517Z"
+}

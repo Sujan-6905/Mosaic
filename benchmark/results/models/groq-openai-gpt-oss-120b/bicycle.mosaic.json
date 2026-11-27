@@ -1,0 +1,35 @@
+{
+  "modelKey": "groq:openai/gpt-oss-120b",
+  "task": "bicycle",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "bicycle frame triangle",
+    "bicycle top tube",
+    "bicycle down tube",
+    "bicycle left pedal",
+    "bicycle right pedal",
+    "bicycle handlebars"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 6051,
+    "outputTokens": 2041,
+    "modelMs": 5653,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 6,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/groq-openai-gpt-oss-120b/bicycle.mosaic.svg",
+  "ranAt": "2026-11-23T06:06:17.259Z"
+}

@@ -1,0 +1,28 @@
+{
+  "modelKey": "antigravity:gemini-3.8-flash-medium",
+  "task": "launch-timeline",
+  "kind": "diagram",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 10201,
+    "outputTokens": 1747,
+    "modelMs": 22388,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 10,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 4
+  },
+  "image": "models/antigravity-gemini-3.8-flash-medium/launch-timeline.baseline.svg",
+  "ranAt": "2026-11-24T06:38:46.811Z"
+}

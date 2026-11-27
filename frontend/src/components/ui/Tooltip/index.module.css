@@ -1,0 +1,46 @@
+.wrapper {
+    position: relative;
+    display: inline-flex;
+}
+
+/* Placed inline from the trigger's rect, since a body portal has no layout relationship to it. */
+.tooltip {
+    position: fixed;
+    z-index: 3100;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-2);
+    background: var(--color-text-primary);
+    color: var(--color-bg-surface);
+    font-size: var(--text-2xs);
+    font-weight: var(--weight-medium);
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    box-shadow: var(--shadow-md);
+    pointer-events: none;
+    animation: fade-in var(--duration-fast) var(--ease-out);
+}
+
+/* First-paint measuring pass, before the trigger rect is known: see
+   Popover's identical .measuring for the same two-pass reasoning. */
+.measuring {
+    visibility: hidden;
+}
+
+.shortcut {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    background: rgba(255, 255, 255, 0.16);
+    padding: 0 var(--space-1);
+    border-radius: var(--radius-sm);
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

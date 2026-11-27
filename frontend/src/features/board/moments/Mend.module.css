@@ -1,0 +1,36 @@
+/* Above the board's canvases and laser, below its chrome, so only the board itself goes grey. */
+.drained,
+.seam {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+.drained {
+    --mended: 0px;
+    z-index: 520;
+    backdrop-filter: grayscale(0.9) brightness(0.92) contrast(0.94);
+    background-image:
+        repeating-linear-gradient(0deg, rgba(120, 120, 120, 0.09) 0 1px, transparent 1px 28px),
+        repeating-linear-gradient(90deg, rgba(120, 120, 120, 0.09) 0 1px, transparent 1px 28px);
+    clip-path: inset(0 0 0 var(--mended));
+    animation: drain 900ms var(--ease-standard) both;
+}
+
+@keyframes drain {
+    from {
+        opacity: 0;
+    }
+}
+
+.seam {
+    z-index: 525;
+    width: 100vw;
+    height: 100vh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .drained {
+        animation: none;
+    }
+}

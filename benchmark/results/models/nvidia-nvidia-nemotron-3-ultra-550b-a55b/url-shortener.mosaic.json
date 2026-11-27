@@ -1,0 +1,32 @@
+{
+  "modelKey": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+  "task": "url-shortener",
+  "kind": "diagram",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": {
+    "structure": "layered-tiers",
+    "look": "ink",
+    "levers": {}
+  },
+  "parts": null,
+  "usage": {
+    "calls": 2,
+    "inputTokens": 9595,
+    "outputTokens": 1712,
+    "modelMs": 34257,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 25,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 7
+  },
+  "image": "models/nvidia-nvidia-nemotron-3-ultra-550b-a55b/url-shortener.mosaic.svg",
+  "ranAt": "2026-11-24T04:32:43.145Z"
+}

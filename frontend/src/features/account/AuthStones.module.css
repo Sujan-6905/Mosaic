@@ -1,0 +1,80 @@
+.art {
+    flex: 0 0 420px;
+    min-width: 0;
+    background: #15171b;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-right: 1px solid rgba(236, 235, 230, 0.08);
+}
+
+.wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+}
+
+.guardian,
+.threshold {
+    display: block;
+    width: 100%;
+    border-radius: 6px;
+    cursor: crosshair;
+    touch-action: none;
+}
+
+.guardian {
+    aspect-ratio: 4 / 3;
+}
+
+/* Matches the scene's logical size, 432 by 240. */
+.threshold {
+    aspect-ratio: 9 / 5;
+}
+
+.voice {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inscription {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #ecebe6;
+    transition: color var(--duration-base) var(--ease-standard);
+}
+
+.inscription[data-gilded="true"] {
+    color: #ffb43c;
+}
+
+.line {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 21px;
+    line-height: 1.3;
+    color: #c9cbd0;
+    min-height: 2.6em;
+}
+
+.credit {
+    margin-top: auto;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+    color: #868a92;
+}
+
+@media (max-width: 900px) {
+    .art {
+        display: none;
+    }
+}

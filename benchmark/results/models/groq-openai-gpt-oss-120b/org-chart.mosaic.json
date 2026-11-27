@@ -1,0 +1,32 @@
+{
+  "modelKey": "groq:openai/gpt-oss-120b",
+  "task": "org-chart",
+  "kind": "diagram",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": {
+    "structure": "org-chart",
+    "look": "ink",
+    "levers": {}
+  },
+  "parts": null,
+  "usage": {
+    "calls": 3,
+    "inputTokens": 10927,
+    "outputTokens": 1441,
+    "modelMs": 4881,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 12,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 5
+  },
+  "image": "models/groq-openai-gpt-oss-120b/org-chart.mosaic.svg",
+  "ranAt": "2026-11-24T04:44:15.915Z"
+}

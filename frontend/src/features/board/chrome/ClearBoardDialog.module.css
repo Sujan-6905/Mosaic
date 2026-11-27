@@ -1,0 +1,40 @@
+.warning {
+    display: flex;
+    gap: var(--space-3);
+    background: var(--color-danger-muted);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    margin-bottom: var(--space-3);
+}
+
+.warningIcon {
+    color: var(--color-danger);
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+}
+
+.warning p {
+    margin: 0;
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    color: var(--color-text-primary);
+}
+
+.label {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2);
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+}
+
+.ownerOnlyNote {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+}

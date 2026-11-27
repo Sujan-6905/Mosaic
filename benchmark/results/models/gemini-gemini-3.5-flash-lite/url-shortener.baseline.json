@@ -1,0 +1,28 @@
+{
+  "modelKey": "gemini:gemini-3.5-flash-lite",
+  "task": "url-shortener",
+  "kind": "diagram",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 127,
+    "outputTokens": 894,
+    "modelMs": 2298,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 14,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 7
+  },
+  "image": "models/gemini-gemini-3.5-flash-lite/url-shortener.baseline.svg",
+  "ranAt": "2026-11-24T07:31:23.115Z"
+}

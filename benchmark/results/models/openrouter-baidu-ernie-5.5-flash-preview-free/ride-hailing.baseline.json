@@ -1,0 +1,28 @@
+{
+  "modelKey": "openrouter:baidu/ernie-5.5-flash-preview:free",
+  "task": "ride-hailing",
+  "kind": "diagram",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 151,
+    "outputTokens": 14885,
+    "modelMs": 64402,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 23,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 10
+  },
+  "image": "models/openrouter-baidu-ernie-5.5-flash-preview-free/ride-hailing.baseline.svg",
+  "ranAt": "2026-11-24T04:34:59.393Z"
+}

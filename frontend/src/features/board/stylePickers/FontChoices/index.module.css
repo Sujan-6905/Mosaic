@@ -1,0 +1,53 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: min(320px, 50svh);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.groupLabel {
+    margin: 0 0 2px;
+    padding: 0 10px;
+    color: var(--color-text-muted);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.list button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 34px;
+    padding: 6px 10px;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--color-text-primary);
+    font-size: 15px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.list button:hover {
+    background: var(--color-bg-hover);
+}
+
+.list button[aria-checked="true"] {
+    font-weight: 600;
+}
+
+.list button[aria-checked="true"] svg {
+    flex-shrink: 0;
+    color: var(--color-accent);
+}

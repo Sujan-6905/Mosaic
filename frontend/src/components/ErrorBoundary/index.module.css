@@ -1,0 +1,34 @@
+.fallback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-12) var(--space-6);
+    text-align: center;
+    color: var(--color-text-primary);
+}
+
+.icon {
+    font-size: var(--text-xl);
+    color: var(--color-danger);
+}
+
+.title {
+    font-size: var(--text-md);
+    font-weight: var(--weight-semibold);
+    margin: 0;
+}
+
+.detail {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    max-width: 32rem;
+    margin: 0;
+}
+
+.actions {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+}

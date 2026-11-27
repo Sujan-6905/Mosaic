@@ -1,0 +1,28 @@
+{
+  "modelKey": "groq:openai/gpt-oss-120b",
+  "task": "org-chart",
+  "kind": "diagram",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 211,
+    "outputTokens": 1497,
+    "modelMs": 3478,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 11,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 5
+  },
+  "image": "models/groq-openai-gpt-oss-120b/org-chart.baseline.svg",
+  "ranAt": "2026-11-23T05:57:06.858Z"
+}

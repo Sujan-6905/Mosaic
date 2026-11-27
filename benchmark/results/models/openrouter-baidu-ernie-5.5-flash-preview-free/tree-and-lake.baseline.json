@@ -1,0 +1,28 @@
+{
+  "modelKey": "openrouter:baidu/ernie-5.5-flash-preview:free",
+  "task": "tree-and-lake",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 116,
+    "outputTokens": 5359,
+    "modelMs": 23832,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 7,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/openrouter-baidu-ernie-5.5-flash-preview-free/tree-and-lake.baseline.svg",
+  "ranAt": "2026-11-24T04:39:23.691Z"
+}

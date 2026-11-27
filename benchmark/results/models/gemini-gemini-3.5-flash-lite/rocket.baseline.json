@@ -1,0 +1,28 @@
+{
+  "modelKey": "gemini:gemini-3.5-flash-lite",
+  "task": "rocket",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 93,
+    "outputTokens": 528,
+    "modelMs": 2037,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 8,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 1,
+    "connectors": 1
+  },
+  "image": "models/gemini-gemini-3.5-flash-lite/rocket.baseline.svg",
+  "ranAt": "2026-11-24T05:36:41.700Z"
+}

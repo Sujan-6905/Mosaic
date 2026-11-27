@@ -1,0 +1,28 @@
+{
+  "modelKey": "claude:haiku",
+  "task": "cat",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 2,
+    "inputTokens": 9122,
+    "outputTokens": 2950,
+    "modelMs": 15761,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 9,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-haiku/cat.baseline.svg",
+  "ranAt": "2026-11-23T05:49:30.012Z"
+}

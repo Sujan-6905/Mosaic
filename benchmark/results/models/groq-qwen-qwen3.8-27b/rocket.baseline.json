@@ -1,0 +1,28 @@
+{
+  "modelKey": "groq:qwen/qwen3.8-27b",
+  "task": "rocket",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 106,
+    "outputTokens": 348,
+    "modelMs": 1126,
+    "rateLimitWaits": 2
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 5,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 1,
+    "connectors": 0
+  },
+  "image": "models/groq-qwen-qwen3.8-27b/rocket.baseline.svg",
+  "ranAt": "2026-11-23T05:57:55.718Z"
+}

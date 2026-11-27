@@ -1,334 +1,482 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+/* Tailwind utilities from the vendored libraries must beat the base reset, and unlayered Mosaic rules beat both. */
+@layer theme, base, components, utilities;
+@import "./tokens.css";
+@import "../components/vendor/beautifulUi/foundation.css";
+@import "../components/vendor/beautifulUi/sidebar-nav.css";
+@import "../components/vendor/sona/sona.css";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* The marketing pages stay graphite whatever the app theme; scoped to .site-theme to leave the theme engine alone. */
+.site-theme {
+    --site-ink: #15171b;
+    --site-ink-deep: #121418;
+    --site-surface: #1c1f24;
+    --site-raised: #24282e;
+    --site-overlay: #2e333a;
+    --site-line: rgba(236, 235, 230, 0.12);
+    --site-line-soft: rgba(236, 235, 230, 0.07);
+    --site-bone: #ecebe6;
+    --site-bone-dim: #a4a7ae;
+    --site-bone-faint: #868a92;
+    --site-gold: #ffb43c;
+    --site-gold-deep: #c07d1c;
+    --site-gold-wash: rgba(255, 180, 60, 0.12);
+
+    --site-shell: clamp(1.25rem, 4vw, 4.5rem);
+    --site-display: var(--font-display);
+    --site-body: var(--font-sans);
+    --site-mono: var(--font-mono);
+
+    background: var(--site-ink);
+    color: var(--site-bone);
+    font-family: var(--site-body);
 }
 
+.site-theme ::selection {
+    background: var(--site-gold);
+    color: var(--site-ink);
+}
+
+/* The marketing surface owns the whole window, so its scrollbar has to be
+   themed on <html> rather than on the section that happens to scroll. */
+html:has(.site-theme) {
+    scrollbar-color: #c07d1c #121418;
+}
+
+html:has(.site-theme) ::-webkit-scrollbar {
+    width: 10px;
+}
+
+html:has(.site-theme) ::-webkit-scrollbar-track {
+    background: var(--site-ink-deep, #121418);
+}
+
+html:has(.site-theme) ::-webkit-scrollbar-thumb {
+    background: var(--site-gold-deep, #c07d1c);
+    border: 2px solid var(--site-ink-deep, #121418);
+    border-radius: 999px;
+    background-clip: padding-box;
+}
+
+html:has(.site-theme) ::-webkit-scrollbar-thumb:hover {
+    background: var(--site-gold, #ffb43c);
+    background-clip: padding-box;
+}
+
+@layer base {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+}
+
+/* min-height, not height: a fixed 100% would clip the many-screen marketing pages so they couldn't scroll. */
 html,
 body {
-  width: 100%;
-  height: 100%;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #f8fafc;
-  overflow-x: hidden;
+    width: 100%;
+    min-height: 100%;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-bg-canvas);
+    color: var(--color-text-primary);
+    overflow-x: clip;
+    transition:
+        background-color var(--duration-base) var(--ease-standard),
+        color var(--duration-base) var(--ease-standard);
 }
 
 #__next {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
 }
 
 .main-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
 /* Auth Prompt Styles */
 .auth-prompt {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  padding: 2rem;
-  z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-canvas);
+    padding: var(--space-8);
+    z-index: 100;
 }
 
 .auth-prompt-content {
-  text-align: center;
-  max-width: 500px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  padding: 3rem 2rem;
-  border-radius: 24px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  animation: fadeInUp 0.6s ease-out;
+    text-align: center;
+    max-width: 500px;
+    background: var(--color-bg-elevated);
+    backdrop-filter: blur(20px);
+    padding: var(--space-12) var(--space-8);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-border);
+    animation: fadeInUp 0.6s ease-out;
 }
 
 .auth-prompt-icon {
-  margin-bottom: 2rem;
+    margin-bottom: var(--space-8);
 }
 
 .logo-icon {
-  width: 4rem;
-  height: 4rem;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  border-radius: 16px;
-  position: relative;
-  margin: 0 auto;
-  transition: transform 0.3s ease;
+    width: 4rem;
+    height: 4rem;
+    background: var(--color-accent);
+    border-radius: var(--radius-lg);
+    position: relative;
+    margin: 0 auto;
+    transition: transform var(--duration-base) var(--ease-standard);
 }
 
 .logo-icon::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 2rem;
-  height: 2rem;
-  background: white;
-  border-radius: 8px;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2rem;
+    height: 2rem;
+    background: var(--color-text-on-accent);
+    border-radius: var(--radius-sm);
 }
 
 .auth-prompt-content:hover .logo-icon {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .auth-prompt-content h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 1rem;
-  letter-spacing: -0.025em;
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+    letter-spacing: -0.025em;
 }
 
 .auth-prompt-content p {
-  font-size: 1.125rem;
-  color: #6b7280;
-  margin-bottom: 2rem;
-  line-height: 1.6;
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+    line-height: var(--leading-relaxed);
 }
 
 .auth-prompt-features {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    gap: var(--space-8);
+    flex-wrap: wrap;
 }
 
 .feature {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 12px;
-  transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    background: var(--color-bg-sunken);
+    border-radius: var(--radius-md);
+    transition: all var(--duration-base) var(--ease-standard);
 }
 
 .feature:hover {
-  background: rgba(255, 255, 255, 0.8);
-  transform: translateY(-2px);
+    background: var(--color-bg-hover);
+    transform: translateY(-2px);
 }
 
 .feature-icon {
-  font-size: 2rem;
+    font-size: var(--text-xl);
 }
 
 .feature span:last-child {
-  font-size: 0.875rem;
-  color: #6b7280;
-  font-weight: 500;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    font-weight: var(--weight-medium);
 }
 
 /* Animations */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
-/* Scrollbar Styles */
+/* Scrollbar Styles: themed, not the browser default, per every theme's
+   own palette rather than a fixed black-ish overlay. */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+    width: 10px;
+    height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 3px;
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-  transition: background 0.2s ease;
+    background: var(--color-border-strong);
+    border-radius: var(--radius-full);
+    border: 2px solid var(--color-bg-canvas);
+    background-clip: padding-box;
+    transition: background var(--duration-fast) var(--ease-standard);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.3);
+    background: var(--color-text-muted);
+    background-clip: padding-box;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border-strong) transparent;
+}
+
+/* Text selection: themed instead of the browser's default blue. */
+::selection {
+    background: var(--color-selection);
+    color: var(--color-text-primary);
 }
 
 /* Mobile Styles */
 @media (max-width: 768px) {
-  .auth-prompt-content {
-    padding: 2rem 1.5rem;
-    margin: 1rem;
-    border-radius: 20px;
-  }
+    .auth-prompt-content {
+        padding: var(--space-8) var(--space-6);
+        margin: var(--space-4);
+        border-radius: var(--radius-lg);
+    }
 
-  .auth-prompt-content h2 {
-    font-size: 1.5rem;
-  }
+    .auth-prompt-content h2 {
+        font-size: var(--text-lg);
+    }
 
-  .auth-prompt-content p {
-    font-size: 1rem;
-  }
+    .auth-prompt-content p {
+        font-size: var(--text-base);
+    }
 
-  .auth-prompt-features {
-    gap: 1rem;
-  }
+    .auth-prompt-features {
+        gap: var(--space-4);
+    }
 
-  .feature {
-    padding: 0.75rem;
-  }
+    .feature {
+        padding: var(--space-3);
+    }
 
-  .logo-icon {
-    width: 3rem;
-    height: 3rem;
-  }
+    .logo-icon {
+        width: 3rem;
+        height: 3rem;
+    }
 
-  .logo-icon::after {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
+    .logo-icon::after {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
-  .auth-prompt-content {
-    padding: 1.5rem 1rem;
-  }
+    .auth-prompt-content {
+        padding: var(--space-6) var(--space-4);
+    }
 
-  .auth-prompt-content h2 {
-    font-size: 1.25rem;
-  }
+    .auth-prompt-content h2 {
+        font-size: var(--text-md);
+    }
 
-  .auth-prompt-features {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
+    .auth-prompt-features {
+        flex-direction: column;
+        gap: var(--space-3);
+    }
 
-  .feature {
-    flex-direction: row;
-    justify-content: flex-start;
-    text-align: left;
-  }
+    .feature {
+        flex-direction: row;
+        justify-content: flex-start;
+        text-align: left;
+    }
 }
 
-/* Focus States */
-button:focus,
-input:focus,
-select:focus,
-textarea:focus {
-  outline: 2px solid #6366f1;
-  outline-offset: 2px;
+/* Layered, so a component that draws its own focus state (usually on the field's wrapper) always wins. */
+@layer base {
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    input:is([type="checkbox"], [type="radio"], [type="range"], [type="color"], [type="file"]):focus-visible,
+    [tabindex]:focus-visible {
+        outline: var(--focus-ring-width) solid var(--color-focus-ring);
+        outline-offset: var(--focus-ring-offset);
+    }
+
+    /* Text fields show focus on every click, so they get a soft halo that follows their own corners. */
+    :where(input:not([type="checkbox"], [type="radio"], [type="range"], [type="color"], [type="file"]), textarea):not(.bui *):focus-visible {
+        outline: none;
+        border-color: var(--color-focus-ring);
+        box-shadow: 0 0 0 3px var(--color-focus-halo);
+    }
 }
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* High Contrast Mode */
-@media (prefers-contrast: high) {
-  .auth-prompt-content {
-    border: 2px solid #000;
-  }
-
-  .feature {
-    border: 1px solid #000;
-  }
-}
-
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #0f172a;
-    color: #f1f5f9;
-  }
-
-  .auth-prompt {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  }
-
-  .auth-prompt-content {
-    background: rgba(30, 41, 59, 0.95);
-    border-color: rgba(71, 85, 105, 0.3);
-  }
-
-  .auth-prompt-content h2 {
-    color: #f1f5f9;
-  }
-
-  .auth-prompt-content p {
-    color: #cbd5e1;
-  }
-
-  .feature {
-    background: rgba(51, 65, 85, 0.5);
-  }
-
-  .feature:hover {
-    background: rgba(51, 65, 85, 0.8);
-  }
-
-  .feature span:last-child {
-    color: #cbd5e1;
-  }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
 /* Print Styles */
 @media print {
-  .auth-prompt,
-  header,
-  .mobile-controls {
-    display: none;
-  }
+    .auth-prompt,
+    header,
+    .mobile-controls {
+        display: none;
+    }
 }
 
+/* Every press answers, on the separate scale property so it can't disturb a
+   control's own transform, positioning or transition list. */
+@media (prefers-reduced-motion: no-preference) {
+    button:not(:disabled):active,
+    [role="button"]:active {
+        animation: press 90ms ease-out forwards;
+    }
+}
+
+@keyframes press {
+    to {
+        scale: 0.965;
+    }
+}
+
+@keyframes panel-out {
+    to {
+        opacity: 0;
+        transform: translateY(6px) scale(0.98);
+    }
+}
+
+/* Entrances that run from CSS start with the first paint, so what they animate is
+   never shown, hidden and then shown again the way a script-driven entrance is. */
+@media (prefers-reduced-motion: no-preference) {
+    [data-rise] {
+        animation: rise-in 700ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+        animation-delay: calc(var(--rise-order, 0) * 70ms);
+    }
+
+    [data-rise-held] [data-rise] {
+        animation: none;
+        opacity: 0;
+    }
+
+    /* A press swaps the animation list, and leaving rise-in out of it would replay
+     the entrance on release. */
+    button[data-rise]:not(:disabled):active {
+        animation:
+            rise-in 700ms cubic-bezier(0.22, 1, 0.36, 1) backwards,
+            press 90ms ease-out forwards;
+        animation-delay: calc(var(--rise-order, 0) * 70ms), 0ms;
+    }
+}
+
+@keyframes rise-in {
+    from {
+        opacity: 0;
+        translate: 0 14px;
+    }
+}
+
+/* A finger needs about 44px. Zero specificity, so a control with its own size for
+   touch still wins, and links inside running text stay inline. */
+@media (pointer: coarse) {
+    :where(
+        button,
+        [role="button"],
+        [role="tab"],
+        [role="menuitem"],
+        [role="radio"],
+        select,
+        input:not([type="checkbox"], [type="radio"], [type="range"], [type="hidden"], [type="color"]),
+        textarea
+    ) {
+        min-height: 44px;
+    }
+
+    :where(button, [role="button"]) {
+        min-width: 44px;
+    }
+
+    :where(nav, footer, header) a[href] {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+    }
+}
+
+.skip-link {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 10000;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+    font-weight: 600;
+    text-decoration: none;
+    translate: 0 -200%;
+}
+
+.skip-link:focus {
+    translate: 0 0;
+}
+
+/* Calm mode, chosen in Profile: the same stillness the system setting asks for. */
+html[data-calm] *,
+html[data-calm] *::before,
+html[data-calm] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+}

@@ -1,0 +1,41 @@
+{
+  "modelKey": "claude:haiku",
+  "task": "cat",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "far front leg",
+    "body",
+    "hind haunch",
+    "near front leg",
+    "head",
+    "near ear",
+    "far ear",
+    "eye",
+    "nose",
+    "mouth",
+    "tail"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 27462,
+    "outputTokens": 3330,
+    "modelMs": 18923,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 12,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-haiku/cat.mosaic.svg",
+  "ranAt": "2026-11-23T05:29:07.815Z"
+}

@@ -1,0 +1,130 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "24"
+
+jobs:
+  format:
+    name: Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - run: npx --yes prettier@3.10.1 --check .
+
+  frontend:
+    name: Frontend (lint, tests, build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+        working-directory: frontend
+      - run: npm run lint
+        working-directory: frontend
+      - run: npm test
+        working-directory: frontend
+      # The build is what catches a missing import; lint alone does not.
+      - run: npm run build
+        working-directory: frontend
+        env:
+          NEXT_PUBLIC_SITE_URL: https://mosaic-collab.vercel.app
+
+  backend:
+    name: Backend, shared and MCP server tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: |
+            backend/package-lock.json
+            mcp-server/package-lock.json
+      - run: npm ci
+        working-directory: backend
+      # The backend serves the hosted MCP endpoint from mcp-server's code, and its suite runs those tests.
+      - run: npm ci
+        working-directory: mcp-server
+      # Hermetic: models, persistence and the model provider are mocked, so no database or keys are needed.
+      - run: npm test
+        working-directory: backend
+        env:
+          DOTENV_CONFIG_PATH: /nonexistent
+
+  docker:
+    name: Backend image
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -f backend/Dockerfile -t mosaic-backend:ci .
+
+  e2e:
+    name: End to end (Playwright)
+    runs-on: ubuntu-latest
+    needs: [frontend, backend]
+    # Runs against a live Couchbase cluster, so only on main and on demand, never on pull requests.
+    if: github.event_name != 'pull_request'
+    env:
+      HAS_DATABASE: ${{ secrets.CB_CONNECTION_STRING != '' }}
+    steps:
+      - name: Skip without database secrets
+        if: env.HAS_DATABASE != 'true'
+        run: echo "CB_CONNECTION_STRING is not set as a repository secret; end-to-end tests skipped."
+      - uses: actions/checkout@v4
+        if: env.HAS_DATABASE == 'true'
+      - uses: actions/setup-node@v4
+        if: env.HAS_DATABASE == 'true'
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: |
+            backend/package-lock.json
+            mcp-server/package-lock.json
+            frontend/package-lock.json
+      - name: Install
+        if: env.HAS_DATABASE == 'true'
+        run: |
+          npm ci --prefix backend
+          npm ci --prefix mcp-server
+          npm ci --prefix frontend
+          npx --prefix frontend playwright install --with-deps chromium
+      - name: Run
+        if: env.HAS_DATABASE == 'true'
+        working-directory: frontend
+        run: npm run test:e2e
+        env:
+          CI: true
+          CB_CONNECTION_STRING: ${{ secrets.CB_CONNECTION_STRING }}
+          CB_USERNAME: ${{ secrets.CB_USERNAME }}
+          CB_PASSWORD: ${{ secrets.CB_PASSWORD }}
+          CB_BUCKET_NAME: ${{ secrets.CB_BUCKET_NAME }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          NEXTAUTH_SECRET: ci-e2e-session-secret
+      # Accounts younger than an hour are kept, so this sweeps what earlier, interrupted runs left behind.
+      - name: Remove leftover test accounts
+        if: always() && env.HAS_DATABASE == 'true'
+        working-directory: backend
+        run: npm run cleanup:test-accounts -- --confirm
+        env:
+          CB_CONNECTION_STRING: ${{ secrets.CB_CONNECTION_STRING }}
+          CB_USERNAME: ${{ secrets.CB_USERNAME }}
+          CB_PASSWORD: ${{ secrets.CB_PASSWORD }}
+          CB_BUCKET_NAME: ${{ secrets.CB_BUCKET_NAME }}

@@ -1,0 +1,28 @@
+{
+  "modelKey": "antigravity:gemini-3.8-flash-medium",
+  "task": "org-chart",
+  "kind": "diagram",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 10207,
+    "outputTokens": 2670,
+    "modelMs": 26933,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 11,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 5
+  },
+  "image": "models/antigravity-gemini-3.8-flash-medium/org-chart.baseline.svg",
+  "ranAt": "2026-11-24T06:25:37.669Z"
+}

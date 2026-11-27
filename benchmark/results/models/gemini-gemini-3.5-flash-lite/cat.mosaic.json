@@ -1,0 +1,40 @@
+{
+  "modelKey": "gemini:gemini-3.5-flash-lite",
+  "task": "cat",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "tail",
+    "back legs",
+    "body",
+    "front paws",
+    "left ear",
+    "right ear",
+    "head",
+    "eye",
+    "nose",
+    "mouth",
+    "whiskers"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 4466,
+    "outputTokens": 826,
+    "modelMs": 4065,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 15,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/gemini-gemini-3.5-flash-lite/cat.mosaic.svg",
+  "ranAt": "2026-11-24T05:36:04.396Z"
+}

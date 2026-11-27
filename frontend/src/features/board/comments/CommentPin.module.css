@@ -1,0 +1,62 @@
+/* Zero-size anchor: only the pin and its popover take the pointer, so the board under it stays usable. */
+/* The transform sits here, not on .pin, so the popover anchored to the pin moves with it. */
+.wrapper {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: visible;
+    /* Above the board, below the comments panel, dock and top bar, so an open panel is never covered. */
+    z-index: 980;
+    transform: translate(0, -100%);
+}
+
+/* A speech bubble whose tail tip sits exactly on the spot being commented on. */
+.pin {
+    display: block;
+    width: var(--comment-mark-size);
+    height: var(--comment-mark-size);
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--color-brand-fill-text);
+    cursor: pointer;
+    position: relative;
+    transition: transform 120ms ease;
+    transform-origin: bottom left;
+    --comment-mark-fill: var(--color-brand-fill);
+    --comment-mark-edge: var(--color-bg-surface);
+}
+
+.pin:hover {
+    transform: scale(1.08);
+}
+
+.pin.resolved {
+    color: var(--color-text-muted);
+    --comment-mark-fill: var(--color-bg-surface);
+    --comment-mark-edge: var(--color-border);
+}
+
+.pin.unread {
+    --comment-mark-edge: var(--color-danger);
+}
+
+.pin.draggable {
+    cursor: grab;
+    touch-action: none;
+}
+
+.pin.draggable:active {
+    cursor: grabbing;
+}
+
+.unreadDot {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: var(--radius-full);
+    background: var(--color-danger);
+    border: 2px solid var(--color-bg-surface);
+}

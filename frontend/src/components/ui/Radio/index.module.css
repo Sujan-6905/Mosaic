@@ -1,0 +1,25 @@
+.radio {
+    appearance: none;
+    display: grid;
+    place-content: center;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin: 1px 0 0;
+    border: 2px solid var(--color-border-strong);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+}
+
+.radio:checked {
+    border-color: var(--color-brand-fill);
+}
+
+.radio:checked::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-brand-fill);
+}

@@ -1,0 +1,28 @@
+{
+  "modelKey": "claude:opus",
+  "task": "tree-and-lake",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 4143,
+    "outputTokens": 410,
+    "modelMs": 5227,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 7,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-opus/tree-and-lake.baseline.svg",
+  "ranAt": "2026-11-23T05:54:33.711Z"
+}

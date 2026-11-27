@@ -1,0 +1,49 @@
+{
+  "modelKey": "claude:sonnet",
+  "task": "bicycle",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "rear wheel",
+    "front wheel",
+    "rear tire inner",
+    "front tire inner",
+    "rear hub",
+    "front hub",
+    "chain stay",
+    "seat stay",
+    "seat tube",
+    "top tube",
+    "down tube",
+    "fork",
+    "seat post",
+    "seat",
+    "handlebar stem",
+    "handlebar",
+    "crank hub",
+    "crank arm",
+    "pedal"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 18217,
+    "outputTokens": 1260,
+    "modelMs": 14777,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 20,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-sonnet/bicycle.mosaic.svg",
+  "ranAt": "2026-11-23T05:40:23.788Z"
+}

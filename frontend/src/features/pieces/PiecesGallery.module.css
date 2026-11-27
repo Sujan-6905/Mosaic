@@ -1,0 +1,229 @@
+.page {
+    min-height: 100svh;
+    padding: clamp(20px, 4vw, 48px) 16px 64px;
+    background-color: var(--color-bg-canvas);
+    background-image: radial-gradient(var(--color-canvas-grid) 1px, transparent 1px);
+    background-size: 24px 24px;
+    color: var(--color-text-primary);
+}
+
+.back {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: var(--color-text-primary);
+    font: 700 16px var(--font-display);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.hero,
+.toolbar,
+.section {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: var(--color-text-muted);
+    font: 500 0.75rem var(--font-mono);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.title {
+    margin: 0;
+    max-width: 18ch;
+    font: 800 clamp(1.9rem, 4.2vw, 3.2rem) / 1.05 var(--font-display);
+}
+
+.lede {
+    max-width: 62ch;
+    margin: 14px 0 0;
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: clamp(24px, 4vw, 40px);
+}
+
+.search {
+    flex: 1 1 260px;
+    min-height: 44px;
+    padding: 0 14px;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    font: inherit;
+}
+
+.search:focus-visible,
+.chip:focus-visible,
+.primary:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.sorts,
+.tagFilter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tagFilter {
+    flex-basis: 100%;
+}
+
+.chip {
+    min-height: 36px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-surface);
+    color: var(--color-text-secondary);
+    font: 500 0.875rem var(--font-sans);
+    cursor: pointer;
+}
+
+.chip[aria-pressed="true"] {
+    border-color: var(--color-text-primary);
+    color: var(--color-text-primary);
+}
+
+.section {
+    margin-top: clamp(28px, 5vw, 48px);
+}
+
+.sectionTitle {
+    margin: 0 0 14px;
+    font: 700 1.25rem var(--font-display);
+}
+
+.note {
+    margin: 0 0 16px;
+    color: var(--color-text-secondary);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+    gap: 16px;
+}
+
+.setCard {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+    background: var(--color-bg-surface);
+    box-shadow: var(--shadow-sm);
+}
+
+.previews {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.previews li {
+    border-radius: 10px;
+    background: var(--color-bg-canvas);
+    overflow: hidden;
+}
+
+.preview {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 200 / 124;
+}
+
+.setText {
+    padding: 0 4px;
+}
+
+.setTitle {
+    margin: 0;
+    font: 700 1.0625rem var(--font-display);
+}
+
+.setDescription {
+    margin: 4px 0 0;
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.45;
+}
+
+.meta {
+    margin: 8px 0 0;
+    color: var(--color-text-muted);
+    font-size: 0.8125rem;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 8px 0 0;
+}
+
+.tag,
+.license {
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    background: var(--color-bg-sunken);
+    color: var(--color-text-secondary);
+}
+
+.license {
+    font-family: var(--font-mono);
+}
+
+.cardActions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    padding: 0 4px 4px;
+}
+
+.primary {
+    min-height: 44px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+    font: 600 0.9375rem var(--font-sans);
+    cursor: pointer;
+}
+
+.primary:disabled {
+    opacity: 0.6;
+}
+
+.added,
+.problem {
+    padding: 0 4px 4px;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+}
+
+.problem {
+    color: var(--color-danger);
+}

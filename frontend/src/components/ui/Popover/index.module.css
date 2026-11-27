@@ -1,0 +1,28 @@
+.root {
+    position: relative;
+    display: inline-flex;
+}
+
+.content {
+    /* Placed inline once measured; as a body portal it has to clear every other fixed overlay. */
+    z-index: 3000;
+    max-height: calc(100svh - 16px);
+    overflow-y: auto;
+    min-width: 12rem;
+    animation: rise-in var(--duration-fast) var(--ease-out);
+}
+
+.measuring {
+    visibility: hidden;
+}
+
+@keyframes rise-in {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

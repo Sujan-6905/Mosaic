@@ -1,0 +1,413 @@
+.dock {
+    position: fixed;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 6px;
+    border-radius: 18px;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    max-width: calc(100vw - 24px);
+    overflow-x: auto;
+    scrollbar-width: none;
+    transition: opacity var(--duration-base) var(--ease-standard);
+}
+
+.dock::-webkit-scrollbar {
+    display: none;
+}
+
+.dock[data-disabled="true"] {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.group {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.popoverRoot {
+    display: inline-flex;
+}
+
+.rule {
+    flex: none;
+    width: 1px;
+    height: 30px;
+    margin: 0 4px;
+    background: var(--color-border);
+}
+
+.iconButton,
+.tool {
+    border: 0;
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition:
+        background-color var(--duration-fast) var(--ease-standard),
+        color var(--duration-fast) var(--ease-standard);
+}
+
+.iconButton {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tool {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    width: 52px;
+    padding: 7px 0 5px;
+    border-radius: 12px;
+    font: 500 10px var(--font-sans);
+}
+
+.iconButton:hover,
+/* The corner mark says this tool has more behind it. */
+.tool[aria-haspopup] {
+    position: relative;
+}
+
+.tool[aria-haspopup]::after {
+    content: "";
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-top: 4px solid currentColor;
+    opacity: 0.55;
+}
+
+.tool:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.tool[aria-pressed="true"] {
+    background: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+}
+
+.iconButton:focus-visible,
+.tool:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus-ring);
+    outline-offset: 1px;
+}
+
+.toolLabel {
+    line-height: 1;
+}
+
+.pop {
+    width: 268px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pop:has(.shapeGrid) {
+    width: 352px;
+}
+
+.popTitle {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+}
+
+.segments {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+    padding: 4px;
+    border-radius: 12px;
+    background: var(--color-bg-sunken);
+}
+
+.segment {
+    border: 0;
+    border-radius: 9px;
+    padding: 8px 4px;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font: 500 12px var(--font-sans);
+    cursor: pointer;
+}
+
+.segment[aria-checked="true"] {
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.sizeRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: -4px;
+}
+
+.sizeValue {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+.swatches {
+    display: flex;
+    gap: 6px;
+}
+
+.swatch {
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    border: 0;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.swatch[aria-checked="true"] {
+    outline: 2px solid var(--color-brand-fill);
+    outline-offset: 2px;
+}
+
+.shapeGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 3.9rem);
+    gap: 4px;
+}
+
+.shapeCell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 2px 8px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font: 500 10px var(--font-sans);
+    cursor: pointer;
+}
+
+.shapeCell:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.shapeCell[aria-checked="true"] {
+    background: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 8px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--color-text-primary);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.pop:has(.row) {
+    gap: 2px;
+}
+
+.row:hover,
+.row[data-active="true"] {
+    background: var(--color-bg-hover);
+}
+
+.rowIcon {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: var(--color-bg-sunken);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+}
+
+.row[data-active="true"] .rowIcon {
+    background: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+}
+
+.rowText {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.rowNote {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-text-muted);
+}
+
+.kbd {
+    min-width: 22px;
+    padding: 2px 6px;
+    border-radius: 6px;
+    background: var(--color-bg-sunken);
+    border: 1px solid var(--color-border);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-align: center;
+    color: var(--color-text-secondary);
+}
+
+.segment:focus-visible,
+.swatch:focus-visible,
+.shapeCell:focus-visible,
+.row:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus-ring);
+    outline-offset: 1px;
+}
+
+@media (max-width: 720px) {
+    .dock {
+        bottom: 10px;
+        left: 12px;
+        right: 12px;
+        transform: none;
+        max-width: none;
+        justify-content: flex-start;
+    }
+
+    .tool {
+        width: 44px;
+    }
+
+    .toolLabel {
+        display: none;
+    }
+
+    .tool {
+        padding: 9px 0;
+    }
+}
+
+.dock {
+    animation: dockIn 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.tool :global(svg),
+.iconButton :global(svg) {
+    transition: translate 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tool:hover :global(svg),
+.iconButton:hover :global(svg) {
+    translate: 0 -2px;
+}
+
+@keyframes dockIn {
+    from {
+        opacity: 0;
+        translate: 0 24px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dock {
+        animation: none;
+    }
+
+    .tool:hover :global(svg),
+    .iconButton:hover :global(svg) {
+        translate: none;
+    }
+}
+
+.accessBadge {
+    flex: none;
+    padding: 0 10px;
+    font: 500 12px var(--font-sans);
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+}
+
+.stampRow {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+}
+
+.stamps {
+    display: flex;
+    gap: 4px;
+}
+
+.stamp {
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+        transform 150ms ease-out,
+        border-color 150ms ease-out;
+}
+
+.stamp:hover {
+    transform: scale(1.08);
+}
+
+.stamp[aria-checked="true"] {
+    border-color: var(--color-accent);
+}
+
+.stamp:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus-ring);
+    outline-offset: 1px;
+}
+
+@media (pointer: coarse) {
+    .stamp {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .stamp {
+        transition: none;
+    }
+}

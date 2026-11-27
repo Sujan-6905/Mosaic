@@ -1,0 +1,28 @@
+{
+  "modelKey": "groq:qwen/qwen3.8-27b",
+  "task": "house",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 2,
+    "inputTokens": 1179,
+    "outputTokens": 1354,
+    "modelMs": 3053,
+    "rateLimitWaits": 4
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 7,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/groq-qwen-qwen3.8-27b/house.baseline.svg",
+  "ranAt": "2026-11-23T05:55:37.783Z"
+}

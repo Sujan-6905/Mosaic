@@ -1,0 +1,127 @@
+.nav {
+    position: relative;
+    z-index: 5;
+    height: 72px;
+    padding: 0 var(--site-shell);
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.wordmark {
+    font-family: var(--site-display);
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--site-bone);
+    text-decoration: none;
+}
+
+.links {
+    margin: 0 auto;
+    display: flex;
+    gap: 30px;
+    font-size: 14px;
+}
+
+.links a {
+    position: relative;
+    color: var(--site-bone-dim);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 1.5px;
+    background: var(--site-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.links a:hover::after,
+.links a[data-active="true"]::after {
+    transform: scaleX(1);
+}
+
+.links a:hover,
+.links a[data-active="true"] {
+    color: var(--site-gold);
+}
+
+.signIn {
+    margin-left: auto;
+    border: 0;
+    background: transparent;
+    color: var(--site-bone-dim);
+    font: 400 14px var(--site-body);
+    cursor: pointer;
+}
+
+.links + .signIn,
+.links + .start {
+    margin-left: 0;
+}
+
+.signIn:hover {
+    color: var(--site-bone);
+}
+
+.start {
+    border: 0;
+    background: var(--site-gold);
+    color: var(--color-brand-fill-text);
+    border-radius: 999px;
+    padding: 10px 18px;
+    font: 600 14px var(--site-body);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background-color var(--duration-fast) var(--ease-standard),
+        transform var(--duration-fast) var(--ease-standard);
+}
+
+.start:hover {
+    background: var(--color-brand-fill-hover);
+    transform: translateY(-1px);
+}
+
+.start:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.signIn:focus-visible,
+.start:focus-visible,
+.links a:focus-visible,
+.wordmark:focus-visible {
+    outline: 2px solid var(--site-gold);
+    outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+    .links {
+        display: none;
+    }
+
+    .links + .signIn,
+    .links + .start {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 420px) {
+    .nav {
+        gap: 14px;
+    }
+
+    .wordmark {
+        font-size: 16px;
+        letter-spacing: 0.22em;
+    }
+}

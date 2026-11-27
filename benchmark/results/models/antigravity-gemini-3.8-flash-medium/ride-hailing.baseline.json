@@ -1,0 +1,28 @@
+{
+  "modelKey": "antigravity:gemini-3.8-flash-medium",
+  "task": "ride-hailing",
+  "kind": "diagram",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 10208,
+    "outputTokens": 2654,
+    "modelMs": 29250,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 21,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 11
+  },
+  "image": "models/antigravity-gemini-3.8-flash-medium/ride-hailing.baseline.svg",
+  "ranAt": "2026-11-24T06:36:12.569Z"
+}

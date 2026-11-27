@@ -1,0 +1,28 @@
+{
+  "modelKey": "groq:openai/gpt-oss-20b",
+  "task": "tree-and-lake",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 189,
+    "outputTokens": 1016,
+    "modelMs": 1406,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 5,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/groq-openai-gpt-oss-20b/tree-and-lake.baseline.svg",
+  "ranAt": "2026-11-23T06:12:16.018Z"
+}

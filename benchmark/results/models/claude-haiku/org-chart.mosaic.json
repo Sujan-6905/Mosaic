@@ -1,0 +1,32 @@
+{
+  "modelKey": "claude:haiku",
+  "task": "org-chart",
+  "kind": "diagram",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": {
+    "structure": "org-chart",
+    "look": "ink",
+    "levers": {}
+  },
+  "parts": null,
+  "usage": {
+    "calls": 3,
+    "inputTokens": 57277,
+    "outputTokens": 2850,
+    "modelMs": 17153,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 12,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 5
+  },
+  "image": "models/claude-haiku/org-chart.mosaic.svg",
+  "ranAt": "2026-11-24T04:35:57.481Z"
+}

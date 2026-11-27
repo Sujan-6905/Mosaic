@@ -1,0 +1,28 @@
+{
+  "modelKey": "claude:haiku",
+  "task": "house",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 2,
+    "inputTokens": 8754,
+    "outputTokens": 2937,
+    "modelMs": 17322,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 9,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-haiku/house.baseline.svg",
+  "ranAt": "2026-11-23T05:48:43.560Z"
+}

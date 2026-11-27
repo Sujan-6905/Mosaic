@@ -1,0 +1,37 @@
+{
+  "name": "@mosaic/mcp-server",
+  "version": "2.0.0",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sujan-6905/Mosaic.git",
+    "directory": "mcp-server"
+  },
+  "description": "MCP server for Mosaic, the real-time collaborative whiteboard: lets Claude, Cursor and other AI agents read, draw and edit boards.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "whiteboard",
+    "collaborative-whiteboard",
+    "diagrams",
+    "ai-agents",
+    "claude"
+  ],
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "mosaic-mcp-server": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "dagre": "0.8.5",
+    "jsdom": "29.1.1",
+    "mermaid": "12.2.0",
+    "socket.io-client": "^4.8.3",
+    "zod": "^4.4.3"
+  }
+}

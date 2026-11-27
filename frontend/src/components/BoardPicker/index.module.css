@@ -1,0 +1,29 @@
+.boardList {
+    max-height: 12rem;
+    overflow-y: auto;
+    margin: var(--space-2) 0 0;
+    padding: var(--space-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    list-style: none;
+}
+
+.boardList label {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+    min-height: 36px;
+    font-size: 0.875rem;
+}
+
+.boardList input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--color-brand-fill);
+}
+
+.note {
+    margin: var(--space-2) 0 0;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+}
