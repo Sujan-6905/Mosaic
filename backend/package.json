@@ -51,7 +51,7 @@
   "devDependencies": {
     "@types/ioredis-mock": "^8.2.7",
     "ioredis-mock": "^8.9.0",
-    "mongodb": "^6.22.0",
+    "mongodb": "^7.9.1",
     "nodemon": "^3.1.10",
     "socket.io-client": "^4.8.3",
     "supertest": "^7.2.2",
