@@ -18,8 +18,8 @@ jobs:
     name: Format
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
       - run: npx --yes prettier@3.10.1 --check .
@@ -28,8 +28,8 @@ jobs:
     name: Frontend (lint, tests, build)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
@@ -50,8 +50,8 @@ jobs:
     name: Backend, shared and MCP server tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
@@ -73,7 +73,7 @@ jobs:
     name: Backend image
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: docker build -f backend/Dockerfile -t mosaic-backend:ci .
 
   e2e:
@@ -88,9 +88,9 @@ jobs:
       - name: Skip without database secrets
         if: env.HAS_DATABASE != 'true'
         run: echo "CB_CONNECTION_STRING is not set as a repository secret; end-to-end tests skipped."
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         if: env.HAS_DATABASE == 'true'
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         if: env.HAS_DATABASE == 'true'
         with:
           node-version: ${{ env.NODE_VERSION }}
