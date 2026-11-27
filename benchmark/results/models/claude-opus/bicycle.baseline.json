@@ -1,0 +1,28 @@
+{
+  "modelKey": "claude:opus",
+  "task": "bicycle",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 4139,
+    "outputTokens": 1085,
+    "modelMs": 10541,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 21,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-opus/bicycle.baseline.svg",
+  "ranAt": "2026-11-23T05:52:38.982Z"
+}

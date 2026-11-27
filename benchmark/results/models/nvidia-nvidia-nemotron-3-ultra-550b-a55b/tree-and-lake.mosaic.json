@@ -1,0 +1,35 @@
+{
+  "modelKey": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+  "task": "tree-and-lake",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "lake",
+    "tree reflection canopy",
+    "tree reflection trunk",
+    "tree trunk",
+    "tree canopy"
+  ],
+  "usage": {
+    "calls": 3,
+    "inputTokens": 8317,
+    "outputTokens": 4921,
+    "modelMs": 37820,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 6,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/nvidia-nvidia-nemotron-3-ultra-550b-a55b/tree-and-lake.mosaic.svg",
+  "ranAt": "2026-11-23T05:52:22.631Z"
+}

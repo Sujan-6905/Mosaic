@@ -1,0 +1,32 @@
+{
+  "modelKey": "groq:openai/gpt-oss-20b",
+  "task": "url-shortener",
+  "kind": "diagram",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": {
+    "structure": "layered-tiers",
+    "look": "ink",
+    "levers": {}
+  },
+  "parts": null,
+  "usage": {
+    "calls": 11,
+    "inputTokens": 9425,
+    "outputTokens": 1923,
+    "modelMs": 18656,
+    "rateLimitWaits": 1
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 23,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 7
+  },
+  "image": "models/groq-openai-gpt-oss-20b/url-shortener.mosaic.svg",
+  "ranAt": "2026-11-24T04:40:10.802Z"
+}

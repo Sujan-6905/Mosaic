@@ -1,0 +1,42 @@
+{
+  "modelKey": "groq:qwen/qwen3.8-27b",
+  "task": "cat",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "cat left leg",
+    "cat right leg",
+    "cat body",
+    "cat head",
+    "cat left ear",
+    "cat right ear",
+    "cat left eye",
+    "cat right eye",
+    "cat nose",
+    "cat mouth",
+    "cat whiskers",
+    "cat tail",
+    "ground line"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 3965,
+    "outputTokens": 678,
+    "modelMs": 1943,
+    "rateLimitWaits": 1
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 16,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/groq-qwen-qwen3.8-27b/cat.mosaic.svg",
+  "ranAt": "2026-11-23T05:38:49.852Z"
+}

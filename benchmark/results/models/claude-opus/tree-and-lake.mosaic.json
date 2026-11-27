@@ -1,0 +1,36 @@
+{
+  "modelKey": "claude:opus",
+  "task": "tree-and-lake",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "tree trunk",
+    "tree canopy",
+    "tree leaf texture",
+    "lake",
+    "lake ripples",
+    "reeds"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 18198,
+    "outputTokens": 1072,
+    "modelMs": 14673,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 15,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-opus/tree-and-lake.mosaic.svg",
+  "ranAt": "2026-11-23T05:55:10.477Z"
+}

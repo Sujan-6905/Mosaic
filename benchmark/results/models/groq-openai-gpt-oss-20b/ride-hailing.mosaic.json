@@ -1,0 +1,39 @@
+{
+  "modelKey": "groq:openai/gpt-oss-20b",
+  "task": "ride-hailing",
+  "kind": "diagram",
+  "variant": "mosaic",
+  "outcome": "invalid",
+  "error": "provider rejected the output",
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 6,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "modelMs": 14061,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": false,
+    "elementCount": 0,
+    "validShare": 0,
+    "coverage": 0,
+    "missing": [
+      "rider",
+      "driver",
+      "gateway",
+      "matching",
+      "pricing",
+      "trip",
+      "stripe",
+      "postgres",
+      "redis",
+      "notification"
+    ],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/groq-openai-gpt-oss-20b/ride-hailing.mosaic.svg",
+  "ranAt": "2026-11-24T04:51:13.857Z"
+}

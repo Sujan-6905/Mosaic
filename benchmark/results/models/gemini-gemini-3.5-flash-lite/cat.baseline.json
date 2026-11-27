@@ -1,0 +1,28 @@
+{
+  "modelKey": "gemini:gemini-3.5-flash-lite",
+  "task": "cat",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 93,
+    "outputTokens": 406,
+    "modelMs": 1337,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 4,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 2,
+    "connectors": 0
+  },
+  "image": "models/gemini-gemini-3.5-flash-lite/cat.baseline.svg",
+  "ranAt": "2026-11-24T05:35:57.275Z"
+}

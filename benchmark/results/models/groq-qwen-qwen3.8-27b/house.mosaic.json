@@ -1,0 +1,37 @@
+{
+  "modelKey": "groq:qwen/qwen3.8-27b",
+  "task": "house",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "chimney",
+    "walls",
+    "roof",
+    "door",
+    "door knob",
+    "left window",
+    "right window"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 3982,
+    "outputTokens": 506,
+    "modelMs": 1919,
+    "rateLimitWaits": 1
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 12,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/groq-qwen-qwen3.8-27b/house.mosaic.svg",
+  "ranAt": "2026-11-23T05:36:49.205Z"
+}

@@ -1,0 +1,129 @@
+WEBVTT
+
+1
+00:00:00.600 --> 00:00:02.852
+Oh great. Another whiteboard app.
+
+2
+00:00:03.452 --> 00:00:05.351
+Yeah. But this one is different.
+
+3
+00:00:08.451 --> 00:00:11.755
+Start with an empty board, and tell it what you want, in one line.
+
+4
+00:00:15.255 --> 00:00:16.421
+That's all it needs.
+
+5
+00:00:18.621 --> 00:00:23.129
+Every box, every arrow, laid out for you. And nothing lands until you place it.
+
+6
+00:00:23.929 --> 00:00:25.952
+Okay. That's actually neat.
+
+7
+00:00:26.652 --> 00:00:29.170
+Every diagram has two things you can change.
+
+8
+00:00:29.570 --> 00:00:35.269
+Its structure: how the parts are arranged. In tiers, around a hub, or as a pipeline.
+
+9
+00:00:36.869 --> 00:00:42.675
+And its look: how it's drawn. Watercolour, blueprint, ink, and forty more.
+
+10
+00:00:44.275 --> 00:00:47.509
+Change either one, and the same diagram redraws itself.
+
+11
+00:00:48.709 --> 00:00:50.320
+And when the design changes?
+
+12
+00:00:50.720 --> 00:00:56.187
+Just say so. Ask for a CDN in front of the gateway, and it grows the diagram you already have.
+
+13
+00:00:58.587 --> 00:01:03.194
+Changes to your work arrive as a list. Tick what you want, hold to compare, then apply.
+
+14
+00:01:05.794 --> 00:01:06.914
+I've got the gateway.
+
+15
+00:01:07.064 --> 00:01:08.664
+I'll take the database.
+
+16
+00:01:09.014 --> 00:01:13.003
+Your whole team works on the same board, live. Even inside the same note.
+
+17
+00:01:15.403 --> 00:01:18.249
+Built something worth keeping? Save it as a piece.
+
+18
+00:01:19.049 --> 00:01:22.832
+Drop it into any board, share it with your team, or publish it for everyone.
+
+19
+00:01:26.032 --> 00:01:28.070
+And the board remembers every change.
+
+20
+00:01:29.470 --> 00:01:30.366
+Rewind it.
+
+21
+00:01:34.566 --> 00:01:37.774
+Branch it, to try an idea without touching the original.
+
+22
+00:01:42.374 --> 00:01:44.458
+And merge it back, once it works.
+
+23
+00:01:50.058 --> 00:01:51.890
+So it's Git, for whiteboards.
+
+24
+00:01:52.240 --> 00:01:52.995
+Exactly.
+
+25
+00:01:55.195 --> 00:01:56.646
+Wait. What did I miss?
+
+26
+00:01:56.996 --> 00:02:00.837
+Ask it to catch you up, and it tells you what changed while you were away.
+
+27
+00:02:03.837 --> 00:02:09.122
+Point it at a GitHub repository, and it draws the frontend, the backend and the database for you.
+
+28
+00:02:11.122 --> 00:02:18.204
+Even your AI agents can join. Claude, Cursor or VS Code can read the board, and draw on it, right beside you.
+
+29
+00:02:20.604 --> 00:02:26.379
+Fifty thousand elements on one board, and each frame still draws in three and a half milliseconds.
+
+30
+00:02:27.579 --> 00:02:30.154
+Export it, embed it, or share a link.
+
+31
+00:02:35.354 --> 00:02:36.897
+Alright. I'm sold.
+
+32
+00:02:37.497 --> 00:02:40.331
+Mosaic. Say it, and it's on the board.

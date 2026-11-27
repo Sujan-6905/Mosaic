@@ -1,0 +1,117 @@
+.ghost {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1950;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 1.5px dashed var(--color-brand-fill);
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--color-brand-fill) 6%, transparent);
+    animation: lift 220ms var(--ease-out) both;
+}
+
+.preview {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.corner {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    border: 1.5px solid var(--color-brand-fill);
+    border-radius: 2px;
+    background: var(--color-bg-surface);
+}
+
+.corner[data-at="tl"] {
+    top: -5px;
+    left: -5px;
+}
+.corner[data-at="tr"] {
+    top: -5px;
+    right: -5px;
+}
+.corner[data-at="bl"] {
+    bottom: -5px;
+    left: -5px;
+}
+.corner[data-at="br"] {
+    bottom: -5px;
+    right: -5px;
+}
+
+.hint {
+    position: fixed;
+    top: 76px;
+    left: 50%;
+    z-index: 1955;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 8px 8px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-surface);
+    box-shadow: var(--shadow-lg);
+    color: var(--color-text-primary);
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    transform: translateX(-50%);
+    animation: hintIn 240ms var(--ease-out) both;
+}
+
+.hint button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 0;
+    border-radius: 999px;
+    padding: 5px 10px;
+    background: var(--color-bg-hover);
+    color: var(--color-text-secondary);
+    font: inherit;
+    cursor: pointer;
+}
+
+.hint kbd {
+    font: inherit;
+    font-size: 11px;
+    color: var(--color-text-muted);
+}
+
+@keyframes lift {
+    from {
+        opacity: 0;
+        transform: scale(0.94);
+    }
+}
+
+@keyframes hintIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -8px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .frame,
+    .hint {
+        animation: none;
+    }
+}
+
+@media (pointer: coarse) {
+    .hint kbd {
+        display: none;
+    }
+}

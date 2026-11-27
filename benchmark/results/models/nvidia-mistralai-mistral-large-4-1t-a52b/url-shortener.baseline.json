@@ -1,0 +1,28 @@
+{
+  "modelKey": "nvidia:mistralai/mistral-large-4-1t-a52b",
+  "task": "url-shortener",
+  "kind": "diagram",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 157,
+    "outputTokens": 4090,
+    "modelMs": 183206,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 19,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 6
+  },
+  "image": "models/nvidia-mistralai-mistral-large-4-1t-a52b/url-shortener.baseline.svg",
+  "ranAt": "2026-11-23T05:50:01.294Z"
+}

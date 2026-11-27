@@ -1,0 +1,39 @@
+{
+  "modelKey": "antigravity:gemini-3.8-flash-medium",
+  "task": "cat",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "tail",
+    "hind legs",
+    "body",
+    "front legs",
+    "head",
+    "ears",
+    "eyes",
+    "nose",
+    "mouth",
+    "whiskers"
+  ],
+  "usage": {
+    "calls": 3,
+    "inputTokens": 24889,
+    "outputTokens": 17381,
+    "modelMs": 413664,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 20,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/antigravity-gemini-3.8-flash-medium/cat.mosaic.svg",
+  "ranAt": "2026-11-24T06:49:55.906Z"
+}

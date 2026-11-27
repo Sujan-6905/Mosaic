@@ -1,0 +1,184 @@
+/* Colour, type, spacing, radius, elevation and motion tokens, swapped as a set by `data-theme` on <html>.
+   The canvas renderer reads them through getComputedStyle, memoised per theme change. */
+
+:root {
+    --comment-mark-size: 34px;
+    /* Zodiak for display (an inscriptional serif suits a carved medium), Hanken Grotesk for UI and Azeret Mono
+     for small uppercase labels. Nothing is width-stretched: the proportions are each typeface's own. */
+    --font-sans: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-display: "Zodiak", Georgia, "Times New Roman", serif;
+    --font-mono: "Azeret Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+    /* Type scale - 1.25 (major third) ratio from a 15px base. */
+    --text-2xs: 0.6875rem; /* 11px */
+    --text-xs: 0.75rem; /* 12px */
+    --text-sm: 0.8125rem; /* 13px */
+    --text-base: 0.9375rem; /* 15px */
+    --text-md: 1.125rem; /* 18px */
+    --text-lg: 1.375rem; /* 22px */
+    --text-xl: 1.75rem; /* 28px */
+    --text-2xl: 2.25rem; /* 36px */
+    --text-3xl: 3rem; /* 48px */
+
+    --leading-tight: 1.2;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.7;
+
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+
+    /* ---- Spacing scale - 4px base unit ---- */
+    --space-0: 0;
+    --space-1: 0.25rem; /* 4px */
+    --space-2: 0.5rem; /* 8px */
+    --space-3: 0.75rem; /* 12px */
+    --space-4: 1rem; /* 16px */
+    --space-5: 1.25rem; /* 20px */
+    --space-6: 1.5rem; /* 24px */
+    --space-8: 2rem; /* 32px */
+    --space-10: 2.5rem; /* 40px */
+    --space-12: 3rem; /* 48px */
+    --space-16: 4rem; /* 64px */
+
+    /* ---- Radius ---- */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-full: 999px;
+    /* Component radii from the design system: pill buttons and chips,
+     14px cards, 10px inputs. */
+    --radius-card: 14px;
+    --radius-input: 10px;
+    --radius-panel: 22px;
+
+    /* ---- Motion ---- */
+    --duration-fast: 120ms;
+    --duration-base: 180ms;
+    --duration-slow: 280ms;
+    --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+    /* ---- Focus ring (shared by every interactive primitive) ---- */
+    --focus-ring-width: 2px;
+    --focus-ring-offset: 2px;
+
+    /* Brand gold, fixed across themes with dark ink text, for solid fills (primary buttons, active chips, badges).
+     `--color-accent` is re-picked per theme instead, since it must pass AA as text on the page. */
+    --color-brand-fill: #ffb43c;
+    --color-brand-fill-hover: #ffc76a;
+    --color-brand-fill-text: #1a1206;
+
+    /* The logo's four tesserae, fixed across themes and sampled from the favicon PNGs so the two match. */
+    --color-brand-mark-1: #f39515;
+    --color-brand-mark-2: #2d343b;
+    --color-brand-mark-3: #de5816;
+    --color-brand-mark-4: #1b2329;
+
+    /* Fixed across themes so a collaborator's colour stays recognisable, each picked for AA contrast on every canvas. */
+    --presence-1: #ef4444;
+    --presence-2: #f97316;
+    --presence-3: #eab308;
+    --presence-4: #22c55e;
+    --presence-5: #06b6d4;
+    --presence-6: #3b82f6;
+    --presence-7: #8b5cf6;
+    --presence-8: #ec4899;
+}
+
+/* Light: warm paper ground, near-black ink, and the brand gold darkened just enough to read as text. */
+:root,
+:root[data-theme="light"] {
+    --color-bg-canvas: #f6f5f1;
+    --color-bg-surface: #ffffff;
+    --color-bg-elevated: #ffffff;
+    --color-bg-sunken: #ecebe5;
+    --color-bg-hover: #efede8;
+    --color-bg-active: #e5e3dc;
+
+    --color-border: #e2e1dc;
+    --color-border-strong: #cfcdc6;
+
+    --color-text-primary: #17181b;
+    --color-text-secondary: #5a5d64;
+    --color-text-muted: #65686f;
+    --color-text-on-accent: #ffffff;
+
+    /* The brightest brand gold that passes AA as small text on paper (about 5:1 on the canvas colour).
+     The bright leaf gold stays a dark-theme value. */
+    --color-accent: #965c09;
+    --color-accent-hover: #825008;
+    --color-accent-muted: #f6e8d0;
+
+    --color-danger: #c22b2b;
+    --color-danger-muted: #f6dede;
+    --color-on-danger: #ffffff;
+    --color-success: #1f8a4c;
+    --color-warning: #b5760a;
+
+    --color-focus-ring: #965c09;
+    --color-focus-halo: rgba(150, 92, 9, 0.18);
+    /* Brand-fill wash rather than the muted light-mode accent, so selections read as the product's gold in both themes. */
+    --color-selection: rgba(255, 180, 60, 0.22);
+    --color-overlay: rgba(20, 18, 14, 0.42);
+
+    --color-canvas-grid: #dcdbd7;
+    /* Brand fill rather than the AA-darkened accent: a handle is a graphical affordance, not text. */
+    --color-canvas-selection-handle: #ffb43c;
+    /* Plain grey, since the trail sits over strokes of any colour and reads as a tool, not page content. */
+    --color-eraser-trail: #9a9a9a;
+    --color-ink-primary: #17181b;
+    --color-ink-inverse: #ffffff;
+
+    --shadow-sm: 0 1px 2px rgba(32, 29, 23, 0.08);
+    --shadow-md: 0 4px 12px rgba(32, 29, 23, 0.1), 0 1px 3px rgba(32, 29, 23, 0.08);
+    --shadow-lg: 0 12px 32px rgba(32, 29, 23, 0.16), 0 2px 6px rgba(32, 29, 23, 0.08);
+    color-scheme: light;
+}
+
+/* Dark: graphite rather than pure black, with stepped surfaces, so bone text has no halo and the gold still pops. */
+:root[data-theme="dark"] {
+    --color-bg-canvas: #15171b;
+    --color-bg-surface: #1c1f24;
+    --color-bg-elevated: #24282e;
+    --color-bg-sunken: #121418;
+    --color-bg-hover: #2e333a;
+    --color-bg-active: #363b43;
+
+    --color-border: #2c3036;
+    --color-border-strong: #3b4048;
+
+    --color-text-primary: #ecebe6;
+    --color-text-secondary: #a4a7ae;
+    --color-text-muted: #868a92;
+    --color-text-on-accent: #1a1206;
+
+    --color-accent: #ffb43c;
+    --color-accent-hover: #ffc76a;
+    --color-accent-muted: #3a2a12;
+
+    --color-danger: #f26868;
+    --color-danger-muted: #3a2323;
+    --color-on-danger: #2a0808;
+    --color-success: #4ade80;
+    --color-warning: #f0b429;
+
+    --color-focus-ring: #ffb43c;
+    --color-focus-halo: rgba(255, 180, 60, 0.2);
+    --color-selection: rgba(255, 180, 60, 0.22);
+    --color-overlay: rgba(10, 11, 13, 0.6);
+
+    --color-canvas-grid: #2b2d31;
+    --color-canvas-selection-handle: #ffb43c;
+    --color-eraser-trail: #8a8a8a;
+    --color-ink-primary: #ecebe6;
+    --color-ink-inverse: #15171b;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.45);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.55);
+    color-scheme: dark;
+}

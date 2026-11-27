@@ -1,0 +1,154 @@
+.layout {
+    display: flex;
+    gap: 20px;
+    min-height: min(56svh, 480px);
+}
+
+.branchList {
+    flex: 0 0 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.listHeading {
+    padding: 0 8px 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
+.branch {
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--color-text-primary);
+    font: 500 14px var(--font-sans);
+    text-align: left;
+    cursor: pointer;
+}
+
+.branch:hover {
+    background: var(--color-bg-hover);
+}
+
+.branch[aria-pressed="true"] {
+    background: var(--color-bg-hover);
+    border-color: var(--color-brand-fill);
+}
+
+.branchButton {
+    margin-top: auto;
+}
+
+.empty {
+    padding: 0 8px;
+    color: var(--color-text-muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.diffArea {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.diffEmpty {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    border: 1.5px dashed var(--color-border);
+    color: var(--color-text-muted);
+    font-size: 14px;
+}
+
+.canvas {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 720 / 400;
+    border-radius: 14px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-canvas);
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+.legendItem strong {
+    color: var(--color-text-primary);
+}
+
+.swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    border: 2px solid;
+}
+
+.authorSummary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.authorChip {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--color-bg-sunken);
+    color: var(--color-text-secondary);
+    font-size: 12px;
+}
+
+.openLink {
+    margin-left: auto;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+.branch:focus-visible,
+.openLink:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus-ring);
+    outline-offset: 2px;
+}
+
+@media (max-width: 760px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .branchList {
+        flex-basis: auto;
+    }
+}
+
+.mergeActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border);
+}
+
+.diffLoading {
+    gap: 10px;
+}

@@ -1,0 +1,37 @@
+{
+  "modelKey": "claude:sonnet",
+  "task": "house",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "chimney",
+    "walls",
+    "roof",
+    "door",
+    "door knob",
+    "left window",
+    "right window"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 18215,
+    "outputTokens": 722,
+    "modelMs": 8771,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 12,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-sonnet/house.mosaic.svg",
+  "ranAt": "2026-11-23T05:38:10.639Z"
+}

@@ -1,0 +1,73 @@
+.iconButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition:
+        background-color var(--duration-fast) var(--ease-standard),
+        color var(--duration-fast) var(--ease-standard);
+    flex-shrink: 0;
+}
+
+.iconButton:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.iconButton:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus-ring);
+    outline-offset: var(--focus-ring-offset);
+}
+
+.iconButton:hover:not(:disabled) {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.sm {
+    width: 2rem;
+    height: 2rem;
+    font-size: var(--text-sm);
+}
+
+.md {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: var(--text-base);
+}
+
+.lg {
+    width: 3rem;
+    height: 3rem;
+    font-size: var(--text-md);
+}
+
+.ghost.active {
+    background: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+}
+
+.solid {
+    background: var(--color-bg-surface);
+    border-color: var(--color-border);
+    color: var(--color-text-primary);
+}
+
+.solid.active {
+    background: var(--color-brand-fill);
+    border-color: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+}
+
+/* Touch can't hover to confirm a near miss, so every size floors at the 44px touch target. */
+@media (pointer: coarse) {
+    .sm,
+    .md {
+        width: 2.75rem;
+        height: 2.75rem;
+    }
+}

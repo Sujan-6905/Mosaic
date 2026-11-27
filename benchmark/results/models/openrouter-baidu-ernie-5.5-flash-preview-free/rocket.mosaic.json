@@ -1,0 +1,39 @@
+{
+  "modelKey": "openrouter:baidu/ernie-5.5-flash-preview:free",
+  "task": "rocket",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "smoke left",
+    "smoke right",
+    "smoke center",
+    "flame outer",
+    "flame inner",
+    "rocket body",
+    "rocket nose",
+    "rocket left fin",
+    "rocket right fin",
+    "rocket window"
+  ],
+  "usage": {
+    "calls": 3,
+    "inputTokens": 8143,
+    "outputTokens": 5706,
+    "modelMs": 27060,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 10,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/openrouter-baidu-ernie-5.5-flash-preview-free/rocket.mosaic.svg",
+  "ranAt": "2026-11-25T06:50:59.559Z"
+}

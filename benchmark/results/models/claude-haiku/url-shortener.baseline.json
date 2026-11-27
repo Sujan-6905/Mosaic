@@ -1,0 +1,28 @@
+{
+  "modelKey": "claude:haiku",
+  "task": "url-shortener",
+  "kind": "diagram",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 4222,
+    "outputTokens": 3661,
+    "modelMs": 16135,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 21,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 7
+  },
+  "image": "models/claude-haiku/url-shortener.baseline.svg",
+  "ranAt": "2026-11-23T05:47:14.241Z"
+}

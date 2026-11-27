@@ -1,0 +1,444 @@
+.page {
+    min-height: 100svh;
+    background: var(--color-bg-canvas);
+    color: var(--color-text-primary);
+    display: flex;
+    flex-direction: column;
+}
+
+.layout {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 0 16px 24px;
+    align-items: flex-start;
+}
+
+.sidebar,
+.main {
+    border-radius: 18px;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+}
+
+.sidebar {
+    position: sticky;
+    top: 16px;
+    flex: 1 1 230px;
+    max-width: 250px;
+    padding: 14px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.newBoard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 0;
+    background: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+    border-radius: 12px;
+    padding: 11px;
+    font: 600 14px var(--font-sans);
+    cursor: pointer;
+}
+
+.newBoard:hover {
+    background: var(--color-brand-fill-hover);
+}
+
+.sections,
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font: 400 14px var(--font-sans);
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navItem > span:first-child:not(.dot),
+.navLabel {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.navItem:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.navItem[aria-current="page"] {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+:global([data-theme="light"]) .navItem[aria-current="page"] {
+    background: var(--color-bg-sunken);
+}
+
+.navCount {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-text-muted);
+}
+
+.categoriesLabel {
+    padding: 0 10px 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+}
+
+.dot {
+    flex: none;
+    width: 9px;
+    height: 9px;
+    border-radius: 3px;
+}
+
+.manage {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 10px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--color-accent);
+    font: 600 13px var(--font-sans);
+    text-align: left;
+    cursor: pointer;
+}
+
+.manage:hover {
+    background: var(--color-bg-hover);
+}
+
+.main {
+    flex: 999 1 600px;
+    min-width: 0;
+    padding: 28px 28px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.titleRow {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.titleRow > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.75rem, 2.6vw, 2.125rem);
+    letter-spacing: -0.015em;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.viewToggle {
+    display: flex;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.viewToggle button {
+    width: 36px;
+    height: 34px;
+    border: 0;
+    background: transparent;
+    color: var(--color-text-secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.viewToggle button[aria-pressed="true"] {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+}
+
+:global([data-theme="light"]) .viewToggle button[aria-pressed="true"] {
+    background: var(--color-bg-sunken);
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    scroll-margin-top: 16px;
+}
+
+.groupTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.groupCount {
+    font-weight: 400;
+    color: var(--color-text-muted);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 16px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.emptyGroup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 22px;
+    border-radius: var(--radius-card);
+    border: 1.5px dashed var(--color-border);
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+}
+
+.outline {
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-primary);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font: 500 13px var(--font-sans);
+    cursor: pointer;
+}
+
+.outline:hover {
+    border-color: var(--color-border-strong);
+}
+
+.skeleton {
+    height: 190px;
+    border-radius: var(--radius-card);
+    background: var(--color-bg-hover);
+    animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.resultList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.result {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px 16px;
+    border-radius: var(--radius-card);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-canvas);
+    color: var(--color-text-primary);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.result:hover {
+    border-color: var(--color-brand-fill);
+}
+
+.snippet {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+.sourceType {
+    margin-right: 8px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--color-bg-hover);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
+.dialogFields,
+.manager {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.dialogField {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.dialogText {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+}
+
+.dialogText strong {
+    color: var(--color-text-primary);
+}
+
+.managerAdd {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.managerAdd > :first-child {
+    flex: 1;
+}
+
+.managerList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.managerList li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    border-radius: 10px;
+}
+
+.managerList li:hover {
+    background: var(--color-bg-hover);
+}
+
+.managerName {
+    flex: 1;
+    min-width: 0;
+    margin-left: 4px;
+    font-size: 14px;
+}
+
+.inlineInput {
+    flex: 1;
+    min-width: 0;
+    padding: 6px 10px;
+    border-radius: var(--radius-input);
+    border: 1px solid var(--color-accent);
+    background: var(--color-bg-canvas);
+    color: var(--color-text-primary);
+    font: 400 14px var(--font-sans);
+}
+
+.newBoard:focus-visible,
+.navItem:focus-visible,
+.manage:focus-visible,
+.viewToggle button:focus-visible,
+.outline:focus-visible,
+.result:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus-ring);
+    outline-offset: 2px;
+}
+
+@media (max-width: 860px) {
+    .layout {
+        align-content: flex-start;
+    }
+
+    .sidebar {
+        position: static;
+        max-width: none;
+        flex-basis: 100%;
+    }
+
+    .sections {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .sections .navItem {
+        width: auto;
+    }
+
+    .main {
+        padding: 20px 16px 28px;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .sidebar {
+        animation: sidebarIn 460ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    }
+}
+
+@keyframes sidebarIn {
+    from {
+        opacity: 0;
+        translate: -12px 0;
+    }
+}

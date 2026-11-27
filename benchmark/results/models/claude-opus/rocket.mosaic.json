@@ -1,0 +1,41 @@
+{
+  "modelKey": "claude:opus",
+  "task": "rocket",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "left smoke cloud",
+    "right smoke cloud",
+    "centre smoke cloud",
+    "outer flame",
+    "inner flame",
+    "left fin",
+    "right fin",
+    "nozzle",
+    "rocket body",
+    "nose cone",
+    "window",
+    "body band"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 18212,
+    "outputTokens": 1376,
+    "modelMs": 16856,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 13,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-opus/rocket.mosaic.svg",
+  "ranAt": "2026-11-23T05:54:08.704Z"
+}

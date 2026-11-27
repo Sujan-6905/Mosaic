@@ -1,0 +1,35 @@
+{
+  "modelKey": "antigravity:gemini-3.8-flash-medium",
+  "task": "bicycle",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "rear wheel",
+    "front wheel",
+    "chainring and pedals",
+    "frame",
+    "seat",
+    "handlebars"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 24876,
+    "outputTokens": 5340,
+    "modelMs": 66692,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 17,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/antigravity-gemini-3.8-flash-medium/bicycle.mosaic.svg",
+  "ranAt": "2026-11-24T06:51:37.796Z"
+}

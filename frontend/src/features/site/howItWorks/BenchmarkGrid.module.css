@@ -1,0 +1,74 @@
+.grid {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 14px;
+}
+
+.method {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--site-bone-faint);
+}
+
+.method strong {
+    color: var(--site-bone-dim);
+    font-weight: 600;
+}
+
+.legend {
+    display: flex;
+    gap: 14px;
+    font-size: 12px;
+    color: var(--site-bone-dim);
+}
+
+.legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend span::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    background: var(--site-overlay);
+}
+
+.legend span[data-accent="true"]::before {
+    background: var(--site-gold);
+}
+
+@media (max-width: 1000px) {
+    /* As with the other measurements, the cards swipe inside the section on narrow screens. */
+    .grid {
+        display: flex;
+        gap: 12px;
+        margin-inline: calc(var(--site-shell) * -1);
+        padding-inline: var(--site-shell);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: var(--site-shell);
+        scrollbar-width: none;
+    }
+
+    .grid > * {
+        flex: 0 0 min(88%, 620px);
+        scroll-snap-align: start;
+    }
+
+    .method {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        border-radius: 24px;
+        background: var(--site-surface);
+        border: 1px solid var(--site-line-soft);
+    }
+}

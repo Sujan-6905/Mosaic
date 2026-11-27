@@ -1,0 +1,197 @@
+.contended {
+    justify-content: flex-start;
+}
+
+.versus {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    align-items: end;
+    margin-block: clamp(6px, 2svh, 22px);
+}
+
+.side {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: clamp(10px, 1.6svh, 16px);
+    border-radius: 16px;
+    background: var(--site-ink);
+    border: 1px solid var(--site-line-soft);
+}
+
+.side[data-winner="true"] {
+    border-color: rgba(255, 180, 60, 0.35);
+    background: var(--site-gold-wash);
+}
+
+.sideValue {
+    font-family: var(--site-display);
+    font-size: clamp(1.4rem, min(2.6vw, 4.4svh), 2.4rem);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--site-bone-dim);
+}
+
+.side[data-winner="true"] .sideValue {
+    color: var(--site-gold);
+}
+
+.sideName {
+    font-size: 12px;
+    color: var(--site-bone-dim);
+}
+
+.tally {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin: auto 0 0;
+}
+
+.tally > div {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2px;
+    padding-top: 10px;
+    border-top: 2px solid var(--site-line);
+}
+
+.tally > div[data-verdict="couchbase"] {
+    border-top-color: var(--site-gold);
+}
+
+.tally dt {
+    font-size: 11px;
+    line-height: 1.3;
+    color: var(--site-bone-faint);
+}
+
+.tally dd {
+    margin: 0;
+    font-family: var(--site-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--site-bone);
+}
+
+.paths {
+    gap: clamp(6px, 1.1svh, 12px);
+}
+
+.pathsHead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    align-content: space-evenly;
+    gap: clamp(2px, 0.5svh, 6px);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: minmax(0, 13.5em) minmax(0, 1fr) 6.5em;
+    align-items: center;
+    gap: 14px;
+    font-size: 13px;
+}
+
+.rowLabel {
+    color: var(--site-bone-dim);
+    line-height: 1.25;
+}
+
+.rowBars {
+    display: grid;
+    gap: 3px;
+}
+
+.barLine {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bar {
+    display: block;
+    height: 7px;
+    border-radius: 4px;
+    background: var(--site-overlay);
+    transform-origin: left;
+    transition: transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bar[data-store="couchbase"] {
+    background: var(--site-gold);
+}
+
+.paths[data-reveal="armed"] .bar {
+    transform: scaleX(0);
+}
+
+.barValue {
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    color: var(--site-bone-faint);
+}
+
+.verdict {
+    justify-self: end;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--site-bone-dim);
+    border: 1px solid var(--site-line);
+}
+
+.verdict[data-verdict="couchbase"] {
+    color: var(--site-gold);
+    border-color: rgba(255, 180, 60, 0.4);
+    background: var(--site-gold-wash);
+}
+
+.verdict[data-verdict="mongodb"] {
+    color: var(--site-bone);
+}
+
+@media (max-width: 1000px) {
+    .paths {
+        overflow-y: auto;
+    }
+
+    .rows {
+        flex: none;
+        align-content: start;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 560px) {
+    .row {
+        grid-template-columns: minmax(0, 1fr) auto;
+        row-gap: 4px;
+    }
+
+    .rowBars {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bar {
+        transition: none;
+    }
+}

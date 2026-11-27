@@ -1,0 +1,28 @@
+{
+  "modelKey": "claude:opus",
+  "task": "house",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 4148,
+    "outputTokens": 1099,
+    "modelMs": 11976,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 16,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-opus/house.baseline.svg",
+  "ranAt": "2026-11-23T05:50:40.354Z"
+}

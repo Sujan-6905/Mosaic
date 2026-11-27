@@ -1,0 +1,135 @@
+.selectionLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 600;
+}
+
+.rotatedGroup {
+    position: absolute;
+    transform-origin: center center;
+}
+
+.boundingBox {
+    position: absolute;
+    border: 1.5px solid var(--color-canvas-selection-handle);
+    background: var(--color-selection);
+    pointer-events: none;
+}
+
+.handle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-surface);
+    border: 1.5px solid var(--color-canvas-selection-handle);
+    box-shadow: var(--shadow-sm);
+    pointer-events: auto;
+}
+
+.rotateHandleStem {
+    position: absolute;
+    width: 1.5px;
+    background: var(--color-canvas-selection-handle);
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.rotateHandle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-bg-surface);
+    border: 1.5px solid var(--color-canvas-selection-handle);
+    box-shadow: var(--shadow-sm);
+    cursor: grab;
+    pointer-events: auto;
+}
+
+.rotateHandle:active {
+    cursor: grabbing;
+}
+
+/* Shows the rotation landed exactly on a right angle. */
+.rotateHandleStem[data-snapped="true"] {
+    background: var(--color-brand-fill);
+}
+
+.rotateHandle[data-snapped="true"] {
+    border-color: var(--color-brand-fill);
+    background: var(--color-brand-fill);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-brand-fill) 25%, transparent);
+}
+
+.lockBadge {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 2px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-surface);
+    color: var(--color-canvas-selection-handle);
+    box-shadow: var(--shadow-sm);
+    pointer-events: none;
+}
+
+.endHandle,
+.bendHandle,
+.bendGhost,
+.quickConnect {
+    position: absolute;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: auto;
+    touch-action: none;
+}
+
+.endHandle {
+    width: 13px;
+    height: 13px;
+    background: var(--color-bg-surface);
+    border: 2px solid var(--color-canvas-selection-handle);
+    cursor: grab;
+}
+
+.bendHandle {
+    width: 11px;
+    height: 11px;
+    background: var(--color-canvas-selection-handle);
+    border: 2px solid var(--color-bg-surface);
+    cursor: grab;
+}
+
+.bendGhost {
+    width: 9px;
+    height: 9px;
+    background: var(--color-bg-surface);
+    border: 1.5px solid var(--color-canvas-selection-handle);
+    opacity: 0.75;
+    cursor: copy;
+}
+
+.bendGhost:hover {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.25);
+}
+
+.quickConnect {
+    width: 11px;
+    height: 11px;
+    background: var(--color-canvas-selection-handle);
+    opacity: 0.45;
+    cursor: crosshair;
+    transition:
+        opacity 120ms ease,
+        transform 120ms ease;
+}
+
+.quickConnect:hover {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.4);
+}

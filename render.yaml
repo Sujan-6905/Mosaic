@@ -1,0 +1,45 @@
+services:
+  - type: web
+    name: mosaic-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: .
+    plan: free
+    region: singapore
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CB_CONNECTION_STRING
+        sync: false
+      - key: CB_USERNAME
+        sync: false
+      - key: CB_PASSWORD
+        sync: false
+      - key: CB_BUCKET_NAME
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      # The Vercel address; also the default CORS origin.
+      - key: PUBLIC_APP_URL
+        value: https://mosaic-collab.vercel.app
+      # Must equal FRONTEND_SERVER_KEY in the Vercel project.
+      - key: FRONTEND_SERVER_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: VAPID_PUBLIC_KEY
+        sync: false
+      - key: VAPID_PRIVATE_KEY
+        sync: false
+      - key: VAPID_SUBJECT
+        sync: false

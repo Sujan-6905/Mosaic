@@ -1,0 +1,38 @@
+{
+  "modelKey": "nvidia:mistralai/mistral-large-4-1t-a52b",
+  "task": "bicycle",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "rear wheel",
+    "front wheel",
+    "rear spokes",
+    "front spokes",
+    "frame",
+    "handlebar",
+    "seat",
+    "crank and pedals"
+  ],
+  "usage": {
+    "calls": 3,
+    "inputTokens": 8202,
+    "outputTokens": 7208,
+    "modelMs": 487619,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 22,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/nvidia-mistralai-mistral-large-4-1t-a52b/bicycle.mosaic.svg",
+  "ranAt": "2026-11-25T07:04:50.214Z"
+}

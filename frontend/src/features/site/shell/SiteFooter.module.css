@@ -1,0 +1,213 @@
+/* Sized against the viewport's height as well as its width, so the whole
+   sign-off, down to the clock, fits on one screen. */
+.footer {
+    position: relative;
+    padding: clamp(24px, 4.5vh, 56px) var(--site-shell) clamp(14px, 2.2vh, 24px);
+    border-top: 1px solid var(--site-line-soft);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(14px, 2.8vh, 32px);
+}
+
+.top {
+    display: flex;
+    gap: clamp(32px, 4vw, 64px);
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+/* Transparent on purpose: the monogram is painted by the fixed WebGL canvas
+   underneath, which any fill here would cover. */
+.monogramStage {
+    position: relative;
+    flex: none;
+    width: clamp(124px, 25vh, 232px);
+    height: clamp(124px, 25vh, 232px);
+    pointer-events: none;
+}
+
+.monogramFallback {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    font-family: var(--site-display);
+    font-size: 8rem;
+    font-weight: 800;
+    color: var(--site-gold);
+}
+
+.assetHit {
+    position: absolute;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.assetHit:focus-visible {
+    outline: 2px solid var(--site-gold);
+    outline-offset: 4px;
+}
+
+.columns {
+    flex: 1 1 520px;
+    display: flex;
+    gap: clamp(28px, 3.5vw, 56px);
+    flex-wrap: wrap;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 1.2vh, 12px);
+    min-width: 150px;
+    font-size: 14px;
+}
+
+.column a {
+    color: var(--site-bone);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.column a:hover,
+.bar a:hover {
+    color: var(--site-gold);
+}
+
+.heading {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--site-gold);
+    padding-bottom: clamp(4px, 0.8vh, 8px);
+    border-bottom: 1px solid var(--site-line);
+}
+
+.nameNote {
+    flex: 1 1 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nameNote p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--site-bone-dim);
+}
+
+.strip {
+    display: grid;
+    grid-template-columns: repeat(48, minmax(0, 1fr));
+    gap: 4px;
+}
+
+.strip span {
+    height: clamp(8px, 1.6vh, 14px);
+    border-radius: 2px;
+    background: var(--site-raised);
+    transition:
+        background-color 500ms ease,
+        transform 500ms ease;
+}
+
+.strip span[data-tone="deep"] {
+    background: var(--site-gold-deep);
+}
+
+.strip span[data-tone="gold"] {
+    background: var(--site-gold);
+}
+
+.strip:hover span {
+    transition-duration: 120ms;
+}
+
+.strip span:hover {
+    background: var(--site-gold);
+    transform: scaleY(1.7);
+}
+
+.wordmarkGiant {
+    display: flex;
+    justify-content: center;
+    font-family: var(--site-display);
+    font-weight: 800;
+    font-size: clamp(3rem, min(15vw, 21vh), 13rem);
+    line-height: 0.85;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    user-select: none;
+    overflow: hidden;
+}
+
+.letter {
+    --lit: 0;
+    display: block;
+    color: #1e2126;
+    color: color-mix(in srgb, var(--site-gold) calc(var(--lit) * 100%), #1e2126);
+    transform: translateY(calc(var(--lit) * -0.045em));
+    transition:
+        color 160ms linear,
+        transform 220ms ease-out;
+}
+
+.bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: clamp(10px, 1.6vh, 16px);
+    border-top: 1px solid var(--site-line-soft);
+    font-size: 13px;
+    color: var(--site-bone-faint);
+}
+
+.bar a {
+    color: var(--site-bone-faint);
+    text-decoration: none;
+}
+
+.wordmark {
+    font-family: var(--site-display);
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--site-bone);
+}
+
+.clockValue {
+    font-family: var(--site-mono);
+    color: var(--site-gold);
+}
+
+@media (max-width: 700px) {
+    .top {
+        gap: 16px;
+    }
+
+    .monogramStage {
+        width: 96px;
+        height: 96px;
+    }
+
+    .columns {
+        gap: 16px 24px;
+    }
+
+    .column {
+        min-width: 130px;
+    }
+
+    .nameNote {
+        flex-basis: 100%;
+    }
+
+    .nameNote p {
+        font-size: 13px;
+        line-height: 1.45;
+    }
+}

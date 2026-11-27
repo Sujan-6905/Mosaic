@@ -1,0 +1,28 @@
+{
+  "modelKey": "groq:qwen/qwen3.8-27b",
+  "task": "launch-timeline",
+  "kind": "diagram",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 132,
+    "outputTokens": 1970,
+    "modelMs": 4095,
+    "rateLimitWaits": 2
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 31,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/groq-qwen-qwen3.8-27b/launch-timeline.baseline.svg",
+  "ranAt": "2026-11-23T05:51:55.309Z"
+}

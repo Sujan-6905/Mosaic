@@ -1,0 +1,43 @@
+{
+  "modelKey": "nvidia:mistralai/mistral-large-4-1t-a52b",
+  "task": "cat",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "tail",
+    "body (haunches)",
+    "left front leg",
+    "right front leg",
+    "left paw",
+    "right paw",
+    "head",
+    "left ear",
+    "right ear",
+    "left eye",
+    "right eye",
+    "nose",
+    "mouth",
+    "whiskers"
+  ],
+  "usage": {
+    "calls": 3,
+    "inputTokens": 8269,
+    "outputTokens": 6681,
+    "modelMs": 599247,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 17,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/nvidia-mistralai-mistral-large-4-1t-a52b/cat.mosaic.svg",
+  "ranAt": "2026-11-25T06:56:42.573Z"
+}

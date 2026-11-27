@@ -1,0 +1,28 @@
+{
+  "modelKey": "antigravity:gemini-3.8-flash-medium",
+  "task": "url-shortener",
+  "kind": "diagram",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 10214,
+    "outputTokens": 2739,
+    "modelMs": 31440,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 13,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 6
+  },
+  "image": "models/antigravity-gemini-3.8-flash-medium/url-shortener.baseline.svg",
+  "ranAt": "2026-11-24T06:27:44.073Z"
+}

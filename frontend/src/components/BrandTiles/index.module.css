@@ -1,0 +1,18 @@
+.tiles {
+    display: grid;
+    grid-template-columns: repeat(2, 9px);
+    gap: 2px;
+}
+
+.tiles span {
+    height: 9px;
+    border-radius: 2px;
+}
+
+.tiles [data-tone="gold"] {
+    background: var(--color-brand-fill);
+}
+
+.tiles [data-tone="ink"] {
+    background: var(--color-text-primary);
+}

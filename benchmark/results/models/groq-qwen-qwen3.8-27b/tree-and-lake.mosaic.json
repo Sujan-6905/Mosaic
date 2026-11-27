@@ -1,0 +1,33 @@
+{
+  "modelKey": "groq:qwen/qwen3.8-27b",
+  "task": "tree-and-lake",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "tree trunk",
+    "tree canopy",
+    "small lake"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 3964,
+    "outputTokens": 325,
+    "modelMs": 1489,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 4,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/groq-qwen-qwen3.8-27b/tree-and-lake.mosaic.svg",
+  "ranAt": "2026-11-23T05:43:11.593Z"
+}

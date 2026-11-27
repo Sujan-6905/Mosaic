@@ -1,0 +1,39 @@
+{
+  "modelKey": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+  "task": "house",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "walls",
+    "door",
+    "left window",
+    "right window",
+    "roof",
+    "chimney",
+    "door knob",
+    "left window cross",
+    "right window cross"
+  ],
+  "usage": {
+    "calls": 3,
+    "inputTokens": 8341,
+    "outputTokens": 4429,
+    "modelMs": 53501,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 12,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/nvidia-nvidia-nemotron-3-ultra-550b-a55b/house.mosaic.svg",
+  "ranAt": "2026-11-23T05:49:23.314Z"
+}

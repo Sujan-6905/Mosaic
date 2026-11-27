@@ -1,0 +1,42 @@
+{
+  "modelKey": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+  "task": "cat",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "tail",
+    "left hind leg",
+    "right hind leg",
+    "body",
+    "left front leg",
+    "right front leg",
+    "head",
+    "left ear",
+    "right ear",
+    "left eye",
+    "right eye",
+    "nose",
+    "mouth"
+  ],
+  "usage": {
+    "calls": 3,
+    "inputTokens": 8275,
+    "outputTokens": 3807,
+    "modelMs": 32200,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 13,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/nvidia-nvidia-nemotron-3-ultra-550b-a55b/cat.mosaic.svg",
+  "ranAt": "2026-11-23T05:50:18.605Z"
+}

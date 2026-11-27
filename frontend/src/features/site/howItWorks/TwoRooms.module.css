@@ -1,0 +1,115 @@
+.rooms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+/* On a narrow screen the simulation keeps a usable size and scrolls sideways inside its own frame. */
+.stage {
+    width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+}
+
+.stage:focus-visible {
+    outline: 2px solid var(--site-gold);
+    outline-offset: 4px;
+    border-radius: 8px;
+}
+
+.canvas {
+    display: block;
+    width: 100%;
+    min-width: 760px;
+    max-width: 1240px;
+    margin: 0 auto;
+    aspect-ratio: 1240 / 430;
+    cursor: grab;
+    touch-action: none;
+}
+
+.canvas:active {
+    cursor: grabbing;
+}
+
+.verdict {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 100%;
+    padding: 13px 22px;
+    border-radius: 999px;
+    background: var(--site-raised);
+    color: var(--site-bone);
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.4;
+    transition:
+        background-color var(--duration-base) var(--ease-standard),
+        color var(--duration-base) var(--ease-standard);
+}
+
+.verdict span {
+    flex: none;
+    width: 11px;
+    height: 11px;
+    border-radius: 2px;
+    background: currentColor;
+}
+
+.verdict[data-settled="true"] {
+    background: var(--site-gold);
+    color: var(--color-brand-fill-text);
+}
+
+.footnote {
+    font-size: 13px;
+    color: var(--site-bone-faint);
+    text-align: center;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 14px;
+}
+
+.race,
+.restart {
+    min-height: 40px;
+    padding: 0 18px;
+    border-radius: 999px;
+    font: 600 14px var(--site-body);
+    cursor: pointer;
+    transition:
+        background-color var(--duration-fast) var(--ease-standard),
+        border-color var(--duration-fast) var(--ease-standard);
+}
+
+.race {
+    border: 0;
+    background: var(--site-gold);
+    color: var(--site-ink-deep);
+}
+
+.race:hover {
+    background: #ffc76a;
+}
+
+.restart {
+    border: 1px solid var(--site-line-soft);
+    background: transparent;
+    color: var(--site-bone);
+}
+
+.restart:hover {
+    border-color: var(--site-gold);
+}
+
+.controlsHint {
+    color: var(--site-bone-dim);
+    font-size: 13px;
+}

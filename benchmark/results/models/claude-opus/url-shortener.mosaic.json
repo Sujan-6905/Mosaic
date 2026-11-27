@@ -1,0 +1,32 @@
+{
+  "modelKey": "claude:opus",
+  "task": "url-shortener",
+  "kind": "diagram",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": {
+    "structure": "layered-tiers",
+    "look": "ink",
+    "levers": {}
+  },
+  "parts": null,
+  "usage": {
+    "calls": 3,
+    "inputTokens": 31139,
+    "outputTokens": 1574,
+    "modelMs": 17372,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 26,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 8
+  },
+  "image": "models/claude-opus/url-shortener.mosaic.svg",
+  "ranAt": "2026-11-24T04:42:04.667Z"
+}

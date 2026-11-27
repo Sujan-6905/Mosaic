@@ -1,0 +1,27 @@
+# Built from the repo root so each image can copy the sibling shared/ package.
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    # Mounted rather than env_file: Docker's parser rejects the `KEY = value` spacing dotenv accepts.
+    volumes:
+      - ./backend/.env:/app/backend/.env:ro
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:5000}
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+    volumes:
+      - ./frontend/.env:/app/frontend/.env:ro
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped

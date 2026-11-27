@@ -1,0 +1,37 @@
+{
+  "modelKey": "nvidia:mistralai/mistral-large-4-1t-a52b",
+  "task": "house",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "chimney",
+    "walls",
+    "roof",
+    "left window",
+    "right window",
+    "door",
+    "door knob"
+  ],
+  "usage": {
+    "calls": 3,
+    "inputTokens": 7508,
+    "outputTokens": 3482,
+    "modelMs": 342178,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 12,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/nvidia-mistralai-mistral-large-4-1t-a52b/house.mosaic.svg",
+  "ranAt": "2026-11-23T06:17:49.935Z"
+}

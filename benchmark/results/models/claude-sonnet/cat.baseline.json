@@ -1,0 +1,28 @@
+{
+  "modelKey": "claude:sonnet",
+  "task": "cat",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 4145,
+    "outputTokens": 756,
+    "modelMs": 6408,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 23,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 2,
+    "connectors": 0
+  },
+  "image": "models/claude-sonnet/cat.baseline.svg",
+  "ranAt": "2026-11-23T05:52:49.476Z"
+}

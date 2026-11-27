@@ -1,0 +1,77 @@
+.stepper {
+    display: inline-flex;
+    align-items: stretch;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.stepButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+}
+
+.stepButton:hover:not(:disabled) {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.stepButton:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.input {
+    width: 100%;
+    min-width: 0;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--color-text-primary);
+    text-align: center;
+    font-size: inherit;
+    font-variant-numeric: tabular-nums;
+    padding: 0;
+}
+
+.input:hover {
+    background: var(--color-bg-hover);
+}
+
+.input:focus-visible {
+    box-shadow: none;
+    background: var(--color-bg-hover);
+}
+
+.sm {
+    height: 30px;
+    font-size: 0.75rem;
+}
+
+.sm .stepButton {
+    width: 24px;
+}
+
+.sm .input {
+    width: 32px;
+}
+
+.md {
+    height: 36px;
+    width: 100%;
+    font-size: var(--text-sm);
+}
+
+.md .stepButton {
+    width: 32px;
+}
+
+.md .input {
+    flex: 1;
+}

@@ -1,0 +1,84 @@
+.dialog {
+    width: min(1280px, calc(100vw - 32px));
+    max-width: none;
+    max-height: calc(100dvh - 32px);
+    margin: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--site-bone);
+    overflow: visible;
+    animation: filmIn 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.dialog::backdrop {
+    background: rgba(5, 5, 6, 0.86);
+    backdrop-filter: blur(6px);
+}
+
+.frame {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--site-line);
+    background: #000;
+    box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.9);
+}
+
+.video {
+    display: block;
+    width: 100%;
+    max-height: calc(100dvh - 96px);
+    aspect-ratio: 16 / 9;
+    background: #000;
+}
+
+.close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--site-line);
+    border-radius: 999px;
+    background: rgba(8, 8, 10, 0.72);
+    color: var(--site-bone);
+    cursor: pointer;
+}
+
+.close:hover {
+    color: var(--site-gold);
+    border-color: var(--site-gold);
+}
+
+.close:focus-visible {
+    outline: 2px solid var(--site-gold);
+    outline-offset: 2px;
+}
+
+.credit {
+    margin: 12px 4px 0;
+    font: 400 12px var(--site-body);
+    color: var(--site-bone-dim);
+    text-align: center;
+}
+
+.credit a {
+    color: inherit;
+    text-underline-offset: 3px;
+}
+
+@keyframes filmIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dialog {
+        animation: none;
+    }
+}

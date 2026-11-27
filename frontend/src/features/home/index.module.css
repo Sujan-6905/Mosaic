@@ -1,0 +1,462 @@
+.root {
+    position: relative;
+    min-height: 100svh;
+    background-color: var(--color-bg-canvas);
+    background-image: radial-gradient(var(--color-canvas-grid) 1px, transparent 1px);
+    background-size: 24px 24px;
+    color: var(--color-text-primary);
+    overflow: hidden;
+}
+
+.root > header {
+    position: absolute;
+    inset: 0 0 auto;
+}
+
+.board {
+    position: relative;
+    height: max(100svh, 760px);
+}
+
+.greeting {
+    position: absolute;
+    left: 6%;
+    top: 13%;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2rem, 3.2vw, 2.875rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+
+.greeting em {
+    font-weight: 400;
+    font-style: italic;
+    color: var(--color-accent);
+}
+
+:global([data-theme="dark"]) .greeting em {
+    color: var(--color-brand-fill);
+}
+
+.subhead {
+    position: absolute;
+    left: 6%;
+    top: calc(13% + clamp(2.6rem, 4vw, 3.6rem));
+    font-size: 15px;
+    color: var(--color-text-secondary);
+}
+
+.frame,
+.newTile {
+    position: absolute;
+    left: var(--left);
+    top: var(--top);
+    /* Scaled by the board's height as well as its width, so a short window can't stack tiles on each other. */
+    width: min(var(--width), var(--width-vw), calc(var(--width-unitless) * max(100svh, 760px) / 1000));
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    rotate: var(--tilt);
+    transition: transform var(--duration-base) var(--ease-standard);
+    touch-action: none;
+    user-select: none;
+}
+
+.skeleton {
+    aspect-ratio: var(--ratio);
+    border-radius: 10px;
+    background: var(--color-bg-surface);
+    animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.newTile {
+    left: 6%;
+    top: 30%;
+    width: min(250px, 17.4vw);
+    border: 0;
+    padding: 0;
+    background: transparent;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.newBox {
+    height: 160px;
+    border-radius: 10px;
+    border: 1.5px dashed var(--color-brand-fill);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--color-accent);
+    font-size: 15px;
+    font-weight: 600;
+    transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+:global([data-theme="dark"]) .newBox {
+    color: var(--color-brand-fill);
+}
+
+.newTile:hover .newBox,
+.newTile:focus-visible .newBox {
+    background: color-mix(in srgb, var(--color-brand-fill) 8%, transparent);
+}
+
+.newTile:focus-visible {
+    outline: none;
+}
+
+.newTile:disabled {
+    cursor: progress;
+}
+
+.note {
+    position: absolute;
+    left: 70%;
+    top: 13%;
+    width: 230px;
+    padding: 16px 16px 18px;
+    background: #ffd27a;
+    color: #2a1f08;
+    border-radius: 4px;
+    rotate: 2.5deg;
+    box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    line-height: 1.45;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.note strong {
+    margin-bottom: 2px;
+}
+
+.note a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.note a:hover,
+.note a:focus-visible {
+    text-decoration: underline;
+}
+
+.emptyNote {
+    position: absolute;
+    left: 26%;
+    top: 34%;
+    max-width: 360px;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 19px;
+    color: var(--color-text-secondary);
+}
+
+.emptyNote a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.toolbar {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px;
+    border-radius: 16px;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.6);
+    max-width: calc(100vw - 32px);
+}
+
+.primaryAction,
+.action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 0;
+    border-radius: 11px;
+    padding: 9px 14px;
+    font: 600 14px var(--font-sans);
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.primaryAction {
+    background: var(--color-brand-fill);
+    color: var(--color-brand-fill-text);
+}
+
+.primaryAction:hover {
+    background: var(--color-brand-fill-hover);
+}
+
+.action {
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    padding: 9px 12px;
+}
+
+.action:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.primaryAction:focus-visible,
+.action:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus-ring);
+    outline-offset: 2px;
+}
+
+.toolbarRule {
+    width: 1px;
+    height: 20px;
+    background: var(--color-border);
+    margin: 0 4px;
+}
+
+.joinForm {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.joinForm input {
+    width: min(320px, 50vw);
+    padding: 9px 12px;
+    border-radius: var(--radius-input);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-canvas);
+    color: var(--color-text-primary);
+    font: 400 14px var(--font-sans);
+}
+
+.count {
+    position: fixed;
+    left: 16px;
+    bottom: 22px;
+    z-index: 10;
+    padding: 8px 12px;
+    border-radius: 12px;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+@media (max-width: 1200px) {
+    .count {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    /* The header wraps onto two rows on a phone, so it takes its own space instead of floating over the board. */
+    .root > header {
+        position: relative;
+    }
+
+    .board {
+        height: auto;
+        padding: 8px 16px 120px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .greeting,
+    .subhead,
+    .frame,
+    .newTile,
+    .note,
+    .emptyNote {
+        position: static;
+        width: auto;
+        rotate: none;
+    }
+
+    .subhead {
+        margin-top: -12px;
+    }
+
+    .note {
+        order: -1;
+        rotate: 1deg;
+        align-self: flex-start;
+        max-width: 320px;
+    }
+
+    .greeting {
+        order: -2;
+    }
+
+    .subhead {
+        order: -2;
+    }
+
+    .newBox {
+        height: 96px;
+    }
+}
+
+@media (max-width: 560px) {
+    .greeting {
+        overflow-wrap: anywhere;
+    }
+
+    /* All boards is in the account menu too, and four actions don't fit beside each other on a phone. */
+    .toolbarRule,
+    .allBoards {
+        display: none;
+    }
+
+    .toolbar {
+        left: 16px;
+        right: 16px;
+        transform: none;
+        overflow-x: auto;
+    }
+
+    .action {
+        padding: 9px 10px;
+    }
+}
+
+.greeting {
+    animation: homeRise 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.subhead {
+    animation: homeRise 620ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both;
+}
+
+/* Pinned down onto the board one after another. Uses the separate translate and
+   scale properties, so it never fights the tilt or the drag transform. */
+.frame,
+.newTile {
+    animation: framePinned 560ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    animation-delay: calc(var(--order, 0) * 70ms + 120ms);
+}
+
+.note {
+    animation: homeRise 620ms cubic-bezier(0.22, 1, 0.36, 1) 500ms both;
+}
+
+.toolbar {
+    animation: toolbarRise 520ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
+}
+
+.toolbarGlide {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 11px;
+    background: var(--color-bg-hover);
+    pointer-events: none;
+}
+
+.toolbarActions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    animation: toolbarSwap 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.toolbarActions > :not(.toolbarGlide) {
+    position: relative;
+    z-index: 1;
+}
+
+.toolbarActions .action:hover {
+    background: transparent;
+}
+
+.primaryAction svg {
+    transition: rotate 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.primaryAction:hover svg {
+    rotate: 90deg;
+}
+
+.fileHint {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-text-muted);
+}
+
+.joinForm {
+    animation: toolbarSwap 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes homeRise {
+    from {
+        opacity: 0;
+        translate: 0 12px;
+    }
+}
+
+@keyframes framePinned {
+    from {
+        opacity: 0;
+        translate: 0 -18px;
+        scale: 1.05;
+    }
+}
+
+@keyframes toolbarRise {
+    from {
+        opacity: 0;
+        translate: 0 22px;
+    }
+}
+
+@keyframes toolbarSwap {
+    from {
+        opacity: 0;
+        translate: 0 6px;
+    }
+}
+
+@media (max-width: 720px) {
+    .fileHint {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .greeting,
+    .subhead,
+    .frame,
+    .newTile,
+    .note,
+    .toolbar,
+    .toolbarActions,
+    .joinForm {
+        animation: none;
+    }
+
+    .primaryAction:hover svg {
+        rotate: none;
+    }
+}

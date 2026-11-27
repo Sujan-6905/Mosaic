@@ -1,0 +1,41 @@
+{
+  "modelKey": "claude:opus",
+  "task": "cat",
+  "kind": "drawing",
+  "variant": "mosaic",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": [
+    "ground",
+    "tail",
+    "body",
+    "haunch",
+    "back front leg",
+    "front leg",
+    "ears",
+    "head",
+    "eyes",
+    "nose",
+    "mouth",
+    "whiskers"
+  ],
+  "usage": {
+    "calls": 2,
+    "inputTokens": 18182,
+    "outputTokens": 1612,
+    "modelMs": 20834,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 17,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/claude-opus/cat.mosaic.svg",
+  "ranAt": "2026-11-23T05:52:05.240Z"
+}

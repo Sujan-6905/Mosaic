@@ -1,0 +1,28 @@
+{
+  "modelKey": "groq:qwen/qwen3.8-27b",
+  "task": "bicycle",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 104,
+    "outputTokens": 696,
+    "modelMs": 1671,
+    "rateLimitWaits": 1
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 11,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 0
+  },
+  "image": "models/groq-qwen-qwen3.8-27b/bicycle.baseline.svg",
+  "ranAt": "2026-11-23T05:56:47.416Z"
+}

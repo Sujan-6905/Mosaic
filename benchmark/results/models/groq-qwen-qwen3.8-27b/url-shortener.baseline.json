@@ -1,0 +1,28 @@
+{
+  "modelKey": "groq:qwen/qwen3.8-27b",
+  "task": "url-shortener",
+  "kind": "diagram",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 141,
+    "outputTokens": 829,
+    "modelMs": 1927,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 13,
+    "validShare": 1,
+    "coverage": 1,
+    "missing": [],
+    "overlappingLabels": 1,
+    "connectors": 6
+  },
+  "image": "models/groq-qwen-qwen3.8-27b/url-shortener.baseline.svg",
+  "ranAt": "2026-11-23T05:47:00.017Z"
+}

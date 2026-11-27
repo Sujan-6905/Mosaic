@@ -1,0 +1,28 @@
+{
+  "modelKey": "claude:sonnet",
+  "task": "house",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 4152,
+    "outputTokens": 327,
+    "modelMs": 4421,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 9,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 3,
+    "connectors": 0
+  },
+  "image": "models/claude-sonnet/house.baseline.svg",
+  "ranAt": "2026-11-23T05:52:02.158Z"
+}

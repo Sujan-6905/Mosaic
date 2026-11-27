@@ -1,0 +1,28 @@
+{
+  "modelKey": "openrouter:baidu/ernie-5.5-flash-preview:free",
+  "task": "rocket",
+  "kind": "drawing",
+  "variant": "baseline",
+  "outcome": "drawn",
+  "error": null,
+  "recipe": null,
+  "parts": null,
+  "usage": {
+    "calls": 1,
+    "inputTokens": 114,
+    "outputTokens": 10755,
+    "modelMs": 46401,
+    "rateLimitWaits": 0
+  },
+  "grade": {
+    "drawn": true,
+    "elementCount": 18,
+    "validShare": 1,
+    "coverage": null,
+    "missing": [],
+    "overlappingLabels": 0,
+    "connectors": 2
+  },
+  "image": "models/openrouter-baidu-ernie-5.5-flash-preview-free/rocket.baseline.svg",
+  "ranAt": "2026-11-24T04:38:28.742Z"
+}
